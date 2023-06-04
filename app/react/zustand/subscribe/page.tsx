@@ -2,7 +2,7 @@
 
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/common/type/type"
-import { FeaturePresenter } from "@/components/featureCommon"
+import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
 import { UseZustandSubscribe } from "@/components/features/react/zustandSubscribe/UseZustandSubscribe"
 import { UseZustandSubscribeComponent } from "@/components/features/react/zustandSubscribe/UseZustandSubscribeCompo"
 import { UseZustandSubscribeCompoTransient } from "@/components/features/react/zustandSubscribe/UseZustandSubscribeCompoTransient"

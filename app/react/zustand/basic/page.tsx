@@ -2,7 +2,7 @@
 
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/common/type/type"
-import { FeaturePresenter } from "@/components/featureCommon"
+import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
 import { UseZustandCascaded } from "@/components/features/react/zustand/UseZustandCascaded"
 import { UseZustandObject } from "@/components/features/react/zustand/UseZustandObject"
 import { UseZustandObjectNamedShallow } from "@/components/features/react/zustand/UseZustandObjectNamedShallow"

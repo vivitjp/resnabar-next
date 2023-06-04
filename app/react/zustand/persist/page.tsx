@@ -2,7 +2,7 @@
 
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/common/type/type"
-import { FeaturePresenter } from "@/components/featureCommon"
+import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
 import { UseZustandPersistIndexDB } from "@/components/features/react/zustandPersist/UseZustandPersistIndexDB"
 import { UseZustandPersistLocalStorage } from "@/components/features/react/zustandPersist/UseZustandPersistLocalStorage"
 import { UseZustandPersistLocalStoragePartialize } from "@/components/features/react/zustandPersist/UseZustandPersistLocalStoragePartialize"

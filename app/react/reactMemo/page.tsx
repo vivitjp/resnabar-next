@@ -2,7 +2,7 @@
 
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/common/type/type"
-import { FeaturePresenter } from "@/components/featureCommon"
+import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
 import { UseReactMemo } from "@/components/features/react/reactMemo/ReactMemo"
 
 const codes: (() => UseReturnType)[] = [UseReactMemo]

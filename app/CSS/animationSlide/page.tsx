@@ -2,7 +2,7 @@
 
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/common/type/type"
-import { FeaturePresenter } from "@/components/featureCommon"
+import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
 import { useAnimationSlide } from "@/components/features/css/animation/useSlide"
 
 const codes: (() => UseReturnType)[] = [useAnimationSlide]

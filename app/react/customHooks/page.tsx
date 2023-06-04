@@ -2,7 +2,7 @@
 
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/common/type/type"
-import { FeaturePresenter } from "@/components/featureCommon"
+import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
 import { UseTable1Query } from "@/components/features/react/customHooks/UseTable1Query"
 import { UseTable2QueryLazy } from "@/components/features/react/customHooks/UseTable2QueryLazy"
 

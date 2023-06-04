@@ -20,7 +20,6 @@ export const routes: Routes = {
     { name: "Zustand(Subscribe)", path: "/react/zustand/subscribe" },
     { name: "Zustand(Persist)", path: "/react/zustand/persist" },
     { name: "Zustand(DevTools)", path: "/react/zustand/devTools" },
-    { name: "PDF(不動作)", path: "/react/pdf" },
   ],
   WebAPI: [
     { name: "iObserver", path: "/webAPI/intersectionObserver" },
