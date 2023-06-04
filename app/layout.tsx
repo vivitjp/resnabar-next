@@ -1,5 +1,3 @@
-"use client"
-
 import { RouteElements, routes } from "@/config/routes"
 import {
   Body,
