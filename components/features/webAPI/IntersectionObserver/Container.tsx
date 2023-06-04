@@ -30,6 +30,7 @@ export const Container: FC<Props> = ({
   const ref = useRef<HTMLDivElement>(null!)
 
   useEffect(() => {
+    const localRef = ref.current
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && onIntersectCallback)
@@ -38,12 +39,12 @@ export const Container: FC<Props> = ({
       { threshold }
     )
 
-    if (ref.current === null) return
-    observer.observe(ref.current)
+    if (localRef === null) return
+    observer.observe(localRef)
     return () => {
-      if (ref.current) observer.unobserve(ref.current)
+      if (localRef) observer.unobserve(localRef)
     }
-  }, [])
+  }, [index, onIntersectCallback, threshold])
 
   return <Section ref={ref}>{children}</Section>
 }

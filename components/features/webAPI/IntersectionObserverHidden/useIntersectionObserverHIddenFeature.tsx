@@ -18,6 +18,7 @@ export function useIntersectionObserverHideFeature(): UseReturnType {
   const ref = useRef<HTMLDivElement>(null!)
 
   useEffect(() => {
+    const localRef = ref.current
     const observer = new IntersectionObserver(
       ([entry]) => {  //第1引数: コールバック関数(配列に分割代入が便利)
         if (entry.isIntersecting)  onIntersect("Shown")
@@ -26,10 +27,10 @@ export function useIntersectionObserverHideFeature(): UseReturnType {
       { threshold }   //第2引数: トリガー閾値
     )
 
-    if (ref.current === null) return
-    observer.observe(ref.current)   //Observe開始
-    return ()=>{ if(ref.current) observer.unobserve(ref.current) } //Observe解除
-  }, [])
+    if (localRef === null) return
+    observer.observe(localRef)   //Observe開始
+    return ()=>{ if(localRef) observer.unobserve(localRef) } //Observe解除
+  }, [onIntersect, threshold])
  
   return <Section ref={ref}>{children}</Section>
 }

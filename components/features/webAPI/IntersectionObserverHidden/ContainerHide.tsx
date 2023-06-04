@@ -17,6 +17,7 @@ export const ContainerHidden: FC<Props> = ({
   const ref = useRef<HTMLDivElement>(null!)
 
   useEffect(() => {
+    const localRef = ref.current
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) onIntersect("Shown")
@@ -24,11 +25,11 @@ export const ContainerHidden: FC<Props> = ({
       },
       { threshold }
     )
-    observer.observe(ref.current)
+    observer.observe(localRef)
     return () => {
-      if (ref.current) observer.unobserve(ref.current)
+      if (localRef) observer.unobserve(localRef)
     }
-  }, [])
+  }, [onIntersect, threshold])
 
   return <Section ref={ref}>{children}</Section>
 }

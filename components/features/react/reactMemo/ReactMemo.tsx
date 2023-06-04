@@ -143,6 +143,7 @@ const ChildNoParamMemo = React.memo(() => {
     </Row>
   )
 })
+ChildNoParamMemo.displayName = "ChildNoParamMemo"
 
 type PropsPrimitive = { id: number | undefined }
 
@@ -165,6 +166,7 @@ const ChildParamPrimitiveMemo = React.memo(({ id }: PropsPrimitive) => {
     </Row>
   )
 })
+ChildParamPrimitiveMemo.displayName = "ChildParamPrimitiveMemo"
 
 type PropsArray = { data: ProgrammingLanguage[] | undefined }
 
@@ -187,3 +189,4 @@ const ChildParamArrayMemo = React.memo(({ data }: PropsArray) => {
     </Row>
   )
 })
+ChildParamArrayMemo.displayName = "ChildParamArrayMemo"

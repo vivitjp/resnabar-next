@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react"
 import { OptionsType } from "./type"
-import { SelectSet } from "@/components/component/SelectSet"
+import { SelectSet } from "@/components/common/SelectSet"
 
 type KV<T> = {
   K: string

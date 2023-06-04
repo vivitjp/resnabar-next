@@ -87,6 +87,7 @@ const ParentCompo = () => {
     if (!data) return undefined
     countWithData2++
     return data.map((item) => ({ ...item, id: item.id * 2 }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.[0].id])
 
   const handle = () => {
