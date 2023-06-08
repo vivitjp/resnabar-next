@@ -3,7 +3,7 @@ import { shallow } from "zustand/shallow"
 import { Column, Row } from "@/components/common/styleDiv"
 import { Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/common/type/type"
-import { usePerson1 } from "@/zustandStore/storeBasic"
+import { usePerson1 } from "@/store/zustand/storeBasic"
 
 export function UseZustandObjectShallow(): UseReturnType {
   const title = `Object(分割代入)による取り出しでShallow比較 [★★]`

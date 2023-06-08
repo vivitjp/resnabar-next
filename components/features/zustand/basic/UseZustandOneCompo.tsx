@@ -1,7 +1,7 @@
 import { Column, Row } from "@/components/common/styleDiv"
 import { Button, Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/common/type/type"
-import { useCount } from "@/zustandStore/storeBasic"
+import { useCount } from "@/store/zustand/storeBasic"
 
 export function UseZustandOneCompo(): UseReturnType {
   const title = `コンポーネント処理(Oneコンポーネント)`

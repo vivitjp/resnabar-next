@@ -1,5 +1,5 @@
 import { shallow } from "zustand/shallow"
-import { useMapSet } from "@/zustandStore/useMapSet"
+import { useMapSet } from "@/store/zustand/useMapSet"
 import { useRef, useState } from "react"
 import { UseReturnType } from "@/components/common/type/type"
 import { Column, Row } from "@/components/common/styleDiv"

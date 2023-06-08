@@ -3,7 +3,7 @@ import { shallow } from "zustand/shallow"
 import { Column, Row } from "@/components/common/styleDiv"
 import { Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/common/type/type"
-import { usePersistSession } from "@/zustandStore/usePersistSession"
+import { usePersistSession } from "@/store/zustand/usePersistSession"
 import { useRef } from "react"
 
 export function UseZustandPersistSession(): UseReturnType {

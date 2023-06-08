@@ -1,7 +1,7 @@
 import { Column, Row } from "@/components/common/styleDiv"
 import { Button, Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/common/type/type"
-import { useCount2 } from "@/zustandStore/storeBasic"
+import { useCount2 } from "@/store/zustand/storeBasic"
 
 export function UseZustandCascaded(): UseReturnType {
   const title = `コンポーネント分散処理`

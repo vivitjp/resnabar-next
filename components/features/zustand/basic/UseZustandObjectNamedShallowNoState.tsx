@@ -3,7 +3,7 @@ import { shallow } from "zustand/shallow"
 import { Column, Row } from "@/components/common/styleDiv"
 import { Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/common/type/type"
-import { usePerson3 } from "@/zustandStore/storeBasic"
+import { usePerson3 } from "@/store/zustand/storeBasic"
 
 export function UseZustandObjectNamedShallowNoState(): UseReturnType {
   const title = `Object(名前付:Stateまるごと)による取り出しでShallow比較`

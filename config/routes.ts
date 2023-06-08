@@ -16,12 +16,12 @@ export const routes: Routes = {
     { name: "RenderHooks", path: "/react/renderHooks" },
   ],
   Zustand: [
-    { name: "Store", path: "/react/zustand/store" },
-    { name: "再描画", path: "/react/zustand/basic" },
-    { name: "Map & Set", path: "/react/zustand/mapSet" },
-    { name: "Subscribe", path: "/react/zustand/subscribe" },
-    { name: "Persist", path: "/react/zustand/persist" },
-    { name: "DevTools", path: "/react/zustand/devTools" },
+    { name: "Store", path: "/zustand/store" },
+    { name: "再描画", path: "/zustand/basic" },
+    { name: "Map & Set", path: "/zustand/mapSet" },
+    { name: "Subscribe", path: "/zustand/subscribe" },
+    { name: "Persist", path: "/zustand/persist" },
+    { name: "DevTools", path: "/zustand/devTools" },
   ],
   WebAPI: [
     { name: "iObserver", path: "/webAPI/intersectionObserver" },

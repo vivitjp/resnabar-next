@@ -3,7 +3,7 @@ import { shallow } from "zustand/shallow"
 import { Column, Row } from "@/components/common/styleDiv"
 import { Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/common/type/type"
-import { usePersistLocalStorageStore } from "@/zustandStore/usePersistLocalStorageStore"
+import { usePersistLocalStorageStore } from "@/store/zustand/usePersistLocalStorageStore"
 import { useRef } from "react"
 
 export function UseZustandPersistLocalStorage(): UseReturnType {

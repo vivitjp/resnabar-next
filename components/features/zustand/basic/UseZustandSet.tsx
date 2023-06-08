@@ -2,7 +2,7 @@ import { shallow } from "zustand/shallow"
 import { Column, Row } from "@/components/common/styleDiv"
 import { Button, Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/common/type/type"
-import { useMapSet } from "@/zustandStore/useMapSet"
+import { useMapSet } from "@/store/zustand/useMapSet"
 import { useRef, useState } from "react"
 
 export function UseZustandSet(): UseReturnType {
