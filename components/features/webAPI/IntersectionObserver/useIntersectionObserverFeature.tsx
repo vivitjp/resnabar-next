@@ -17,7 +17,7 @@ export function useIntersectionObserverFeature(): UseReturnType {
   threshold = 0.5,     //ターゲットのリアクショントリガー％
   children,
 }) => {
-  const ref = useRef<HTMLDivElement>(null!)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const localRef = ref.current

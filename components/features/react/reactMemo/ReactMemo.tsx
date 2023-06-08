@@ -5,12 +5,12 @@ import { UseReturnType } from "@/components/common/type/type"
 import { Row, Column, Div } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 
-let Count: number = 0
-let CounterMemo: number = 0
-let CounterParamPrimitive: number = 0
-let CounterParamPrimitiveMemo: number = 0
-let CounterParamArray: number = 0
-let CounterParamArrayMemo: number = 0
+let Count = 0
+let CounterMemo = 0
+let CounterParamPrimitive = 0
+let CounterParamPrimitiveMemo = 0
+let CounterParamArray = 0
+let CounterParamArrayMemo = 0
 
 export function UseReactMemo(): UseReturnType {
   const title = `React.Memo`

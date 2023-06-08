@@ -15,7 +15,7 @@ export function useIntersectionObserverHideFeature(): UseReturnType {
   const code = `const ContainerHidden: FC<Props> = ({
     onIntersect, threshold, children
   }) => {
-  const ref = useRef<HTMLDivElement>(null!)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const localRef = ref.current

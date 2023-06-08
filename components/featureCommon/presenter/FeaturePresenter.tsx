@@ -26,7 +26,7 @@ export const FeaturePresenter: FC<UseCode> = ({ useCode }) => {
     height,
     visible,
   } = useCode()
-  const [isVisible, setIsVisible] = visible ?? [null, () => {}]
+  const [isVisible, setIsVisible] = visible ?? [null, () => null]
 
   return (
     <Column gap="24px" width="100%" minWidth="700px" padding="0 10px">
@@ -80,7 +80,7 @@ export const FeaturePresenter: FC<UseCode> = ({ useCode }) => {
 const Option = ({
   option: { title, JSX, subTitle, extraNote },
 }: {
-  option: OptionsType<any>
+  option: OptionsType<unknown>
 }) => (
   <Column padding={0} gap={0}>
     <Row padding={"3px"}>

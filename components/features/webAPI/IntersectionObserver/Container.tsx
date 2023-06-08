@@ -27,7 +27,7 @@ export const Container: FC<Props> = ({
   children,
   threshold = 0.5,
 }) => {
-  const ref = useRef<HTMLDivElement>(null!)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const localRef = ref.current

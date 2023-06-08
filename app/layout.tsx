@@ -17,7 +17,7 @@ import StyledComponentsRegistry from "@/library/libs/registry"
 // const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "re:Snaber",
+  title: "re:Snabar",
   description: "Next v13",
 }
 

@@ -3,7 +3,7 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/common/type/type"
 import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
-import { UseZustandDevTools } from "@/components/features/react/zustandDevTools/UseZustandDevTools"
+import { UseZustandDevTools } from "@/components/features/zustand/devTools/UseZustandDevTools"
 
 const codes: (() => UseReturnType)[] = [UseZustandDevTools]
 

@@ -3,12 +3,12 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/common/type/type"
 import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
-import { UseZustandCascaded } from "@/components/features/react/zustand/UseZustandCascaded"
-import { UseZustandObject } from "@/components/features/react/zustand/UseZustandObject"
-import { UseZustandObjectNamedShallow } from "@/components/features/react/zustand/UseZustandObjectNamedShallow"
-import { UseZustandObjectNamedShallowNoState } from "@/components/features/react/zustand/UseZustandObjectNamedShallowNoState"
-import { UseZustandObjectShallow } from "@/components/features/react/zustand/UseZustandObjectShallow"
-import { UseZustandOneCompo } from "@/components/features/react/zustand/UseZustandOneCompo"
+import { UseZustandCascaded } from "@/components/features/zustand/basic/UseZustandCascaded"
+import { UseZustandObject } from "@/components/features/zustand/basic/UseZustandObject"
+import { UseZustandObjectNamedShallow } from "@/components/features/zustand/basic/UseZustandObjectNamedShallow"
+import { UseZustandObjectNamedShallowNoState } from "@/components/features/zustand/basic/UseZustandObjectNamedShallowNoState"
+import { UseZustandObjectShallow } from "@/components/features/zustand/basic/UseZustandObjectShallow"
+import { UseZustandOneCompo } from "@/components/features/zustand/basic/UseZustandOneCompo"
 
 const codes: (() => UseReturnType)[] = [
   UseZustandOneCompo,

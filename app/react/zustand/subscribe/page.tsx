@@ -3,9 +3,9 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/common/type/type"
 import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
-import { UseZustandSubscribe } from "@/components/features/react/zustandSubscribe/UseZustandSubscribe"
-import { UseZustandSubscribeComponent } from "@/components/features/react/zustandSubscribe/UseZustandSubscribeCompo"
-import { UseZustandSubscribeCompoTransient } from "@/components/features/react/zustandSubscribe/UseZustandSubscribeCompoTransient"
+import { UseZustandSubscribe } from "@/components/features/zustand/subscribe/UseZustandSubscribe"
+import { UseZustandSubscribeComponent } from "@/components/features/zustand/subscribe/UseZustandSubscribeCompo"
+import { UseZustandSubscribeCompoTransient } from "@/components/features/zustand/subscribe/UseZustandSubscribeCompoTransient"
 
 const codes: (() => UseReturnType)[] = [
   UseZustandSubscribe,

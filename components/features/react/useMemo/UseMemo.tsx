@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react"
-import { useCount2 } from "@/store/storeBasic"
+import { useCount2 } from "@/zustandStore/storeBasic"
 import { UseReturnType } from "@/components/common/type/type"
 import { Row, Column, Title, Div } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"

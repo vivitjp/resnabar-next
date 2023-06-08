@@ -14,7 +14,7 @@ export const ContainerHidden: FC<Props> = ({
   threshold = 0.5,
   children,
 }) => {
-  const ref = useRef<HTMLDivElement>(null!)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const localRef = ref.current
@@ -25,6 +25,8 @@ export const ContainerHidden: FC<Props> = ({
       },
       { threshold }
     )
+
+    if (localRef === null) return
     observer.observe(localRef)
     return () => {
       if (localRef) observer.unobserve(localRef)

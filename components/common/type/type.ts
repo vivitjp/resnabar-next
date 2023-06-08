@@ -2,7 +2,7 @@ import { OptionsType } from "@/library/hooks/type"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
 import { Dispatch, ReactNode, SetStateAction } from "react"
 
-export type UseReturnType<EX = any> = {
+export type UseReturnType<EX = unknown> = {
   height?: number
   visible?: [boolean, Dispatch<SetStateAction<boolean>>]
   title?: string
