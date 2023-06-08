@@ -1,4 +1,4 @@
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { Row } from "@/components/common/styleDiv"
 import { Input } from "@/components/common/styleInput"
 import { useSubscribeStore } from "./UseZustandSubscribe"

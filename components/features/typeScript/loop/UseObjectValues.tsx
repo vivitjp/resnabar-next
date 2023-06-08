@@ -1,5 +1,5 @@
 import { useCallback } from "react"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { Column, Row } from "@/components/common/styleDiv"
 import { Table } from "@/components/common/Table"
 import { Data, data } from "./baseData"

@@ -1,4 +1,4 @@
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
 
 export function useRenderHooksUseInput(): UseReturnType {

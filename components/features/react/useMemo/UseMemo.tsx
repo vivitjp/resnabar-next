@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react"
 import { useCount2 } from "@/store/zustand/storeBasic"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { Row, Column, Title, Div } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 import { Table } from "@/components/common/Table"

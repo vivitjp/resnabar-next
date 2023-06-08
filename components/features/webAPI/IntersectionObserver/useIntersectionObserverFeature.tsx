@@ -3,7 +3,7 @@
 import { useRef, useState } from "react"
 import { Container } from "./Container"
 import styled from "styled-components"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { Column, Row, Div } from "@/components/common/styleDiv"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
 

@@ -8,6 +8,7 @@ type Table<T> = {
   callback: (item: T) => ReactElement
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Table = <T,>({ data, callback }: Table<T>) => {
   return (
     <>

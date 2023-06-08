@@ -1,6 +1,6 @@
 import { Column, Row } from "@/components/common/styleDiv"
 import { Button, Input } from "@/components/common/styleInput"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { useCount2 } from "@/store/zustand/storeBasic"
 
 export function UseZustandCascaded(): UseReturnType {

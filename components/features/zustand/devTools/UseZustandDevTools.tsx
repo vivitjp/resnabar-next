@@ -2,7 +2,7 @@ import { shallow } from "zustand/shallow"
 
 import { Column, Row } from "@/components/common/styleDiv"
 import { Input } from "@/components/common/styleInput"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { useRef } from "react"
 import { useDevTools } from "@/store/zustand/useDevTools"
 

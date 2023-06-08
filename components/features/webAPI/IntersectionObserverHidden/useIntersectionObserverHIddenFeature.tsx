@@ -3,7 +3,7 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { ContainerHidden } from "./ContainerHide"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { Row } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"

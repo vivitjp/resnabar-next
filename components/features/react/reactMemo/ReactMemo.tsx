@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useFetch } from "../components/UseFetch"
 import { ProgrammingLanguage } from "../../mock/programmingLanguage"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { Row, Column, Div } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 

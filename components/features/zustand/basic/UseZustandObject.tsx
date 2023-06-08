@@ -1,6 +1,6 @@
 import { Column, Row } from "@/components/common/styleDiv"
 import { Input } from "@/components/common/styleInput"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { useCount3 } from "@/store/zustand/storeBasic"
 
 export function UseZustandObject(): UseReturnType {

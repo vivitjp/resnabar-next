@@ -1,5 +1,5 @@
 import { Column, Row } from "@/components/common/styleDiv"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
 import { ChangeEvent, useState } from "react"
 import { useInput } from "./components/UseInput"

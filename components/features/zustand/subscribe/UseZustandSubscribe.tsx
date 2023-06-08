@@ -1,4 +1,4 @@
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { create } from "zustand"
 import { subscribeWithSelector } from "zustand/middleware"
 import { shallow } from "zustand/shallow"

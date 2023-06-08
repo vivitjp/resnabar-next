@@ -1,8 +1,8 @@
 "use client"
 
 import { Column } from "@/components/common/styleDiv"
-import { UseReturnType } from "@/components/common/type/type"
-import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
+import { UseReturnType } from "@/components/type/type"
+import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
 import { UseBaseData } from "@/components/features/typeScript/loop/UseBaseData"
 import { UseObjectEntries } from "@/components/features/typeScript/loop/UseObjectEntries"
 import { UseObjectKeys } from "@/components/features/typeScript/loop/UseObjectKeys"

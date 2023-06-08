@@ -2,7 +2,7 @@ import { shallow } from "zustand/shallow"
 
 import { Column, Row } from "@/components/common/styleDiv"
 import { Input } from "@/components/common/styleInput"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { usePerson2 } from "@/store/zustand/storeBasic"
 
 export function UseZustandObjectNamedShallow(): UseReturnType {

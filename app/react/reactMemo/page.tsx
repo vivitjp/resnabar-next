@@ -1,8 +1,8 @@
 "use client"
 
 import { Column } from "@/components/common/styleDiv"
-import { UseReturnType } from "@/components/common/type/type"
-import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
+import { UseReturnType } from "@/components/type/type"
+import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
 import { UseReactMemo } from "@/components/features/react/reactMemo/ReactMemo"
 
 const codes: (() => UseReturnType)[] = [UseReactMemo]

@@ -7,7 +7,7 @@ import {
   CodeKeyType,
   syntaxHighlight,
 } from "@/library/syntaxHighlighter/syntaxHighlighter"
-import { UseReturnType } from "@/components/common/type/type"
+import { UseReturnType } from "@/components/type/type"
 import { Column, Div, Row, Span, Title } from "@/components/common/styleDiv"
 
 type UseCode = {

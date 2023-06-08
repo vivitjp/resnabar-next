@@ -1,8 +1,8 @@
 "use client"
 
 import { Column } from "@/components/common/styleDiv"
-import { UseReturnType } from "@/components/common/type/type"
-import { FeaturePresenter } from "@/components/featureCommon/presenter/FeaturePresenter"
+import { UseReturnType } from "@/components/type/type"
+import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
 import { useRenderHooksUseInput } from "@/components/features/react/renderHooks/useRenderHooks0"
 import { useRenderHooks1AllInOne } from "@/components/features/react/renderHooks/useRenderHooks1AllInOne"
 import { useRenderHooks2Cascaded } from "@/components/features/react/renderHooks/useRenderHooks2Cascaded"
