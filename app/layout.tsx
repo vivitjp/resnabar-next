@@ -12,8 +12,9 @@ import {
 } from "./Layout.style"
 import "./globals.css"
 import StyledComponentsRegistry from "@/library/libs/registry"
-// import { Inter } from "next/font/google"
+import { Providers } from "@/redux/provider"
 
+// import { Inter } from "next/font/google"
 // const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
@@ -28,20 +29,30 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          type="image/jpg"
+          sizes="32x32"
+          href="/images/VIVIT_V.jpg"
+        />
+      </head>
       <body>
-        <StyledComponentsRegistry>
-          <Section>
-            <Header>re:Snaber React</Header>
-            <Body>
-              <MenuNav>
-                {Object.entries(routes).map((group) => (
-                  <MenuGroup key={group[0]} group={group} />
-                ))}
-              </MenuNav>
-              <Playground>{children}</Playground>
-            </Body>
-          </Section>
-        </StyledComponentsRegistry>
+        <Providers>
+          <StyledComponentsRegistry>
+            <Section>
+              <Header>re:Sunabar React on Next v13.4</Header>
+              <Body>
+                <MenuNav>
+                  {Object.entries(routes).map((group) => (
+                    <MenuGroup key={group[0]} group={group} />
+                  ))}
+                </MenuNav>
+                <Playground>{children}</Playground>
+              </Body>
+            </Section>
+          </StyledComponentsRegistry>
+        </Providers>
       </body>
     </html>
   )

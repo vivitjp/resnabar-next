@@ -74,6 +74,7 @@ export const GroupTitle = styled.summary`
     border-top: 1px solid var(--main-color);
   }
   font-weight: 600;
+  user-select: none;
 `
 
 export const GroupBody = styled.div`
@@ -92,6 +93,7 @@ export const MenuItem = styled(Link)`
   :hover {
     color: var(--main-color);
   }
+  user-select: none;
 `
 
 export const Playground = styled.div`

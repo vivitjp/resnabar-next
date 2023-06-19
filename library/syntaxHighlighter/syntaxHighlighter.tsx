@@ -1,13 +1,17 @@
 import { keysJSTS } from "./keys/JSTS"
+import { keysRedux } from "./keys/REDUX"
 import { keysSVG } from "./keys/SVG"
 
 const codeKeyType = {
-  SVG: "SVG",
   JSTS: "JSTS",
+  Redux: "Redux",
+  SVG: "SVG",
 } as const
+
 export type CodeKeyType = (typeof codeKeyType)[keyof typeof codeKeyType]
 
 export type KeyDef = {
+  name?: string
   color: string
   keys: string[]
 }
@@ -26,7 +30,10 @@ export const syntaxHighlight = ({
     case "JSTS":
       keyDef = keysJSTS
       break
-    default:
+    case "Redux":
+      keyDef = keysRedux
+      break
+    case "SVG":
       keyDef = keysSVG
       break
   }

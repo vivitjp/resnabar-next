@@ -169,6 +169,22 @@ export const Row = styled(Div)`
   `}
 `
 
+export const BorderDiv = styled(Div)`
+  ${(props) => css`
+    display: flex;
+    flex-direction: row;
+    justify-content: ${props.justifyContent ?? "center"};
+    align-items: ${props.alignItems ?? "center"};
+    border: 1px solid #aaa;
+    padding: 0.2rem;
+    width: ${props.width ?? "100px"};
+    height: ${props.height ?? "40px"};
+    color: grey;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+  `}
+`
+
 export const SlideWidth = styled(Div)<Slide>`
   ${(props) => css`
     position: ${props.position ?? "fixed"};
