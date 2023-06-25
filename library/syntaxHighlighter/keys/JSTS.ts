@@ -23,6 +23,7 @@ export const keysJSTS: KeyDef[] = [
     keys: [
       "useState",
       "useEffect",
+      "useReducer",
       "useRef",
       "memo",
       "IntersectionObserver",
@@ -75,6 +76,7 @@ export const keysJSTS: KeyDef[] = [
       "getState",
       "setState",
       "subscribe",
+      "payload",
     ],
   },
   {

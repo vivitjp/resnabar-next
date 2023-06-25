@@ -12,6 +12,7 @@ export const routes: Routes = {
     { name: "React.memo", path: "/react/reactMemo" },
     { name: "CustomHooks", path: "/react/customHooks" },
     { name: "RenderHooks", path: "/react/renderHooks" },
+    { name: "useReducer", path: "/react/useReducer" },
   ],
   Redux: [
     { name: "Toolkit", path: "/redux/basic" },
