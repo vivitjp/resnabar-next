@@ -21,6 +21,8 @@ let count = 0
 export const useFetch = ({ id }: UseFetch): UseFetchReturn => {
   const [data, setData] = useState<ProgrammingLanguage[]>([])
 
+  console.log(id)
+
   const query = async () => {
     await sleep(500)
 

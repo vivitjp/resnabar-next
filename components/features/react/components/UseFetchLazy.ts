@@ -28,7 +28,7 @@ export const useFetchLazy = (): UseFetchLazyReturn => {
     const query = async () => {
       await sleep(500)
 
-      console.log("useFetchLazy")
+      console.log("useFetchLazy", id)
       count += 1
       setData(programmingLanguage)
     }
