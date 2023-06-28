@@ -2,15 +2,15 @@ import { UseReturnType } from "@/components/type/type"
 import { BorderDiv, Row } from "@/components/common/styleDiv"
 import { useState } from "react"
 
-import { useAppDispatch, useAppSelector } from "@/redux/hooks"
+import { Button, Input } from "@/components/common/styleInput"
+import { useAppDispatch, useAppSelector } from "@/store/reduxToolkit/hooks"
 import {
   selectCity,
-  setCity,
-  setCityLower,
   isTokyo,
+  setCity,
   capitalizeCity,
-} from "@/redux/slices/addressSlice"
-import { Button, Input } from "@/components/common/styleInput"
+  setCityLower,
+} from "@/store/reduxToolkit/slices/addressSlice"
 
 export function UseReduxCaseCity(): UseReturnType {
   const title = `コンポーネント利用`
@@ -23,6 +23,7 @@ export function UseReduxCaseCity(): UseReturnType {
     options: [],
     jsx,
     codeKeyType: "Redux",
+    codeFold: true,
   }
 }
 const code = `import { useAppDispatch, useAppSelector } from "@/redux/hooks"

@@ -2,11 +2,16 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 
 import addressReducer from "./slices/addressSlice"
 import counterReducer from "./slices/counterSlice"
+import { itemReducer } from "../redux/reducers/itemReducer"
 
 export function makeStore() {
   return configureStore(
     {
-      reducer: { address: addressReducer, counter: counterReducer },
+      reducer: {
+        address: addressReducer, //ToolKit
+        counter: counterReducer, //ToolKit
+        items: itemReducer, //Normal Redux
+      },
     }
     //devTools: process.env.NODE_ENV !== "production",
   )

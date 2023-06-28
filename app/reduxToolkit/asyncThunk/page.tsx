@@ -3,12 +3,12 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { UseReduxAsyncThunk } from "@/components/features/redux/cases/UseReduxAsyncThunk"
-import { UseReduxAsyncThunkSlice } from "@/components/features/redux/basic/UseReduxAsyncThunkSlice"
+import { UseReduxAsyncThunkSlice } from "@/components/features/reduxToolkit/basic/UseReduxAsyncThunkSlice"
+import { UseReduxAsyncThunk } from "@/components/features/reduxToolkit/cases/UseReduxAsyncThunk"
 
 const codes: (() => UseReturnType)[] = [
-  UseReduxAsyncThunkSlice,
   UseReduxAsyncThunk,
+  UseReduxAsyncThunkSlice,
 ]
 
 export default function PageReduxAsyncThunk() {

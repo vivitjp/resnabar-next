@@ -12,13 +12,14 @@ import {
 } from "./Layout.style"
 import "./globals.css"
 import StyledComponentsRegistry from "@/library/libs/registry"
-import { Providers } from "@/redux/provider"
+import { ProvidersRedux } from "@/store/redux/providers"
+import { ProvidersReduxToolkit } from "@/store/reduxToolkit/provider"
 
 // import { Inter } from "next/font/google"
 // const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "re:Snabar",
+  title: "re:Sunabar",
   description: "Next v13",
 }
 
@@ -38,7 +39,8 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>
+        <ProvidersReduxToolkit>
+          {/* <ProvidersRedux> */}
           <StyledComponentsRegistry>
             <Section>
               <Header>re:Sunabar React on Next v13.4</Header>
@@ -52,7 +54,8 @@ export default function RootLayout({
               </Body>
             </Section>
           </StyledComponentsRegistry>
-        </Providers>
+          {/* </ProvidersRedux> */}
+        </ProvidersReduxToolkit>
       </body>
     </html>
   )

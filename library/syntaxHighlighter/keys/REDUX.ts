@@ -29,6 +29,8 @@ export const keysRedux: KeyDef[] = [
       "configureStore",
       "ThunkAction",
       "Action",
+      "combineReducers",
+      "legacy_createStore",
     ],
   },
   // ■ Redux 型
@@ -61,6 +63,8 @@ export const keysRedux: KeyDef[] = [
       "action",
       "store",
       "actions",
+      "pending",
+      "fulfilled",
     ],
   },
   // ■ TypeScript
@@ -122,6 +126,8 @@ export const keysRedux: KeyDef[] = [
       "true",
       "console",
       "new",
+      "onClick",
+      "onChange",
     ],
   },
   //CSS

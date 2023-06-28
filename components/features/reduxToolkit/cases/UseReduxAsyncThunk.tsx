@@ -1,15 +1,15 @@
 import { UseReturnType } from "@/components/type/type"
 import { BorderDiv, Column, Row } from "@/components/common/styleDiv"
 
-import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import {
-  selectCounter,
-  setCounter,
-  resetCounter,
-  incrementAsync,
-} from "@/redux/slices/counterSlice"
 import { Button, Input } from "@/components/common/styleInput"
 import { useState } from "react"
+import { useAppDispatch, useAppSelector } from "@/store/reduxToolkit/hooks"
+import {
+  selectCounter,
+  resetCounter,
+  setCounter,
+  incrementAsync,
+} from "@/store/reduxToolkit/slices/counterSlice"
 
 export function UseReduxAsyncThunk(): UseReturnType {
   const title = `同期・非同期値取得`

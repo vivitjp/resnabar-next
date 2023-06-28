@@ -15,8 +15,9 @@ export const routes: Routes = {
     { name: "useReducer", path: "/react/useReducer" },
   ],
   Redux: [
-    { name: "Toolkit", path: "/redux/basic" },
-    { name: "AsyncThunk", path: "/redux/asyncThunk" },
+    { name: "Redux", path: "/redux/basic" },
+    { name: "ReduxToolkit", path: "/reduxToolkit/basic" },
+    { name: "AsyncThunk", path: "/reduxToolkit/asyncThunk" },
   ],
   Zustand: [
     { name: "Store", path: "/zustand/store" },

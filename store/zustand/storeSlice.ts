@@ -4,7 +4,7 @@ import { StateCreator, create } from "zustand"
 // Slice Pattern
 //-----------------------------------------
 export interface NameSlice {
-  name: String
+  name: string
   setName: (name: string) => void
 }
 const createNameSlice: StateCreator<NameSlice> = (set) => ({
@@ -13,7 +13,7 @@ const createNameSlice: StateCreator<NameSlice> = (set) => ({
 })
 
 export interface AddressSlice {
-  address: String
+  address: string
   setAddress: (address: string) => void
 }
 const createAddressSlice: StateCreator<AddressSlice> = (set) => ({

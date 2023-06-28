@@ -3,17 +3,10 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { UseReduxProvider } from "@/components/features/redux/basic/UseReduxProvider"
-import { UseReduxSlice } from "@/components/features/redux/basic/UseReduxSlice"
-import { UseReduxStore } from "@/components/features/redux/basic/UseReduxStore"
-import { UseReduxCaseCity } from "@/components/features/redux/cases/UseReduxCaseCity"
+import { UseReduxSample } from "@/components/features/redux/basic/UseReduxSample"
+import { UseReduxCode } from "@/components/features/redux/basic/UseRedux"
 
-const codes: (() => UseReturnType)[] = [
-  UseReduxStore,
-  UseReduxProvider,
-  UseReduxSlice,
-  UseReduxCaseCity,
-]
+const codes: (() => UseReturnType)[] = [UseReduxSample, UseReduxCode]
 
 export default function PageReduxBasic() {
   return (
