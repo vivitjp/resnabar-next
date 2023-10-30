@@ -14,6 +14,8 @@ export const keysJSTS: KeyDef[] = [
       "import",
       "try",
       "catch",
+      "then",
+      "throw",
       "lazy",
     ],
   },

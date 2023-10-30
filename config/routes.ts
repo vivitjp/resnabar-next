@@ -33,6 +33,7 @@ export const routes: Routes = {
     { name: "iObserver", path: "/webAPI/intersectionObserver" },
     { name: "iObserver(Hide)", path: "/webAPI/intersectionObserverHide" },
   ],
+  JavaScript: [{ name: "Promise", path: "/javaScript/promise" }],
   TypeScript: [{ name: "Object.entries", path: "/typeScript/entries" }],
   CSS: [{ name: "スライドMenu", path: "/CSS/animationSlide" }],
 }
