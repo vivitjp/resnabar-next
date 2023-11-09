@@ -23,43 +23,32 @@ export function UsePromise(): UseReturnType {
 const code = `const query1 = async () => {
   await sleep(500)
 }
-
+ 
 const query2 = async () => {
   await sleep(500)
   throw Error("Q2 Throw Error")
 }
-
+ 
 const query3 = async () => {
   await sleep(500)
   throw Error("Q3 Throw Error")
 }
-
+ 
 async () => {
   try {
     await query1()
-      .then(() => {
-        setResults((prev) => [...prev, "Q1 OK"])
-      })
-      .catch((e) => {
-        setErrors((prev) => [...prev, e.message])
-      })
-
+      .then(() => { setResults((prev) => [...prev, "Q1 OK"]) })
+      .catch((e) => { setErrors((prev) => [...prev, e.message]) })
+ 
     await query2()
-      .then(() => {
-        console.log("OK Log 2")
-      })
-      .catch((e) => {
-        setErrors((prev) => [...prev, e.message])
-        //throw e //これを投げると method は終了
-      })
-
+      .then(() => { console.log("OK Log 2") })
+      .catch((e) => { setErrors((prev) => [...prev, e.message]) })
+ 
     try {
-      await query3().then(() => {
-        console.log("OK Log 3")
-      })
+      await query3().then(() => { console.log("OK Log 3") })
     } catch (e) {
       setErrors((prev) => [...prev, (e as any).message as string])
-      throw e //これを投げると method は終了
+      throw e //これを投げて method 終了
     }
   } catch (e) {
     setThrows((prev) => [...prev, (e as any).message as string])
@@ -86,10 +75,10 @@ const ParentCompo = () => {
   }
 
   useEffect(() => {
-    mainExec()
+    main()
   }, [])
 
-  const mainExec = async () => {
+  const main = async () => {
     try {
       await query1()
         .then(() => {
@@ -123,15 +112,18 @@ const ParentCompo = () => {
 
   return (
     <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="fit-content" gap="10px" padding="10px">
-        <Row width="400px" justifyContent="space-between" alignItems="center">
-          Results: {JSON.stringify(results, undefined, 2)}
+      <Column width="fit-content" gap="10px" padding="10px" fontSize="20px">
+        <Row>
+          <Column width="80px">Results:</Column>
+          <Column>{JSON.stringify(results, undefined, 2)}</Column>
         </Row>
-        <Row width="400px" justifyContent="space-between" alignItems="center">
-          Errors: {JSON.stringify(errors, undefined, 2)}
+        <Row>
+          <Column width="80px">Errors:</Column>
+          <Column>{JSON.stringify(errors, undefined, 2)}</Column>
         </Row>
-        <Row width="400px" justifyContent="space-between" alignItems="center">
-          Throws: {JSON.stringify(throws, undefined, 2)}
+        <Row>
+          <Column width="80px">Throws:</Column>
+          <Column>{JSON.stringify(throws, undefined, 2)}</Column>
         </Row>
       </Column>
     </Row>

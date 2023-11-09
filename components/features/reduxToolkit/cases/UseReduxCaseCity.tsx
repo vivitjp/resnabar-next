@@ -1,5 +1,5 @@
 import { UseReturnType } from "@/components/type/type"
-import { BorderDiv, Row } from "@/components/common/styleDiv"
+import { BorderDiv, Column, Row } from "@/components/common/styleDiv"
 import { useState } from "react"
 
 import { Button, Input } from "@/components/common/styleInput"
@@ -13,7 +13,7 @@ import {
 } from "@/store/reduxToolkit/slices/addressSlice"
 
 export function UseReduxCaseCity(): UseReturnType {
-  const title = `コンポーネント利用`
+  const title = `Redux Toolkit`
 
   const jsx = <ParentCompo />
 
@@ -38,8 +38,10 @@ const Compo = () => {
   return (
     <Row>
       <Input aria-label="Set City" value={cityLocal}
-        onChange={(e) => setCityLocal(e.target.value)} />
-      <Button onClick={() => dispatch(setCity(cityLocal))}>Set City</Button>
+      onChange={(e) => {
+        setCityLocal(e.target.value)
+        dispatch(setCity(e.target.value))
+      }}
       <Button onClick={() => dispatch(capitalizeCity())}>Capitalize</Button>
       <BorderDiv> {city} </BorderDiv>
       <BorderDiv> {flagIsTokyo ? "Yes" : "No"} </BorderDiv>
@@ -58,13 +60,18 @@ const ParentCompo = () => {
       <Input
         aria-label="Set City"
         value={cityLocal}
-        onChange={(e) => setCityLocal(e.target.value)}
+        onChange={(e) => {
+          setCityLocal(e.target.value)
+          dispatch(setCity(e.target.value))
+        }}
       />
-      <Button onClick={() => dispatch(setCity(cityLocal))}>Set City</Button>
       <Button onClick={() => dispatch(capitalizeCity())}>Capitalize</Button>
       <Button onClick={() => dispatch(setCityLower())}>Lower</Button>
       <BorderDiv width="160px">{city}</BorderDiv>
-      <BorderDiv width="160px"> {flagIsTokyo ? "Yes" : "No"} </BorderDiv>
+      <Column>
+        Is Tokyo Flag
+        <BorderDiv width="160px"> {flagIsTokyo ? "Yes" : "No"} </BorderDiv>
+      </Column>
     </Row>
   )
 }

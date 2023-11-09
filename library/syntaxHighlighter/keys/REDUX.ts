@@ -21,6 +21,7 @@ export const keysRedux: KeyDef[] = [
       "toolkit",
       "react-redux",
       "createSlice",
+      "createAsyncThunk",
       "PayloadAction",
       "TypedUseSelectorHook",
       "useDispatch",

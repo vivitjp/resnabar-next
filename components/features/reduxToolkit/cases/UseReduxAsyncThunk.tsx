@@ -12,7 +12,7 @@ import {
 } from "@/store/reduxToolkit/slices/counterSlice"
 
 export function UseReduxAsyncThunk(): UseReturnType {
-  const title = `同期・非同期値取得`
+  const title = `Redux Toolkit AsyncThunk 同期・非同期値取得`
 
   const jsx = <ParentCompo />
 
@@ -26,7 +26,7 @@ export function UseReduxAsyncThunk(): UseReturnType {
 }
 const code = `const dispatch = useAppDispatch()
 const counter = useAppSelector(selectCounter)
-const [amount, setAmount] = useState<number>(0)
+const [amount, setAmount] = useState<number>(2)
  
 return (
   <Column>
@@ -53,7 +53,7 @@ return (
 const ParentCompo = () => {
   const dispatch = useAppDispatch()
   const counter = useAppSelector(selectCounter)
-  const [amount, setAmount] = useState<number>(0)
+  const [amount, setAmount] = useState<number>(2)
 
   return (
     <Column gap="10px">
@@ -66,14 +66,20 @@ const ParentCompo = () => {
           同期加算
         </Button>
       </Row>
-      <Row padding="10px" gap="10px" justifyContent="flex-start">
+      <Row
+        padding="10px"
+        gap="10px"
+        justifyContent="flex-start"
+        alignItems="center"
+      >
+        <Button onClick={() => dispatch(incrementAsync(amount))}>
+          非同期加算
+        </Button>
+        加算値入力：
         <Input
           value={amount}
           onChange={(e) => setAmount(parseInt(e.target.value))}
         />
-        <Button onClick={() => dispatch(incrementAsync(amount))}>
-          非同期加算
-        </Button>
       </Row>
     </Column>
   )

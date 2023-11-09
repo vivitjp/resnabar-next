@@ -14,7 +14,10 @@ let CounterParamArrayMemo = 0
 
 export function UseReactMemo(): UseReturnType {
   const title = `React.Memo`
-  const subTitle = ``
+  const subTitle = `コンポーネントをmemo化することで再描画を抑制する。
+1) 非memo化とmemo化の違い
+2) 引数の有無、引数型の比較(PrimitiveとObject)
+* 特にObjectは CustomHooks から返されるオブジェクトの参照であるにも関わらず、再描画抑制の効果がある点に注目すべし`
 
   const jsx = <ParentCompo />
 
@@ -46,34 +49,33 @@ const ParentCompo = () => {
 
   return (
     <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="200px"></Column>
       <Column width="200px">
         <Button onClick={handle}>回数表示</Button>
       </Column>
       <Column width="fit-content" gap="10px" padding="10px">
-        <Row width="500px" justifyContent="space-between" alignItems="center">
+        <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildNoParam />
           <Div fontSize="20px">コール回数: {counters[0]}</Div>
         </Row>
-        <Row width="500px" justifyContent="space-between" alignItems="center">
+        <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildNoParamMemo />
           <Div fontSize="20px">コール回数: {counters[1]}</Div>
         </Row>
 
-        <Row width="500px" justifyContent="space-between" alignItems="center">
+        <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildParamPrimitive id={7} />
           <Div fontSize="20px">コール回数: {counters[2]}</Div>
         </Row>
-        <Row width="500px" justifyContent="space-between" alignItems="center">
+        <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildParamPrimitiveMemo id={7} />
           <Div fontSize="20px">コール回数: {counters[3]}</Div>
         </Row>
 
-        <Row width="500px" justifyContent="space-between" alignItems="center">
+        <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildParamArray data={data} />
           <Div fontSize="20px">コール回数: {counters[4]}</Div>
         </Row>
-        <Row width="500px" justifyContent="space-between" alignItems="center">
+        <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildParamArrayMemo data={data} />
           <Div fontSize="20px">コール回数: {counters[5]}</Div>
         </Row>
@@ -84,12 +86,16 @@ const ParentCompo = () => {
 
 const code = `
 const ParentCompo = () => {
-  const { data } = useFetch({ id: 1 }) //Dummy Fetch
+  const { data } = useFetch({ id: 1 })  //Dummy Fetch
 
   return (
     <Column>
       <ChildNoParam />
       <ChildNoParamMemo />
+      <ChildParamPrimitive id={7} />
+      <ChildParamPrimitiveMemo id={7} />
+      <ChildParamArray data={data} />
+      <ChildParamArrayMemo data={data} />
     </Column>
   )
 }

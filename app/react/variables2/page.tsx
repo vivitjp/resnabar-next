@@ -3,11 +3,11 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { UsePromise } from "@/components/features/javaScript/promise/UsePromise"
+import { UseVariables } from "@/components/features/react/variables/UseVariables"
 
-const codes: (() => UseReturnType)[] = [UsePromise]
+const codes: (() => UseReturnType)[] = [UseVariables]
 
-export default function PageCustomHooks() {
+export default function PageVariables2() {
   return (
     <Column padding={"6px"} gap={"40px"}>
       {!!codes.length &&
