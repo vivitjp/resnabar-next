@@ -11,7 +11,9 @@ import { valueArrayInLib } from "@/library/libs/variables"
 
 export function UseVariables(): UseReturnType {
   const title = `React: Variables`
-  const subTitle = `React コンポーネント内外の定義変数の値について。同じモジュールを違うコンポーネントから呼び出した場合、useState管理下の変数は再描画の度に値が初期化されるが、コンポーネント外に定義された let系変数は値が「static」な動きをする。変数static1 と 変数static2 を切り替えながら変数値の変化を観察すること`
+  const subTitle = `React コンポーネント内外の定義変数の値について。
+同じモジュールを違うコンポーネントから呼び出した場合、useState管理下の変数は再描画の度に値が初期化されるが、コンポーネント外に定義された let系変数は値が「static」な動きをする。
+変数static1 と 変数static2 を切り替えながら変数値の変化を観察すること`
 
   const jsx = <ParentCompo />
 

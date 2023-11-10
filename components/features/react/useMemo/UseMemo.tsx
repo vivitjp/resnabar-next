@@ -13,7 +13,9 @@ import { useInputForMemo } from "./components/useInputForMemo"
 
 export function UseMemo(): UseReturnType {
   const title = `useMemo`
-  const subTitle = ``
+  const subTitle = `依存配列がObjectか、Objectの内部のPremitiveに関わらずに再描画を抑制する効果がある。
+1) 回数表示カウンタをクリック
+2) さらに回数表示カウンタをクリックしつづけても再描画は行われない。`
 
   const jsx = <ParentCompo />
 
@@ -38,27 +40,23 @@ const { data } = useFetchMock({ id: 1 })
  
 ■ useMemo1
 const reData1 = useMemo(() => {
-  countUndefined1++
   if (!data) return undefined
-  countWithData1++
+  countOutside1++
   return data.map((item) => ({ ...item }))
 }, [data]) <-- 依存配列がオブジェクト
  
 ■ useMemo2
 const reData2 = useMemo(() => {
-  countUndefined2++
   if (!data) return undefined
-  countWithData2++
+  countOutside2++
   return data.map((item) => ({ ...item }))
 }, [data?.[0].id]) <--依存配列に最下層の変数を入れても同じ`
 
-let countUndefined1 = 0
-let countWithData1 = 0
-let countUndefined2 = 0
-let countWithData2 = 0
+let countOutside1 = 0
+let countOutside2 = 0
 
 const ParentCompo = () => {
-  const [counters, setCounters] = useState<number[]>([0, 0, 0, 0])
+  const [counters, setCounters] = useState<number[]>([0, 0])
   const [fetchCounter, setFetchCounters] = useState<number>(0)
 
   const countUp = useCount2((state) => state.countUp)
@@ -72,32 +70,21 @@ const ParentCompo = () => {
   })
 
   const reData1 = useMemo(() => {
-    console.log("reData1")
-
-    countUndefined1++
     if (!data) return undefined
-    countWithData1++
+    countOutside1++
     return data.map((item) => ({ ...item, id: item.id * 2 }))
   }, [data])
 
   const reData2 = useMemo(() => {
-    console.log("reData2")
-
-    countUndefined2++
     if (!data) return undefined
-    countWithData2++
+    countOutside2++
     return data.map((item) => ({ ...item, id: item.id * 2 }))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.[0].id])
 
   const handle = () => {
     setFetchCounters(getCount())
-    setCounters([
-      countUndefined1,
-      countWithData1,
-      countUndefined2,
-      countWithData2,
-    ])
+    setCounters([countOutside1, countOutside2])
   }
 
   const displayCB = useCallback((item: ProgrammingLanguage) => {
@@ -120,10 +107,10 @@ const ParentCompo = () => {
           <Div fontSize="18px">Fetch回数: {fetchCounter}</Div>
         </Column>
 
-        <Title>renderHooks Input</Title>
+        <Title>再描画チェック: renderHooks Input</Title>
         <Column width="200px">{RenderInput}</Column>
         <Column width="160px" gap="10px">
-          <Title>zustand</Title>
+          <Title>再描画チェック: zustand</Title>
           <Row alignItems="center" gap="20px">
             <Button width="100px" onClick={countUp}>
               Count
@@ -138,15 +125,13 @@ const ParentCompo = () => {
         <Row width="400px" justifyContent="space-between" alignItems="center">
           <Table<ProgrammingLanguage> data={reData1} callback={displayCB} />
           <Column>
-            <Div fontSize="18px">countUndefined1: {counters[0]}</Div>
-            <Div fontSize="18px">countWithData1: {counters[1]}</Div>
+            <Div fontSize="18px">Count: {counters[0]}</Div>
           </Column>
         </Row>
         <Row width="400px" justifyContent="space-between" alignItems="center">
           <Table<ProgrammingLanguage> data={reData2} callback={displayCB} />
           <Column>
-            <Div fontSize="18px">countUndefined2: {counters[2]}</Div>
-            <Div fontSize="18px">countWithData2: {counters[3]}</Div>
+            <Div fontSize="18px">Count: {counters[1]}</Div>
           </Column>
         </Row>
       </Column>

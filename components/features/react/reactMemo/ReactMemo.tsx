@@ -3,7 +3,7 @@ import { useFetch } from "../components/UseFetch"
 import { ProgrammingLanguage } from "../../mock/programmingLanguage"
 import { UseReturnType } from "@/components/type/type"
 import { Row, Column, Div } from "@/components/common/styleDiv"
-import { Button } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInput"
 
 let Count = 0
 let CounterMemo = 0
@@ -34,6 +34,13 @@ export function UseReactMemo(): UseReturnType {
 const ParentCompo = () => {
   const [counters, setCounters] = useState<number[]>([0, 0, 0, 0, 0, 0])
 
+  const [coef, setCoef] = useState(7)
+
+  const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = +e.currentTarget.value
+    setCoef(value)
+  }
+
   const { data } = useFetch({ id: 1 })
 
   const handle = () => {
@@ -49,8 +56,11 @@ const ParentCompo = () => {
 
   return (
     <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="200px">
-        <Button onClick={handle}>回数表示</Button>
+      <Column width="200px" gap="4px">
+        <Div>回数表示</Div>
+        <Button onClick={handle}>Add</Button>
+        <Div>Primitive引数(id)</Div>
+        <Input onChange={handleChangeText} value={coef} />
       </Column>
       <Column width="fit-content" gap="10px" padding="10px">
         <Row width="600px" justifyContent="space-between" alignItems="center">
@@ -63,11 +73,11 @@ const ParentCompo = () => {
         </Row>
 
         <Row width="600px" justifyContent="space-between" alignItems="center">
-          <ChildParamPrimitive id={7} />
+          <ChildParamPrimitive id={coef} />
           <Div fontSize="20px">コール回数: {counters[2]}</Div>
         </Row>
         <Row width="600px" justifyContent="space-between" alignItems="center">
-          <ChildParamPrimitiveMemo id={7} />
+          <ChildParamPrimitiveMemo id={coef} />
           <Div fontSize="20px">コール回数: {counters[3]}</Div>
         </Row>
 

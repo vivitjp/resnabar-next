@@ -137,11 +137,13 @@ const MainTitle = styled.div`
     color: var(--main-color);
   }
 `
-const SubTitle = styled.div`
+const SubTitle = styled.pre`
   font-size: 14px;
   color: #666;
   padding: 0 30px;
   width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 `
 
 const OptionSubTitle = styled(Div)`
