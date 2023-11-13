@@ -34,11 +34,11 @@ export function UseReactMemo(): UseReturnType {
 const ParentCompo = () => {
   const [counters, setCounters] = useState<number[]>([0, 0, 0, 0, 0, 0])
 
-  const [coef, setCoef] = useState(7)
+  const [id, setId] = useState(7)
 
   const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.currentTarget.value
-    setCoef(value)
+    setId(value)
   }
 
   const { data } = useFetch({ id: 1 })
@@ -60,34 +60,46 @@ const ParentCompo = () => {
         <Div>回数表示</Div>
         <Button onClick={handle}>Add</Button>
         <Div>Primitive引数(id)</Div>
-        <Input onChange={handleChangeText} value={coef} />
+        <Input onChange={handleChangeText} value={id} />
       </Column>
       <Column width="fit-content" gap="10px" padding="10px">
         <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildNoParam />
-          <Div fontSize="20px">コール回数: {counters[0]}</Div>
+          <Div fontSize="20px" color="lightGray">
+            コール回数: {counters[0]}
+          </Div>
         </Row>
         <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildNoParamMemo />
-          <Div fontSize="20px">コール回数: {counters[1]}</Div>
+          <Div fontSize="20px" color="CadetBlue">
+            コール回数: {counters[1]}
+          </Div>
         </Row>
 
         <Row width="600px" justifyContent="space-between" alignItems="center">
-          <ChildParamPrimitive id={coef} />
-          <Div fontSize="20px">コール回数: {counters[2]}</Div>
+          <ChildParamPrimitive id={id} />
+          <Div fontSize="20px" color="lightGray">
+            コール回数: {counters[2]}
+          </Div>
         </Row>
         <Row width="600px" justifyContent="space-between" alignItems="center">
-          <ChildParamPrimitiveMemo id={coef} />
-          <Div fontSize="20px">コール回数: {counters[3]}</Div>
+          <ChildParamPrimitiveMemo id={id} />
+          <Div fontSize="20px" color="CadetBlue">
+            コール回数: {counters[3]}
+          </Div>
         </Row>
 
         <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildParamArray data={data} />
-          <Div fontSize="20px">コール回数: {counters[4]}</Div>
+          <Div fontSize="20px" color="lightGray">
+            コール回数: {counters[4]}
+          </Div>
         </Row>
         <Row width="600px" justifyContent="space-between" alignItems="center">
           <ChildParamArrayMemo data={data} />
-          <Div fontSize="20px">コール回数: {counters[5]}</Div>
+          <Div fontSize="20px" color="CadetBlue">
+            コール回数: {counters[5]}
+          </Div>
         </Row>
       </Column>
     </Row>

@@ -6,6 +6,7 @@ type AttrPosition = "position" | "top" | "bottom" | "right" | "left" | "zIndex"
 type AttrFlex =
   | "display"
   | "flexDirection"
+  | "flexFlow"
   | "justifyContent"
   | "alignItems"
   | "gap"
@@ -94,6 +95,7 @@ export const Div = styled.div<Div>`
     //flex
     ${props.display && `display: ${props.display}`};
     ${props.flexDirection && `flex-direction: ${props.flexDirection}`};
+    ${props.flexFlow && `flex-flow: ${props.flexFlow}`};
     ${props.justifyContent && `justify-content: ${props.justifyContent}`};
     ${props.alignItems && `align-items: ${props.alignItems}`};
     ${props.gap && `gap: ${props.gap}`};
@@ -221,6 +223,9 @@ export const DivPre = styled.div<Div>`
     font-family: monospace;
     overflow: auto;
     white-space: pre;
+    ${props.border && `border: ${props.border}`};
+    ${props.padding && `padding: ${props.padding}`};
+    ${props.margin && `margin: ${props.margin}`};
   `}
 `
 

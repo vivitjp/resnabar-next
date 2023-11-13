@@ -21,6 +21,7 @@ export const routes: Routes = {
   Redux: [
     { name: "Redux", path: "/redux/basic" },
     { name: "ReduxToolkit", path: "/reduxToolkit/basic" },
+    { name: "DeepObject", path: "/reduxToolkit/deepObject" },
     { name: "AsyncThunk", path: "/reduxToolkit/asyncThunk" },
   ],
   Zustand: [
@@ -36,6 +37,9 @@ export const routes: Routes = {
     { name: "iObserver(Hide)", path: "/webAPI/intersectionObserverHide" },
   ],
   JavaScript: [{ name: "Promise", path: "/javaScript/promise" }],
-  TypeScript: [{ name: "Object.entries", path: "/typeScript/entries" }],
+  TypeScript: [
+    { name: "Object.entries", path: "/typeScript/entries" },
+    { name: "try catchのError型", path: "/typeScript/tryCatch" },
+  ],
   CSS: [{ name: "スライドMenu", path: "/CSS/animationSlide" }],
 }

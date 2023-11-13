@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 
 import addressReducer from "./slices/addressSlice"
 import counterReducer from "./slices/counterSlice"
+import deepObjectReducer from "./slices/deepObjectSlice"
 import { itemReducer } from "../redux/reducers/itemReducer"
 
 export function makeStore() {
@@ -10,6 +11,7 @@ export function makeStore() {
       reducer: {
         address: addressReducer, //ToolKit
         counter: counterReducer, //ToolKit
+        deepObject: deepObjectReducer,
         items: itemReducer, //Normal Redux
       },
     }
