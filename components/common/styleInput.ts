@@ -41,7 +41,7 @@ export const Button = styled.button<CSSProperties>`
     border: 1px solid #aaa;
     background-color: white;
     border-radius: 5px;
-    text-align: center;
+    text-align: ${props.textAlign ?? "center"};
     &:hover {
       background-color: #eee;
     }

@@ -39,14 +39,14 @@ const setInputToObjectHandler = () => {
 }
  
 const clearHandler = () => {
-  localObject.address = initOject.address
+  localObject.address = initOject.address <---参照を代入
   localObject.name = initOject.name
   localObject.age = initOject.age
   setLocalObjectState({...localObject})
 }
   
 const setInitAddressPrefHandler = () => {
-  localObject.address.pref = "北海道"
+  localObject.address.pref = "北海道" <--- ローカルに代入
   setLocalObjectState({ ...localObject })
 }`
 
@@ -134,36 +134,43 @@ const ParentCompo = () => {
 
         <Column padding="10px">
           <Row padding="5px" gap="10px" alignItems="center">
-            <Button width="200px" onClick={setInputToObjectHandler}>
-              入力値を保存
+            <Button
+              textAlign="left"
+              width="400px"
+              onClick={setInputToObjectHandler}
+            >
+              1.ローカルObjectへ入力値を代入
             </Button>
-            <Div>ローカル値をObjectに保存</Div>
           </Row>
           <Row padding="5px" gap="10px" alignItems="center">
-            <Button textAlign="left" width="200px" onClick={clearHandler}>
-              初期化(各個+参照)
+            <Button textAlign="left" width="400px" onClick={clearHandler}>
+              2.ローカルObjectへ初期値Objectの「値と参照」を代入
             </Button>
-            <Div>localObject.address = initOject.address 参照代入</Div>
+            <Div>localObject.address = initOject.address(参照)</Div>
           </Row>
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="200px"
+              width="400px"
               onClick={setInitAddressPrefHandler}
             >
-              initObjectの上書き
+              3.ローカルObjectの参照が代入された変数を「値」で上書き
             </Button>
-            <Div>localObject.address.pref = &apos;北海道&apos;</Div>
+            <Div>
+              localObject.address.pref = &apos;北海道&apos;
+              <br />
+              初期値objectも同時に変わる様子を観察
+            </Div>
           </Row>
         </Column>
       </Column>
 
       <Column width="200px" marginRight="10px">
-        初期値(initOject)
+        初期値Object(initOject)
         <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
           {JSON.stringify(initOject, undefined, 2)}
         </DivPre>
-        State(localObject)
+        ローカルObject(localObject)
         <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
           {JSON.stringify(localObjectState, undefined, 2)}
         </DivPre>

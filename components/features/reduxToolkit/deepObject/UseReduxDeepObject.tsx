@@ -130,7 +130,8 @@ const ParentCompo = () => {
         <Column padding="10px">
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
-              width="200px"
+              textAlign="left"
+              width="400px"
               onClick={() =>
                 dispatch(
                   setDeepObject({
@@ -144,28 +145,27 @@ const ParentCompo = () => {
                 )
               }
             >
-              入力値を保存
+              1.ローカル値をGlobalStateに保存
             </Button>
-            <Div>ローカル値をG-Stateに保存</Div>
-          </Row>
-
-          <Row padding="5px" gap="10px" alignItems="center">
-            <Button
-              width="200px"
-              onClick={() => dispatch(clearDeepOjectEach())}
-            >
-              初期化(各個)
-            </Button>
-            <Div>一般的な値の代入・初期化</Div>
           </Row>
 
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="200px"
+              width="400px"
+              onClick={() => dispatch(clearDeepOjectEach())}
+            >
+              2.初期値を個々に代入
+            </Button>
+          </Row>
+
+          <Row padding="5px" gap="10px" alignItems="center">
+            <Button
+              textAlign="left"
+              width="400px"
               onClick={() => dispatch(clearDeepOjectAddressRef())}
             >
-              初期化(各個値+参照代入)
+              3.初期値を個々に代入/深いobjectには初期objectの参照代入
             </Button>
             <Div>state.address = initOject.address //参照代入</Div>
           </Row>
@@ -173,46 +173,51 @@ const ParentCompo = () => {
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="200px"
+              width="400px"
               onClick={() => dispatch(clearDeepOjectAll())}
             >
-              初期化(Spread構文)
+              NG.state 自体をobject(Spread構文)で初期化
             </Button>
-            <Div>state自体の上書きはNG:値が保存されない</Div>
-          </Row>
-
-          <Row padding="5px" gap="10px" alignItems="center">
-            <Button
-              width="200px"
-              onClick={() => dispatch(clearDeepOjectStruct())}
-            >
-              初期化(structuredClone)
-            </Button>
-            <Div>state自体の上書きはNG:値が保存されない</Div>
+            <Div>
+              state = &#123; ...initOject &#125; <br /> *stateトップはimmutable
+            </Div>
           </Row>
 
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="200px"
+              width="400px"
+              onClick={() => dispatch(clearDeepOjectStruct())}
+            >
+              NG.state 自体をobject(structuredClone)で初期化
+            </Button>
+            <Div>
+              state = structuredClone(initOject) <br /> *stateトップはimmutable
+            </Div>
+          </Row>
+
+          <Row padding="5px" gap="10px" alignItems="center">
+            <Button
+              textAlign="left"
+              width="400px"
               onClick={() => dispatch(setDeepOjectAddressPref())}
             >
-              state更新
+              4.GlobalStateで参照を代入した深いobjectに値代入
             </Button>
             <Div>
               state.address.pref = &apos;北海道&apos;
               <br />
-              参照先に代入したのに、初期値に変化なし!!
+              参照先に代入したが初期objectに変化なし!!
             </Div>
           </Row>
         </Column>
       </Column>
       <Column width="200px" marginRight="10px">
-        初期値(initialState)
+        初期値Object(initOject)
         <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
           {JSON.stringify(initialState, undefined, 2)}
         </DivPre>
-        State(ReduxGlobalState)
+        State(state)
         <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
           {JSON.stringify(deepObject, undefined, 2)}
         </DivPre>
