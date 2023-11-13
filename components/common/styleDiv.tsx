@@ -1,5 +1,6 @@
 "use client"
 
+import { ReactElement, ReactNode, isValidElement } from "react"
 import styled, { CSSProperties, css } from "styled-components"
 
 type AttrPosition = "position" | "top" | "bottom" | "right" | "left" | "zIndex"
@@ -240,43 +241,4 @@ export const SpanRed = styled.span`
   padding: 0;
   color: var(--main-color);
   font-size: inherit;
-`
-
-const NumberRange = ({
-  step,
-  range: [min, max],
-  value,
-  onChange,
-  ...args
-}: {
-  step: number
-  range: [number, number]
-  value: number
-  onChange: React.ChangeEventHandler<HTMLInputElement>
-}) => {
-  return (
-    <input
-      {...args}
-      onChange={onChange}
-      type="range"
-      step={`${step}`}
-      min={min}
-      max={max}
-      value={value}
-    />
-  )
-}
-
-export const Range = styled(NumberRange)<Div>`
-  ${(props) => css`
-    width: ${props.width ?? "200px"};
-    font-size: ${props.width ?? "200px"};
-    height: 36px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    text-align: center;
-    color: var(--main-color);
-  `}
 `

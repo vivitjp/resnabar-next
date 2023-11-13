@@ -4,8 +4,9 @@ import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
 import { UseReduxDeepObject } from "@/components/features/reduxToolkit/deepObject/UseReduxDeepObject"
+import { UseJSObject } from "@/components/features/reduxToolkit/deepObject/UseJSObject"
 
-const codes: (() => UseReturnType)[] = [UseReduxDeepObject]
+const codes: (() => UseReturnType)[] = [UseJSObject, UseReduxDeepObject]
 
 export default function PageReduxDeepObject() {
   return (

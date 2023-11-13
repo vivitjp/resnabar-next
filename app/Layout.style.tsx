@@ -85,7 +85,7 @@ export const GroupBody = styled.div`
   padding-left: 5px;
 `
 
-export const MenuItem = styled(Link)`
+export const MenuItem = styled.a`
   padding: 5px;
   text-decoration: none;
   font-size: 0.8rem;

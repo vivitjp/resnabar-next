@@ -12,6 +12,7 @@ import {
   selectDeepObject,
   selectInitialState,
   setDeepObject,
+  setDeepOjectAddressPref,
 } from "@/store/reduxToolkit/slices/deepObjectSlice"
 
 export function UseReduxDeepObject(): UseReturnType {
@@ -28,7 +29,7 @@ export function UseReduxDeepObject(): UseReturnType {
     codeFold: false,
   }
 }
-const code = `const initDeepOjectState: DeepObjectState = {
+const code = `const initOject: DeepObjectState = {
   address: {
     pref: "Tokyo",
     city: "Shibuya",
@@ -41,29 +42,34 @@ reducers: {
   ■ 各個に値を与える
   clearDeepOjectEach: (state) => {
     //Deep Objectに対してはSpread構文使用
-    state.address = { ...initDeepOjectState.address } //浅い場合
-    or state.address = structuredClone(initDeepOjectState.address) //深い場合
-    state.name = initDeepOjectState.name
-    state.age = initDeepOjectState.age
+    state.address = { ...initOject.address } //浅い場合
+    or state.address = structuredClone(initOject.address) //深い場合
+    state.name = initOject.name
+    state.age = initOject.age
   },
  
   ■ 各個に値を与える
   clearDeepOjectAddressRef: (state) => {
-    //参照を保存(initDeepOjectStateのaddressの参照)しても初期値は不変なのでOK
-    state.address = initDeepOjectState.address //参照で上書き
-    state.name = initDeepOjectState.name
-    state.age = initDeepOjectState.age
+    //参照を保存(initOjectのaddressの参照)しても初期値は不変なのでOK
+    state.address = initOject.address //参照で上書き
+    state.name = initOject.name
+    state.age = initOject.age
   },
   
   ■ state自体をSpread構文で上書き(NG)
   clearDeepOjectAll: (state) => {
-    state = { ...initDeepOjectState }
+    state = { ...initOject }
   },
   
   ■ state自体をstructuredClone()で生成したクローンで上書き(NG)
   //https://developer.mozilla.org/ja/docs/Web/API/structuredClone
   clearDeepOjectStruct: (state) => {
-    state = structuredClone(initDeepOjectState)
+    state = structuredClone(initOject)
+  },
+ 
+  ■ state の参照されている深い値を更新
+  setDeepOjectAddressPref: (state) => {
+    state.address.pref = "北海道"
   },
  
   ■ 引数を保存する
@@ -84,60 +90,60 @@ const ParentCompo = () => {
   const [localName, setLocalName] = useState<string>("五十嵐")
   const [localAge, setLocalAge] = useState<number>(18)
 
-  const obj = {
-    address: {
-      pref: localPref,
-      city: localCity,
-    },
-    name: localName,
-    age: localAge,
-  }
-
   return (
-    <Column width="fit-width" padding="10px">
-      <Row padding="10px" gap="10px" justifyContent="space-between">
-        pref:
-        <Input
-          aria-label="Pref"
-          value={localPref}
-          onChange={(e) => {
-            setLocalPref(() => e.target.value)
-          }}
-        />
-        City:
-        <Input
-          aria-label="City"
-          value={localCity}
-          onChange={(e) => {
-            setLocalCity(() => e.target.value)
-          }}
-        />
-        Name:
-        <Input
-          aria-label="Name"
-          value={localName}
-          onChange={(e) => {
-            setLocalName(() => e.target.value)
-          }}
-        />
-        Age:
-        <Input
-          aria-label="Age"
-          value={localAge}
-          onChange={(e) => {
-            setLocalAge(() => +e.target.value)
-          }}
-        />
-      </Row>
-      <Row
-        width="100%"
-        padding="10px"
-        gap="10px"
-        justifyContent="space-between"
-      >
+    <Row padding="10px" gap="10px" justifyContent="space-between">
+      <Column width="fit-width" padding="10px">
+        <Row padding="10px" gap="10px" justifyContent="space-between">
+          pref:
+          <Input
+            aria-label="Pref"
+            value={localPref}
+            onChange={(e) => {
+              setLocalPref(() => e.target.value)
+            }}
+          />
+          City:
+          <Input
+            aria-label="City"
+            value={localCity}
+            onChange={(e) => {
+              setLocalCity(() => e.target.value)
+            }}
+          />
+          Name:
+          <Input
+            aria-label="Name"
+            value={localName}
+            onChange={(e) => {
+              setLocalName(() => e.target.value)
+            }}
+          />
+          Age:
+          <Input
+            aria-label="Age"
+            value={localAge}
+            onChange={(e) => {
+              setLocalAge(() => +e.target.value)
+            }}
+          />
+        </Row>
         <Column padding="10px">
           <Row padding="5px" gap="10px" alignItems="center">
-            <Button width="200px" onClick={() => dispatch(setDeepObject(obj))}>
+            <Button
+              width="200px"
+              onClick={() =>
+                dispatch(
+                  setDeepObject({
+                    address: {
+                      pref: localPref,
+                      city: localCity,
+                    },
+                    name: localName,
+                    age: localAge,
+                  })
+                )
+              }
+            >
               入力値を保存
             </Button>
             <Div>ローカル値をG-Stateに保存</Div>
@@ -159,9 +165,9 @@ const ParentCompo = () => {
               width="200px"
               onClick={() => dispatch(clearDeepOjectAddressRef())}
             >
-              初期化(各個+参照)
+              初期化(各個値+参照代入)
             </Button>
-            <Div>** 初期Object参照による保存でも初期値Objectに変化なし!!</Div>
+            <Div>state.address = initOject.address //参照代入</Div>
           </Row>
 
           <Row padding="5px" gap="10px" alignItems="center">
@@ -172,7 +178,7 @@ const ParentCompo = () => {
             >
               初期化(Spread構文)
             </Button>
-            <Div>NG:値が保存されない</Div>
+            <Div>state自体の上書きはNG:値が保存されない</Div>
           </Row>
 
           <Row padding="5px" gap="10px" alignItems="center">
@@ -182,18 +188,35 @@ const ParentCompo = () => {
             >
               初期化(structuredClone)
             </Button>
-            <Div>NG:値が保存されない</Div>
+            <Div>state自体の上書きはNG:値が保存されない</Div>
+          </Row>
+
+          <Row padding="5px" gap="10px" alignItems="center">
+            <Button
+              textAlign="left"
+              width="200px"
+              onClick={() => dispatch(setDeepOjectAddressPref())}
+            >
+              state更新
+            </Button>
+            <Div>
+              state.address.pref = &apos;北海道&apos;
+              <br />
+              参照先に代入したのに、初期値に変化なし!!
+            </Div>
           </Row>
         </Column>
-        <Column width="200px">
-          <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
-            {JSON.stringify(initialState, undefined, 2)}
-          </DivPre>
-          <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
-            {JSON.stringify(deepObject, undefined, 2)}
-          </DivPre>
-        </Column>
-      </Row>
-    </Column>
+      </Column>
+      <Column width="200px" marginRight="10px">
+        初期値(initialState)
+        <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
+          {JSON.stringify(initialState, undefined, 2)}
+        </DivPre>
+        State(ReduxGlobalState)
+        <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
+          {JSON.stringify(deepObject, undefined, 2)}
+        </DivPre>
+      </Column>
+    </Row>
   )
 }

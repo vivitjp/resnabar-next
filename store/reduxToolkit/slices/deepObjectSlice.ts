@@ -11,7 +11,7 @@ export interface DeepObjectState {
   age: number
 }
 
-const initDeepOjectState: DeepObjectState = {
+export const initOject: DeepObjectState = {
   address: {
     pref: "Tokyo",
     city: "Shibuya",
@@ -22,23 +22,27 @@ const initDeepOjectState: DeepObjectState = {
 
 export const deepObjectSlice = createSlice({
   name: "deepObject",
-  initialState: initDeepOjectState,
+  initialState: initOject,
   reducers: {
     clearDeepOjectEach: (state) => {
-      state.address = { ...initDeepOjectState.address }
-      state.name = initDeepOjectState.name
-      state.age = initDeepOjectState.age
+      state.address = { ...initOject.address }
+      state.name = initOject.name
+      state.age = initOject.age
     },
     clearDeepOjectAddressRef: (state) => {
-      state.address = initDeepOjectState.address //参照
-      state.name = initDeepOjectState.name
-      state.age = initDeepOjectState.age
+      state.address = initOject.address //参照
+      state.name = initOject.name
+      state.age = initOject.age
     },
+    setDeepOjectAddressPref: (state) => {
+      state.address.pref = "北海道"
+    },
+
     clearDeepOjectAll: (state) => {
-      state = { ...initDeepOjectState }
+      state = { ...initOject }
     },
     clearDeepOjectStruct: (state) => {
-      state = structuredClone(initDeepOjectState)
+      state = structuredClone(initOject)
     },
     setDeepObject: (state, action: PayloadAction<DeepObjectState>) => {
       state.address.pref = action.payload.address?.pref ?? ""
@@ -53,11 +57,12 @@ export const {
   setDeepObject,
   clearDeepOjectEach,
   clearDeepOjectAddressRef,
+  setDeepOjectAddressPref,
   clearDeepOjectAll,
   clearDeepOjectStruct,
 } = deepObjectSlice.actions
 
-export const selectInitialState = () => initDeepOjectState
+export const selectInitialState = () => initOject
 
 export const selectDeepObject = (state: AppState) => state.deepObject
 
