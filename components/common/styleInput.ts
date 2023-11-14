@@ -27,7 +27,7 @@ export const TextArea = styled.textarea<CSSProperties>`
   border-radius: 5px;
   color: #777;
   font-size: 1.2rem;
-  font-family: monospace;
+  font-family: ui-monospace;
   line-height: 1.4rem;
   resize: none;
 `

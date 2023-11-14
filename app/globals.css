@@ -35,19 +35,19 @@ dialog::backdrop {
 
 pre {
   margin: 0;
-  font-family: monospace;
+  font-family: ui-monospace, monospace;
   font-size: 1rem;
   width: 100%;
 }
 
 span.syntax {
-  font-family: monospace;
+  font-family: ui-monospace, monospace;
   font-size: 1rem;
   font-weight: 600;
 }
 
 span.syntaxQ {
-  font-family: monospace;
+  font-family: ui-monospace, monospace;
   font-size: 1rem;
   color: #999;
 }

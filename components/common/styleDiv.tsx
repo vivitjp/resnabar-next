@@ -160,6 +160,7 @@ export const Column = styled(Div)`
     flex-direction: column;
     justify-content: ${props.justifyContent ?? "flex-start"};
     align-items: ${props.alignItems ?? "flex-start"};
+    {...props}
   `}
 `
 
@@ -169,6 +170,7 @@ export const Row = styled(Div)`
     flex-direction: row;
     justify-content: ${props.justifyContent ?? "flex-start"};
     align-items: ${props.alignItems ?? "flex-start"};
+    {...props}
   `}
 `
 
@@ -185,6 +187,7 @@ export const BorderDiv = styled(Div)`
     color: grey;
     background-color: #f5f5f5;
     border-radius: 5px;
+    {...props}
   `}
 `
 
@@ -205,6 +208,7 @@ export const SlideWidth = styled(Div)<Slide>`
     }
     box-shadow: 2px 2px 10px #0004;
     overflow: hidden;
+    {...props}
   `}
 `
 
@@ -215,18 +219,20 @@ export const Title = styled.div<Div>`
       margin-right: 5px;
       color: ${props.color ?? "var(--main-color)"};
     }
+    {...props}
   `}
 `
 
 export const DivPre = styled.div<Div>`
   ${(props) => css`
     font-size: ${props.fontSize ?? "16px"};
-    font-family: monospace;
+    font-family: ui-monospace;
     overflow: auto;
     white-space: pre;
     ${props.border && `border: ${props.border}`};
     ${props.padding && `padding: ${props.padding}`};
     ${props.margin && `margin: ${props.margin}`};
+    {...props}
   `}
 `
 
