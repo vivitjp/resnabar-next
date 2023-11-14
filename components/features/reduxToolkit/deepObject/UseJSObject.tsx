@@ -14,40 +14,47 @@ export function UseJSObject(): UseReturnType {
     code,
     options: [],
     jsx,
-    codeKeyType: "Redux",
+    codeKeyType: "JSTS",
     codeFold: true,
   }
 }
-const code = `let localObject: DeepObjectState = initOject
-const [localObjectState, setLocalObjectState] = useState<DeepObjectState>()
+const code = `コンポーネント外でlet変数宣言
+let localObject: DeepObjectState
  
-const [localPref, setLocalPref] = useState<string>("神奈川")
-const [localCity, setLocalCity] = useState<string>("横浜")
-const [localName, setLocalName] = useState<string>("五十嵐")
-const [localAge, setLocalAge] = useState<number>(18)
- 
-const setInputToObjectHandler = () => {
-  localObject = {
-    address: {
-      pref: localPref,
-      city: localCity,
-    },
-    name: localName,
-    age: localAge,
-  }
-  setLocalObjectState({...localObject})
-}
- 
-const clearHandler = () => {
-  localObject.address = initOject.address <---参照を代入
-  localObject.name = initOject.name
-  localObject.age = initOject.age
-  setLocalObjectState({...localObject})
-}
+const Compo=()=>{
+  const [localPref, setLocalPref] = useState<string>("神奈川")
+  const [localCity, setLocalCity] = useState<string>("横浜")
+  const [localName, setLocalName] = useState<string>("五十嵐")
+  const [localAge, setLocalAge] = useState<number>(18)
   
-const setInitAddressPrefHandler = () => {
-  localObject.address.pref = "北海道" <--- ローカルに代入
-  setLocalObjectState({ ...localObject })
+  const setInputToObjectHandler = () => {
+    localObject = {
+      address: {
+        pref: localPref,
+        city: localCity,
+      },
+      name: localName,
+      age: localAge,
+    }
+  }
+  
+  const clearHandler = () => {
+    localObject.address = initOject.address <--- 参照を代入
+    localObject.name = initOject.name
+    localObject.age = initOject.age
+  }
+    
+  const clearHandlerBySpread = () => {
+    localObject = { ...initOject } <--- Spread構文は deep な属性を参照で渡す
+  }
+  
+  const clearHandlerByStructuredClone = () => {
+    localObject = structuredClone(initOject) <--- 深い底まで「構造と値」をクローン
+  }
+  
+  const setInitAddressPrefHandler = () => {
+    localObject.address.pref = "北海道" <--- ローカルの深い変数に代入
+  }
 }`
 
 const initOject: DeepObjectState = {
@@ -59,11 +66,17 @@ const initOject: DeepObjectState = {
   age: 20,
 }
 
-const ParentCompo = () => {
-  let localObject: DeepObjectState = initOject
+let localObject: DeepObjectState = {
+  address: {
+    pref: "",
+    city: "",
+  },
+  name: "",
+  age: 0,
+}
 
-  const [localObjectState, setLocalObjectState] =
-    useState<DeepObjectState>(initOject)
+const ParentCompo = () => {
+  const [trigger, setTrigger] = useState<boolean>(false)
 
   const [localPref, setLocalPref] = useState<string>("神奈川")
   const [localCity, setLocalCity] = useState<string>("横浜")
@@ -79,19 +92,29 @@ const ParentCompo = () => {
       name: localName,
       age: localAge,
     }
-    setLocalObjectState({ ...localObject })
+    setTrigger((prev) => !prev)
   }
 
   const clearHandler = () => {
     localObject.address = initOject.address
     localObject.name = initOject.name
     localObject.age = initOject.age
-    setLocalObjectState({ ...localObject })
+    setTrigger((prev) => !prev)
+  }
+
+  const clearHandlerBySpread = () => {
+    localObject = { ...initOject }
+    setTrigger((prev) => !prev)
+  }
+
+  const clearHandlerByStructuredClone = () => {
+    localObject = structuredClone(initOject)
+    setTrigger((prev) => !prev)
   }
 
   const setInitAddressPrefHandler = () => {
     localObject.address.pref = "北海道"
-    setLocalObjectState({ ...localObject })
+    setTrigger((prev) => !prev)
   }
 
   return (
@@ -144,17 +167,40 @@ const ParentCompo = () => {
           </Row>
           <Row padding="5px" gap="10px" alignItems="center">
             <Button textAlign="left" width="400px" onClick={clearHandler}>
-              2.ローカルObjectへ初期値Objectの「値と参照」を代入
+              2A.ローカルObjectへ初期値Objectの「値と参照」を代入
             </Button>
             <Div>localObject.address = initOject.address(参照)</Div>
           </Row>
+
+          <Row padding="5px" gap="10px" alignItems="center">
+            <Button
+              textAlign="left"
+              width="400px"
+              onClick={clearHandlerBySpread}
+            >
+              2B.ローカルObjectへ初期値Objectを「Spread構文」で代入
+            </Button>
+            <Div>localObject = &#123; ...initOject &#125; </Div>
+          </Row>
+
+          <Row padding="5px" gap="10px" alignItems="center">
+            <Button
+              textAlign="left"
+              width="400px"
+              onClick={clearHandlerByStructuredClone}
+            >
+              2C.ローカルObjectへ初期値Objectを「structuredClone」で代入
+            </Button>
+            <Div>localObject = structuredClone(initOject) </Div>
+          </Row>
+
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="400px"
               onClick={setInitAddressPrefHandler}
             >
-              3.ローカルObjectの参照が代入された変数を「値」で上書き
+              3.ローカルObjectの深い変数を「値」で上書き
             </Button>
             <Div>
               localObject.address.pref = &apos;北海道&apos;
@@ -172,7 +218,7 @@ const ParentCompo = () => {
         </DivPre>
         ローカルObject(localObject)
         <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
-          {JSON.stringify(localObjectState, undefined, 2)}
+          {JSON.stringify(localObject, undefined, 2)}
         </DivPre>
       </Column>
     </Row>

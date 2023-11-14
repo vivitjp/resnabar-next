@@ -32,6 +32,7 @@ export const routes: Routes = {
     { name: "Persist", path: "/zustand/persist" },
     { name: "DevTools", path: "/zustand/devTools" },
   ],
+  Packages: [{ name: "ReactHookForm1", path: "/packages/ReactHookForm1" }],
   WebAPI: [
     { name: "iObserver", path: "/webAPI/intersectionObserver" },
     { name: "iObserver(Hide)", path: "/webAPI/intersectionObserverHide" },
