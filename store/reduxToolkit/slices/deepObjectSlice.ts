@@ -11,7 +11,7 @@ export interface DeepObjectState {
   age: number
 }
 
-export const initOject: DeepObjectState = {
+const initOject: DeepObjectState = {
   address: {
     pref: "Tokyo",
     city: "Shibuya",

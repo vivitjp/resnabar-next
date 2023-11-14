@@ -5,7 +5,7 @@ import { Button, Input } from "@/components/common/styleInput"
 import { DeepObjectState } from "@/store/reduxToolkit/slices/deepObjectSlice"
 
 export function UseJSObject(): UseReturnType {
-  const title = `JavaScript の Object 参照`
+  const title = `JavaScript の Shallow & Deep`
 
   const jsx = <ParentCompo />
 
@@ -159,15 +159,15 @@ const ParentCompo = () => {
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={setInputToObjectHandler}
             >
-              1.ローカルObjectへ入力値を代入
+              1.入力値を代入
             </Button>
           </Row>
           <Row padding="5px" gap="10px" alignItems="center">
-            <Button textAlign="left" width="400px" onClick={clearHandler}>
-              2A.ローカルObjectへ初期値Objectの「値と参照」を代入
+            <Button textAlign="left" width="350px" onClick={clearHandler}>
+              🔺2A.初期値Objectの「値と参照」を代入
             </Button>
             <Div>localObject.address = initOject.address(参照)</Div>
           </Row>
@@ -175,10 +175,10 @@ const ParentCompo = () => {
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={clearHandlerBySpread}
             >
-              2B.ローカルObjectへ初期値Objectを「Spread構文」で代入
+              🔺2B.初期値Objectを「Spread構文」で代入
             </Button>
             <Div>localObject = &#123; ...initOject &#125; </Div>
           </Row>
@@ -186,10 +186,10 @@ const ParentCompo = () => {
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={clearHandlerByStructuredClone}
             >
-              2C.ローカルObjectへ初期値Objectを「structuredClone」で代入
+              ⭕2C.初期値Objectを「structuredClone」で代入
             </Button>
             <Div>localObject = structuredClone(initOject) </Div>
           </Row>
@@ -197,10 +197,10 @@ const ParentCompo = () => {
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={setInitAddressPrefHandler}
             >
-              3.ローカルObjectの深い変数を「値」で上書き
+              3.深い変数を「値」で上書き
             </Button>
             <Div>
               localObject.address.pref = &apos;北海道&apos;
@@ -212,11 +212,11 @@ const ParentCompo = () => {
       </Column>
 
       <Column width="200px" marginRight="10px">
-        初期値Object(initOject)
+        ローカル初期値(initOject)
         <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
           {JSON.stringify(initOject, undefined, 2)}
         </DivPre>
-        ローカルObject(localObject)
+        ローカルState(localObject)
         <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
           {JSON.stringify(localObject, undefined, 2)}
         </DivPre>

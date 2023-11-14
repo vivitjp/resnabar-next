@@ -15,8 +15,8 @@ import {
   setDeepOjectAddressPref,
 } from "@/store/reduxToolkit/slices/deepObjectSlice"
 
-export function UseReduxDeepObject(): UseReturnType {
-  const title = `Redux Toolkit: 様々な方法によるStateの値の体入と初期化`
+export function UseDeepObject(): UseReturnType {
+  const title = `Redux Toolkit: Shallow & Deep`
 
   const jsx = <ParentCompo />
 
@@ -26,7 +26,7 @@ export function UseReduxDeepObject(): UseReturnType {
     options: [],
     jsx,
     codeKeyType: "Redux",
-    codeFold: false,
+    codeFold: true,
   }
 }
 const code = `const initOject: DeepObjectState = {
@@ -38,48 +38,52 @@ const code = `const initOject: DeepObjectState = {
   age: 20,
 }
  
-reducers: {
-  ■ 各個に値を与える
-  clearDeepOjectEach: (state) => {
-    //Deep Objectに対してはSpread構文使用
-    state.address = { ...initOject.address } //浅い場合
-    or state.address = structuredClone(initOject.address) //深い場合
-    state.name = initOject.name
-    state.age = initOject.age
-  },
- 
-  ■ 各個に値を与える
-  clearDeepOjectAddressRef: (state) => {
-    //参照を保存(initOjectのaddressの参照)しても初期値は不変なのでOK
-    state.address = initOject.address //参照で上書き
-    state.name = initOject.name
-    state.age = initOject.age
-  },
+export const deepObjectSlice = createSlice({
+  name: "deepObject",
+  initialState: initOject,
+  reducers: {
+
+    //■ 各個に値を与える(深いものにはSpread構文)
+    clearDeepOjectEach: (state) => {
+      state.address = structuredClone(initOject.address) //深い場合(安全)
+      // state.address = { ...initOject.address }   //Shallow(1段のみの浅さ)はOK
+      state.name = initOject.name
+      state.age = initOject.age
+    },
+    
+    //■ 各個に値を与える(参照含む)
+    clearDeepOjectAddressRef: (state) => {
+      // ★参照を保存(initOjectのaddressの参照)しても初期値は不変なのでOKなのか？
+      state.address = initOject.address //★ 参照で上書きが許される!!
+      state.name = initOject.name
+      state.age = initOject.age
+    },
+    
+    //■ state自体をSpread構文で上書き(NG)
+    clearDeepOjectAll: (state) => {
+      state = { ...initOject } // state自体は immutableなので上書きされない
+    },
+    
+    //■ state自体をstructuredClone()で生成したクローンで上書き(NG)
+    //不明な場合は mozilla で検索
+    clearDeepOjectStruct: (state) => {
+      state = structuredClone(initOject) // state自体は immutableなので上書きされない
+    },
   
-  ■ state自体をSpread構文で上書き(NG)
-  clearDeepOjectAll: (state) => {
-    state = { ...initOject }
-  },
+    //■ state の参照されている深い値を更新
+    setDeepOjectAddressPref: (state) => {
+      state.address.pref = "北海道"
+    },
   
-  ■ state自体をstructuredClone()で生成したクローンで上書き(NG)
-  //https://developer.mozilla.org/ja/docs/Web/API/structuredClone
-  clearDeepOjectStruct: (state) => {
-    state = structuredClone(initOject)
-  },
- 
-  ■ state の参照されている深い値を更新
-  setDeepOjectAddressPref: (state) => {
-    state.address.pref = "北海道"
-  },
- 
-  ■ 引数を保存する
-  setDeepObject: (state, action: PayloadAction<DeepObjectState>) => {
-    state.address.pref = action.payload.address?.pref ?? ""
-    state.address.city = action.payload.address?.city ?? ""
-    state.name = action.payload.name
-    state.age = action.payload.age
-  },
-}`
+    //■ 引数を保存する
+    setDeepObject: (state, action: PayloadAction<DeepObjectState>) => {
+      state.address.pref = action.payload.address?.pref ?? ""
+      state.address.city = action.payload.address?.city ?? ""
+      state.name = action.payload.name
+      state.age = action.payload.age
+    },
+  }
+})`
 
 const ParentCompo = () => {
   const dispatch = useAppDispatch()
@@ -131,7 +135,7 @@ const ParentCompo = () => {
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={() =>
                 dispatch(
                   setDeepObject({
@@ -145,79 +149,87 @@ const ParentCompo = () => {
                 )
               }
             >
-              1.ローカル値をGlobalStateに保存
+              1.入力値を個別に保存
             </Button>
+            <Div>
+              state.address.pref = action.payload.address.pref
+              <br />
+              state.address.city = action.payload.address.city
+            </Div>
           </Row>
 
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={() => dispatch(clearDeepOjectEach())}
             >
-              2.初期値を個々に代入
+              2.初期値を値/参照(spread構文)で代入
             </Button>
+            <Div>state.address = &#123; ...initOject.address &#125;</Div>
           </Row>
 
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={() => dispatch(clearDeepOjectAddressRef())}
             >
-              3.初期値を個々に代入/深いobjectには初期objectの参照代入
+              3.初期値を値で代入/深いobjectには参照で代入
             </Button>
-            <Div>state.address = initOject.address //参照代入</Div>
+            <Div>state.address = initOject.address //参照</Div>
           </Row>
 
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={() => dispatch(clearDeepOjectAll())}
             >
-              NG.state 自体をobject(Spread構文)で初期化
+              ⛔ state 自体をobject(Spread構文)で初期化
             </Button>
             <Div>
-              state = &#123; ...initOject &#125; <br /> *stateトップはimmutable
+              state = &#123; ...initOject &#125; //上書🆖:
+              stateトップはimmutable
             </Div>
           </Row>
 
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={() => dispatch(clearDeepOjectStruct())}
             >
-              NG.state 自体をobject(structuredClone)で初期化
+              ⛔ state 自体をobject(structuredClone)で初期化
             </Button>
             <Div>
-              state = structuredClone(initOject) <br /> *stateトップはimmutable
+              state = structuredClone(initOject) //上書🆖:
+              stateトップはimmutable
             </Div>
           </Row>
 
           <Row padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
-              width="400px"
+              width="350px"
               onClick={() => dispatch(setDeepOjectAddressPref())}
             >
-              4.GlobalStateで参照を代入した深いobjectに値代入
+              4.深いobjectに値代入
             </Button>
             <Div>
               state.address.pref = &apos;北海道&apos;
               <br />
-              参照先に代入したが初期objectに変化なし!!
+              🧡 参照先に代入したが初期objectに変化なし!! 👉 Reduxの特質
             </Div>
           </Row>
         </Column>
       </Column>
       <Column width="200px" marginRight="10px">
-        初期値Object(initOject)
+        Global初期値(initOject)
         <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
           {JSON.stringify(initialState, undefined, 2)}
         </DivPre>
-        State(state)
+        GlobalState(state)
         <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
           {JSON.stringify(deepObject, undefined, 2)}
         </DivPre>

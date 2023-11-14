@@ -21,8 +21,8 @@ export const routes: Routes = {
   Redux: [
     { name: "Redux", path: "/redux/basic" },
     { name: "ReduxToolkit", path: "/reduxToolkit/basic" },
-    { name: "DeepObject", path: "/reduxToolkit/deepObject" },
     { name: "AsyncThunk", path: "/reduxToolkit/asyncThunk" },
+    { name: "Shallow/Deep", path: "/reduxToolkit/deepObject" },
   ],
   Zustand: [
     { name: "Store", path: "/zustand/store" },

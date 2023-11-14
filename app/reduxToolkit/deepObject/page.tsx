@@ -3,10 +3,15 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { UseReduxDeepObject } from "@/components/features/reduxToolkit/deepObject/UseReduxDeepObject"
+import { UseDeepObject } from "@/components/features/reduxToolkit/deepObject/UseDeepObject"
 import { UseJSObject } from "@/components/features/reduxToolkit/deepObject/UseJSObject"
+import { UseDeepObjectWrapped } from "@/components/features/reduxToolkit/deepObject/UseDeepObjectWrapped"
 
-const codes: (() => UseReturnType)[] = [UseJSObject, UseReduxDeepObject]
+const codes: (() => UseReturnType)[] = [
+  UseJSObject,
+  UseDeepObject,
+  UseDeepObjectWrapped,
+]
 
 export default function PageReduxDeepObject() {
   return (
