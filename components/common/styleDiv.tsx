@@ -160,6 +160,7 @@ export const Column = styled(Div)`
     flex-direction: column;
     justify-content: ${props.justifyContent ?? "flex-start"};
     align-items: ${props.alignItems ?? "flex-start"};
+    ${props.border && `border: ${props.border}`};
     {...props}
   `}
 `
@@ -170,6 +171,7 @@ export const Row = styled(Div)`
     flex-direction: row;
     justify-content: ${props.justifyContent ?? "flex-start"};
     align-items: ${props.alignItems ?? "flex-start"};
+    ${props.border && `border: ${props.border}`};
     {...props}
   `}
 `

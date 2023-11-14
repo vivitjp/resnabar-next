@@ -13,7 +13,7 @@ import { useInputForMemo } from "./components/useInputForMemo"
 
 export function UseMemo(): UseReturnType {
   const title = `useMemo`
-  const subTitle = `依存配列がObjectか、Objectの内部のPremitiveに関わらずに再描画を抑制する効果がある。
+  const subTitle = `依存配列がObjectか、Objectの内部のPremitiveかに関わらず、再描画を抑制する効果がある。
 1) 回数表示カウンタをクリック
 2) さらに回数表示カウンタをクリックしつづけても再描画は行われない。`
 
@@ -28,29 +28,31 @@ export function UseMemo(): UseReturnType {
     codeKeyType: "JSTS",
   }
 }
-const code = `■ Zustand
-const countUp = useCount((state) => state.countUp)
-const count = useCount((state) => state.count)
- 
-■ RenderHooks
-const { RenderInput } = useInputForMemo()
- 
-■ fetch
-const { data } = useFetchMock({ id: 1 })
- 
-■ useMemo1
-const reData1 = useMemo(() => {
-  if (!data) return undefined
-  countOutside1++
-  return data.map((item) => ({ ...item }))
-}, [data]) <-- 依存配列がオブジェクト
- 
-■ useMemo2
-const reData2 = useMemo(() => {
-  if (!data) return undefined
-  countOutside2++
-  return data.map((item) => ({ ...item }))
-}, [data?.[0].id]) <--依存配列に最下層の変数を入れても同じ`
+const code = `const Component = () => {
+  //■ Zustand
+  const countUp = useCount((state) => state.countUp)
+  const count = useCount((state) => state.count)
+  
+  //■ RenderHooks
+  const { RenderInput } = useInputForMemo()
+  
+  //■ fetch
+  const { data } = useFetchMock({ id: 1 })
+  
+  //■ useMemo1
+  const memorizedData1 = useMemo(() => {
+    if (!data) return undefined
+    countOutside1++
+    return data.map((item) => ({ ...item }))
+  }, [data]) <-- 依存配列がオブジェクト
+  
+  //■ useMemo2
+  const memorizedData2 = useMemo(() => {
+    if (!data) return undefined
+    countOutside2++
+    return data.map((item) => ({ ...item }))
+  }, [data?.[0].id]) <--依存配列に最下層の変数を入れても同じ
+}`
 
 let countOutside1 = 0
 let countOutside2 = 0
@@ -69,13 +71,13 @@ const ParentCompo = () => {
     incomingData: programmingLanguage,
   })
 
-  const reData1 = useMemo(() => {
+  const memorizedData1 = useMemo(() => {
     if (!data) return undefined
     countOutside1++
     return data.map((item) => ({ ...item, id: item.id * 2 }))
   }, [data])
 
-  const reData2 = useMemo(() => {
+  const memorizedData2 = useMemo(() => {
     if (!data) return undefined
     countOutside2++
     return data.map((item) => ({ ...item, id: item.id * 2 }))
@@ -98,40 +100,50 @@ const ParentCompo = () => {
   return (
     <Row padding="10px" gap="10px" justifyContent="space-between">
       <Column width="400px" gap="10px">
-        <Column>
-          <Button onClick={handle}>回数表示</Button>
-        </Column>
-
-        <Title>fetch コール回数</Title>
-        <Column>
+        <Row gap="10px" alignItems="center">
+          <Button onClick={handle}>Fetchデータ</Button>
           <Div fontSize="18px">Fetch回数: {fetchCounter}</Div>
-        </Column>
+        </Row>
 
-        <Title>再描画チェック: renderHooks Input</Title>
-        <Column width="200px">{RenderInput}</Column>
-        <Column width="160px" gap="10px">
-          <Title>再描画チェック: zustand</Title>
-          <Row alignItems="center" gap="20px">
-            <Button width="100px" onClick={countUp}>
-              Count
-            </Button>
-            <Column padding="10px" fontSize="24px">
-              {count}
-            </Column>
-          </Row>
+        <Column width="300px" gap="10px" border="1px solid #aaa" padding="10px">
+          <Title>再描画チェック用入力: renderHooks Input</Title>
+          <Column width="200px">{RenderInput}</Column>
+          <Column width="160px" gap="10px">
+            <Title>再描画チェック: zustand</Title>
+            <Row alignItems="center" gap="20px">
+              <Button width="100px" onClick={countUp}>
+                Count
+              </Button>
+              <Column padding="10px" fontSize="24px">
+                {count}
+              </Column>
+            </Row>
+          </Column>
         </Column>
       </Column>
       <Column width="fit-content" gap="10px" padding="10px">
         <Row width="400px" justifyContent="space-between" alignItems="center">
-          <Table<ProgrammingLanguage> data={reData1} callback={displayCB} />
+          <Column gap="4px">
+            useMemo1: 依存配列 [data]
+            <Table<ProgrammingLanguage>
+              data={memorizedData1}
+              callback={displayCB}
+            />
+          </Column>
           <Column>
-            <Div fontSize="18px">Count: {counters[0]}</Div>
+            <Div fontSize="18px">データ生成回数: {counters[0]}</Div>
           </Column>
         </Row>
         <Row width="400px" justifyContent="space-between" alignItems="center">
-          <Table<ProgrammingLanguage> data={reData2} callback={displayCB} />
+          <Column gap="4px">
+            useMemo2: 依存配列 [data?.[0].id]
+            <Table<ProgrammingLanguage>
+              data={memorizedData2}
+              callback={displayCB}
+            />
+          </Column>
           <Column>
-            <Div fontSize="18px">Count: {counters[1]}</Div>
+            <Div fontSize="18px">データ生成回数: {counters[1]}</Div>
           </Column>
         </Row>
       </Column>

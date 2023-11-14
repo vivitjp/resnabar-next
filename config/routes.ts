@@ -15,8 +15,8 @@ export const routes: Routes = {
     { name: "CustomHooks", path: "/react/customHooks" },
     { name: "RenderHooks", path: "/react/renderHooks" },
     { name: "useReducer", path: "/react/useReducer" },
-    { name: "変数(ExpImpStatic)1", path: "/react/variables1" },
-    { name: "変数(ExpImpStatic)2", path: "/react/variables2" },
+    { name: "変数のStatic性:1", path: "/react/variables1" },
+    { name: "変数のStatic性:2", path: "/react/variables2" },
   ],
   Redux: [
     { name: "Redux", path: "/redux/basic" },
@@ -32,7 +32,7 @@ export const routes: Routes = {
     { name: "Persist", path: "/zustand/persist" },
     { name: "DevTools", path: "/zustand/devTools" },
   ],
-  Packages: [{ name: "ReactHookForm1", path: "/packages/ReactHookForm1" }],
+  //Packages: [{ name: "ReactHookForm1", path: "/packages/ReactHookForm1" }],
   WebAPI: [
     { name: "iObserver", path: "/webAPI/intersectionObserver" },
     { name: "iObserver(Hide)", path: "/webAPI/intersectionObserverHide" },
