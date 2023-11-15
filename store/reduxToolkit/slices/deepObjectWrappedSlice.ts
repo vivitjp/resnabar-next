@@ -32,14 +32,17 @@ export const deepObjectSliceWrapped = createSlice({
   name: "wrappedDeepObject",
   initialState: initOjectWrapped,
   reducers: {
-    clearDeepOjectWrapped: (state) => {
-      state.data = structuredClone(initOject)
-    },
-
+    //■ 1.入力値をGlobalStateに保存
     setDeepObjectWrapped: (state, action: PayloadAction<DeepObjectState>) => {
       state.data = structuredClone(action.payload)
     },
 
+    //■ 2.初期値代入(一括処理)
+    clearDeepOjectWrapped: (state) => {
+      state.data = structuredClone(initOject)
+    },
+
+    //■ 3.初期値部分代入
     setDeepObjectExceptName: (state) => {
       const { name, ...elses } = initOject
       state.data = { ...state.data, ...structuredClone(elses) }

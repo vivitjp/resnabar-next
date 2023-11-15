@@ -43,15 +43,22 @@ export const deepObjectSlice = createSlice({
   initialState: initOject,
   reducers: {
 
-    //■ 各個に値を与える(深いものにはSpread構文)
+    //■ 1.入力値を個別に保存
+    setDeepObject: (state, action: PayloadAction<DeepObjectState>) => {
+      state.address.pref = action.payload.address?.pref ?? ""
+      state.address.city = action.payload.address?.city ?? ""
+      state.name = action.payload.name
+      state.age = action.payload.age
+    },
+    
+    //■ 2.初期値を値/参照(spread構文)で代入
     clearDeepOjectEach: (state) => {
-      state.address = structuredClone(initOject.address) //深い場合(安全)
-      // state.address = { ...initOject.address }   //Shallow(1段のみの浅さ)はOK
+      state.address = { ...initOject.address }   //Shallow(1段のみの浅さ)はOK
       state.name = initOject.name
       state.age = initOject.age
     },
     
-    //■ 各個に値を与える(参照含む)
+    //■ 3.初期値を値で代入/深いobjectには参照で代入
     clearDeepOjectAddressRef: (state) => {
       // ★参照を保存(initOjectのaddressの参照)しても初期値は不変なのでOKなのか？
       state.address = initOject.address //★ 参照で上書きが許される!!
@@ -59,28 +66,19 @@ export const deepObjectSlice = createSlice({
       state.age = initOject.age
     },
     
-    //■ state自体をSpread構文で上書き(NG)
+    //■ ⛔ state 自体をobject(Spread構文)で初期化
     clearDeepOjectAll: (state) => {
       state = { ...initOject } // state自体は immutableなので上書きされない
     },
     
-    //■ state自体をstructuredClone()で生成したクローンで上書き(NG)
-    //不明な場合は mozilla で検索
+    //■ ⛔ state 自体をobject(structuredClone)で初期化
     clearDeepOjectStruct: (state) => {
       state = structuredClone(initOject) // state自体は immutableなので上書きされない
     },
   
-    //■ state の参照されている深い値を更新
+    //■ 4.objectの深い属性に値代入
     setDeepOjectAddressPref: (state) => {
       state.address.pref = "北海道"
-    },
-  
-    //■ 引数を保存する
-    setDeepObject: (state, action: PayloadAction<DeepObjectState>) => {
-      state.address.pref = action.payload.address?.pref ?? ""
-      state.address.city = action.payload.address?.city ?? ""
-      state.name = action.payload.name
-      state.age = action.payload.age
     },
   }
 })`
@@ -164,7 +162,7 @@ const ParentCompo = () => {
               width="350px"
               onClick={() => dispatch(clearDeepOjectEach())}
             >
-              2.初期値を値/参照(spread構文)で代入
+              2.初期値を値/参照(structuredClone/spread構文)で代入
             </Button>
             <Div>state.address = &#123; ...initOject.address &#125;</Div>
           </Row>
@@ -214,7 +212,7 @@ const ParentCompo = () => {
               width="350px"
               onClick={() => dispatch(setDeepOjectAddressPref())}
             >
-              4.深いobjectに値代入
+              4.objectの深い属性に値代入
             </Button>
             <Div>
               state.address.pref = &apos;北海道&apos;

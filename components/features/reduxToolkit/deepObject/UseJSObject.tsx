@@ -18,15 +18,25 @@ export function UseJSObject(): UseReturnType {
     codeFold: true,
   }
 }
-const code = `コンポーネント外でlet変数宣言
+const code = `■ 型定義
+interface DeepObjectState {
+  address: {
+    pref: string
+    city: string
+  }
+  name: string
+  age: number
+}
+
 let localObject: DeepObjectState
- 
+
 const Compo=()=>{
   const [localPref, setLocalPref] = useState<string>("神奈川")
   const [localCity, setLocalCity] = useState<string>("横浜")
   const [localName, setLocalName] = useState<string>("五十嵐")
   const [localAge, setLocalAge] = useState<number>(18)
   
+  // 1.入力値を代入
   const setInputToObjectHandler = () => {
     localObject = {
       address: {
@@ -38,20 +48,24 @@ const Compo=()=>{
     }
   }
   
+  //🔺2A.初期値Objectの「値と参照」を代入
   const clearHandler = () => {
     localObject.address = initOject.address <--- 参照を代入
     localObject.name = initOject.name
     localObject.age = initOject.age
   }
     
+  //🔺2B.初期値Objectを「Spread構文」で代入
   const clearHandlerBySpread = () => {
     localObject = { ...initOject } <--- Spread構文は deep な属性を参照で渡す
   }
   
+  //⭕2C.初期値Objectを「structuredClone」で代入
   const clearHandlerByStructuredClone = () => {
     localObject = structuredClone(initOject) <--- 深い底まで「構造と値」をクローン
   }
-  
+
+  //3.深い変数を「値」で上書き
   const setInitAddressPrefHandler = () => {
     localObject.address.pref = "北海道" <--- ローカルの深い変数に代入
   }
@@ -83,6 +97,7 @@ const ParentCompo = () => {
   const [localName, setLocalName] = useState<string>("五十嵐")
   const [localAge, setLocalAge] = useState<number>(18)
 
+  //1.入力値を代入
   const setInputToObjectHandler = () => {
     localObject = {
       address: {
@@ -95,6 +110,7 @@ const ParentCompo = () => {
     setTrigger((prev) => !prev)
   }
 
+  //🔺2A.初期値Objectの「値と参照」を代入
   const clearHandler = () => {
     localObject.address = initOject.address
     localObject.name = initOject.name
@@ -102,16 +118,19 @@ const ParentCompo = () => {
     setTrigger((prev) => !prev)
   }
 
+  //🔺2B.初期値Objectを「Spread構文」で代入
   const clearHandlerBySpread = () => {
     localObject = { ...initOject }
     setTrigger((prev) => !prev)
   }
 
+  //⭕2C.初期値Objectを「structuredClone」で代入
   const clearHandlerByStructuredClone = () => {
     localObject = structuredClone(initOject)
     setTrigger((prev) => !prev)
   }
 
+  //3.深い変数を「値」で上書き
   const setInitAddressPrefHandler = () => {
     localObject.address.pref = "北海道"
     setTrigger((prev) => !prev)

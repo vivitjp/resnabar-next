@@ -62,17 +62,17 @@ export const deepObjectSliceWrapped = createSlice({
   initialState: initOjectWrapped,
   reducers: {
 
-    //■ 初期化(一括処理)
-    clearDeepOjectWrapped: (state) => {
-      state.data = structuredClone(initOject)
-    },
- 
-    //■ 値の代入(一括処理)
+    //■ 1.入力値をGlobalStateに保存
     setDeepObjectWrapped: (state, action: PayloadAction<DeepObjectState>) => {
       state.data = structuredClone(action.payload)
     },
  
-    //■ 初期化(部分的上書き) *値の代入も同じ方法
+    //■ 2.初期値代入(一括処理)
+    clearDeepOjectWrapped: (state) => {
+      state.data = structuredClone(initOject)
+    },
+ 
+    //■ 3.初期値部分代入
     setDeepObjectExceptName: (state) => {
       const { name, ...elses } = initOject // 名前以外
       state.data = { ...state.data, ...structuredClone(elses) }
@@ -151,7 +151,7 @@ const ParentCompo = () => {
               width="350px"
               onClick={() => dispatch(clearDeepOjectWrapped())}
             >
-              2.初期値代入
+              2.初期値代入(一括処理)
             </Button>
             <Div>state.data = structuredClone(initOject)</Div>
           </Row>
@@ -161,7 +161,7 @@ const ParentCompo = () => {
               width="350px"
               onClick={() => dispatch(setDeepObjectExceptName())}
             >
-              3.初期値部分代入(名前以外)
+              3.初期値部分代入
             </Button>
             <Div>
               const &#123; name, ...elses &#125; = initOject
