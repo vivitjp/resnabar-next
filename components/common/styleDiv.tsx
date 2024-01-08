@@ -1,6 +1,5 @@
 "use client"
 
-import { ReactElement, ReactNode, isValidElement } from "react"
 import styled, { CSSProperties, css } from "styled-components"
 
 type AttrPosition = "position" | "top" | "bottom" | "right" | "left" | "zIndex"
@@ -39,7 +38,12 @@ type AttrBorder =
   | "borderTop"
   | "borderRadius"
 type AttrColor = "color" | "backgroundColor"
-type AttrFontText = "fontSize" | "fontFamily" | "lineHeight" | "verticalAlign"
+type AttrFontText =
+  | "fontSize"
+  | "fontWeight"
+  | "fontFamily"
+  | "lineHeight"
+  | "verticalAlign"
 type AttrFlow = "overflow"
 type AttrMouseEvent = "cursor"
 
@@ -132,6 +136,7 @@ export const Div = styled.div<Div>`
     ${props.overflow && `overflow: ${props.overflow}`};
     //font
     font-size: ${props.fontSize ?? "inherit"};
+    font-weight: ${props.fontWeight ?? "inherit"};
     font-family: ${props.fontFamily ?? "inherit"};
     ${props.lineHeight && `lineHeight: ${props.lineHeight}`};
     ${props.verticalAlign && `verticalAlign: ${props.verticalAlign}`};

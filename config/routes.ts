@@ -10,6 +10,7 @@ type Routes = Record<string, RouteElements[]>
 export const routes: Routes = {
   Home: [{ name: "Home", path: "/" }],
   React: [
+    { name: "Index As Key", path: "/react/indexAsKey" },
     { name: "useMemo", path: "/react/useMemo" },
     { name: "React.memo", path: "/react/reactMemo" },
     { name: "CustomHooks", path: "/react/customHooks" },
