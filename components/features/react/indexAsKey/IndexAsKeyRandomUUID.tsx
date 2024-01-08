@@ -3,8 +3,8 @@ import { UseReturnType } from "@/components/type/type"
 import { Row, Column, Div } from "@/components/common/styleDiv"
 import { Button, Input } from "@/components/common/styleInput"
 
-export function UseIndexAsKeyNoIds(): UseReturnType {
-  const title = `Index for Key(Dataにidがない場合)`
+export function UseIndexAsKeyRandomUUID(): UseReturnType {
+  const title = `randomUUID() for Key(Dataオブジェクトがidを含まない実装)`
   const subTitle = `データに id がない場合、表示前に self.crypto.randomUUID() を用いて id を付与する`
 
   const jsx = <ParentCompo />

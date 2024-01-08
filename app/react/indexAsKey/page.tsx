@@ -4,9 +4,14 @@ import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
 import { UseIndexAsKey } from "@/components/features/react/indexAsKey/IndexAsKey"
-import { UseIndexAsKeyNoIds } from "@/components/features/react/indexAsKey/IndexAsKeyNoIds"
+import { UseIndexAsKeyRandomUUID } from "@/components/features/react/indexAsKey/IndexAsKeyRandomUUID"
+import { UseIndexAsKeyGetRandomValues } from "@/components/features/react/indexAsKey/IndexAsKeyGetRandomValues"
 
-const codes: (() => UseReturnType)[] = [UseIndexAsKey, UseIndexAsKeyNoIds]
+const codes: (() => UseReturnType)[] = [
+  UseIndexAsKey,
+  UseIndexAsKeyRandomUUID,
+  UseIndexAsKeyGetRandomValues,
+]
 
 export default function PageUseIndexAsKey() {
   return (

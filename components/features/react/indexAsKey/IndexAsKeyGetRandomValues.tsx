@@ -1,12 +1,11 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
 import { Row, Column, Div } from "@/components/common/styleDiv"
 import { Button, Input } from "@/components/common/styleInput"
 
-export function UseIndexAsKey(): UseReturnType {
-  const title = `data自身のid/配列index for Key`
-  const subTitle = `データオブジェクトを表示する際に、配列のindexをKeyとして使用すると起こるReactの再描画時の想定外の挙動
-データオブジェクト自身が持つidとの比較`
+export function UseIndexAsKeyGetRandomValues(): UseReturnType {
+  const title = `getRandomValues() for Key(Dataオブジェクトがidを含まない実装)`
+  const subTitle = `データに id がない場合、表示前に self.crypto.getRandomValues() を用いて id を付与する`
 
   const jsx = <ParentCompo />
 
@@ -21,38 +20,44 @@ export function UseIndexAsKey(): UseReturnType {
   }
 }
 
-type DataType = { id: number; name: string; color?: string }
+type DataType = { id: number; name: string; color: string }
 
-const cities: DataType[] = [
-  { id: 1, name: "tokyo" },
-  { id: 2, name: "osaka" },
-  { id: 3, name: "kobe" },
-  { id: 4, name: "nagoya" },
-]
-const mores: DataType[] = [
-  { id: 10, name: "sendai" },
-  { id: 11, name: "fukuoka" },
-  { id: 12, name: "sapporo" },
-  { id: 13, name: "yokohama" },
-  { id: 14, name: "nagasaki" },
-  { id: 15, name: "akita" },
-  { id: 16, name: "matsumoto" },
-  { id: 17, name: "tokushima" },
-  { id: 18, name: "saga" },
-  { id: 19, name: "maebashi" },
-]
+const cities = ["tokyo", "osaka", "kobe", "nagoya"]
+const mores = ["sendai", "fukuoka", "sapporo", "yokohama", "nagasaki"]
 
 const ParentCompo = () => {
   const [counter, setCounter] = useState(mores.length)
-  const [data, setData] = useState<DataType[]>(
-    cities.map((city) => ({ ...city, color: "gray" }))
-  )
+  const [citiesWithId, setCitiesWithId] = useState<DataType[]>([])
+  const [moresWithId, setMoresWithId] = useState<DataType[]>([])
 
-  const KEY_INDEX = "a-key-index-"
-  const KEY_ID = "a-key-id-"
+  const KEY_INDEX = "c-key-index-"
+  const KEY_ID = "c-key-id-"
+
+  useEffect(() => {
+    const cityIds = new Uint32Array(cities.length)
+    self.crypto.getRandomValues(cityIds)
+
+    const moreIds = new Uint32Array(cities.length)
+    self.crypto.getRandomValues(moreIds)
+
+    setCitiesWithId(
+      cities.map((item, index) => ({
+        id: cityIds[index] as number,
+        name: item,
+        color: "gray",
+      }))
+    )
+    setMoresWithId(
+      mores.map((item, index) => ({
+        id: moreIds[index] as number,
+        name: item,
+        color: "Crimson",
+      }))
+    )
+  }, [])
 
   const handleSetInitialValues = () => {
-    for (let i = 0; i < cities.length; i++) {
+    for (let i = 0; i < citiesWithId.length; i++) {
       const id1 = document.getElementById(`${KEY_INDEX}${i}`)
       if (id1) id1.setAttribute("value", String.fromCharCode(65 + i))
       const id2 = document.getElementById(`${KEY_ID}${i}`)
@@ -62,7 +67,7 @@ const ParentCompo = () => {
 
   const handleAddItems = () => {
     if (!counter) return
-    setData((prev) => [{ ...mores[counter - 1], color: "Crimson" }, ...prev])
+    setCitiesWithId((prev) => [moresWithId[counter - 1], ...prev])
     setCounter((prev) => prev - 1)
   }
 
@@ -77,7 +82,7 @@ const ParentCompo = () => {
           Key=Index
         </Div>
         <Column width="100%" alignItems="flex-start" gap="5px">
-          {data.map((city, index) => (
+          {citiesWithId.map((city, index) => (
             <Row
               key={index}
               width="100%"
@@ -93,12 +98,12 @@ const ParentCompo = () => {
       </Column>
       <Column width="300px" gap="5px" padding="5px">
         <Div fontSize="20px" color="gray" fontWeight="700">
-          Key=id(data自身の)
+          Key=UUID
         </Div>
         <Column width="100%" alignItems="flex-start" gap="5px">
-          {data.map((city, index) => (
+          {citiesWithId.map((city, index) => (
             <Row
-              key={city.id}
+              key={city?.id ?? 0}
               width="100%"
               fontSize="20px"
               color={city.color}
@@ -114,45 +119,50 @@ const ParentCompo = () => {
   )
 }
 
-const code = `type DataType = { id: number; name: string; color?: string }
+const code = `type DataType = { id: string; name: string; color: string }
  
-const cities: DataType[] = [
-  { id: 1, name: "tokyo" },
-  { id: 2, name: "osaka" },
-  { id: 3, name: "kobe" },
-  { id: 4, name: "nagoya" },
-]
- 
-const mores: DataType[] = [
-  { id: 10, name: "sendai" },
-  { id: 11, name: "fukuoka" },
-  { id: 12, name: "sapporo" },
-  { id: 13, name: "yokohama" },
-  { id: 14, name: "nagasaki" },
-  { id: 15, name: "akita" },
-  { id: 16, name: "matsumoto" },
-  { id: 17, name: "tokushima" },
-  { id: 18, name: "saga" },
-  { id: 19, name: "maebashi" },
-]
+const cities = ["tokyo", "osaka", "kobe", "nagoya"]
+const mores = ["sendai", "fukuoka", "sapporo", "yokohama", "nagasaki"]
  
 const ParentCompo = () => {
   const [counter, setCounter] = useState(mores.length)
-  const [data, setData] = useState<DataType[]>(
-    cities.map((city) => ({ ...city, color: "gray" }))
-  )
+  const [citiesWithId, setCitiesWithId] = useState<DataType[]>([])
+  const [moresWithId, setMoresWithId] = useState<DataType[]>([])
  
-  const KEY_INDEX = "a-key-index-"
-  const KEY_ID = "a-key-id-"
+  const KEY_INDEX = "c-key-index-"
+  const KEY_ID = "c-key-id-"
+ 
+  const cityIds = new Uint32Array(cities.length)
+  self.crypto.getRandomValues(cityIds) ⭕ID生成
+ 
+  const moreIds = new Uint32Array(cities.length)
+  self.crypto.getRandomValues(moreIds) ⭕ID生成
+ 
+  useEffect(() => {
+    setCitiesWithId(
+      cities.map((item, index) => ({
+        id: cityIds[index] as number, ⭕ID付与
+        name: item,
+        color: "gray",
+      }))
+    )
+    setMoresWithId(
+      mores.map((item, index) => ({
+        id: moreIds[index] as number, ⭕ID付与
+        name: item,
+        color: "Crimson",
+      }))
+    )
+  }, [])
  
   const handleSetInitialValues = () => { 省略 }
  
   const handleAddItems = () => {
     if (!counter) return
-    setData((prev) => [{ ...mores[counter - 1], color: "Crimson" }, ...prev])
+    setCitiesWithId((prev) => [moresWithId[counter - 1], ...prev])
     setCounter((prev) => prev - 1)
   }
- 
+  
   return (
     <Row>
       <Column>
@@ -162,7 +172,7 @@ const ParentCompo = () => {
       <Column>
         <Div> Key=Index </Div>
         <Column>
-          {data.map((city, index) => (
+          {citiesWithId.map((city, index) => (
             <Row key={index}> 🚫key=index
               <Div>{city.name}</Div>
               <Input id={\`\${KEY_INDEX}\${index}\`} />
@@ -171,10 +181,10 @@ const ParentCompo = () => {
         </Column>
       </Column>
       <Column>
-        <Div> Key=unique_id </Div>
+        <Div> Key=UUID </Div>
         <Column>
-          {data.map((city, index) => (
-            <Row key={city.id}> ⭕key=unique_id
+          {citiesWithId.map((city, index) => (
+            <Row key={city.id}> ⭕key=unique_id(uuidで生成)
               <Div>{city.name}</Div>
               <Input id={\`\${KEY_ID}\${index}\`} />
             </Row>
