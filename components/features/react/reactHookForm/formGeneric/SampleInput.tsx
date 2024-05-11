@@ -23,7 +23,7 @@ export const MyInput = <R extends string | number>({
     <Row width="400px" gap="10px">
       <Input {...register(target, constrain)} />
       {errors?.[target]?.message && (
-        <ErrorBox>{`${errors[target].message}`}</ErrorBox>
+        <ErrorBox>{`${errors?.[target]?.message || "unknown error"}`}</ErrorBox>
       )}
     </Row>
   )
