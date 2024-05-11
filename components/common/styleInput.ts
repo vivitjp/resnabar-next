@@ -14,9 +14,15 @@ const Base = styled.input<CSSProperties>`
     text-align: center;
   `}
 `
-
 export const Input = styled(Base)``
 export const Number = styled(Base).attrs<CSSProperties>({ type: "number" })``
+
+export const Submit = styled(Base).attrs<CSSProperties>({ type: "submit" })`
+  &:hover {
+    background-color: #eee;
+  }
+  box-shadow: 0 0 5px #bbb;
+`
 
 export const TextArea = styled.textarea<CSSProperties>`
   width: 500px;
@@ -52,4 +58,8 @@ export const Button = styled.button<CSSProperties>`
 export const Checkbox = styled.input.attrs<CSSProperties>({ type: "checkbox" })`
   padding: 0;
   width: 30px;
+`
+
+export const ErrorBox = styled.span<CSSProperties>`
+  color: red;
 `

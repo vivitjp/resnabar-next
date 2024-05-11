@@ -12,11 +12,7 @@ import {
 } from "./Layout.style"
 import "./globals.css"
 import StyledComponentsRegistry from "@/library/libs/registry"
-import { ProvidersRedux } from "@/store/redux/providers"
 import { ProvidersReduxToolkit } from "@/store/reduxToolkit/provider"
-
-// import { Inter } from "next/font/google"
-// const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "re:Sunabar",
