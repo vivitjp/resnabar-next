@@ -2,8 +2,8 @@ import React from "react"
 import { UseReturnType } from "@/components/type/type"
 import { SampleForm } from "./formGeneric/SampleForm"
 
-export function ReactHookForm2(): UseReturnType {
-  const title = `useForm`
+export function RHFGenericSample(): UseReturnType {
+  const title = `Generic From & Input`
   const subTitle = ``
 
   const jsx = <ParentCompo />
@@ -14,7 +14,7 @@ export function ReactHookForm2(): UseReturnType {
     code,
     options: [],
     jsx,
-    codeKeyType: "JSTS",
+    codeKeyType: "RHF",
   }
 }
 
@@ -22,42 +22,53 @@ const ParentCompo = () => {
   return <SampleForm />
 }
 
-const code = `■ サンプル Form
-import { SubmitHandler } from "react-hook-form"
+const code = `import { SubmitHandler } from "react-hook-form"
 import { MyInput } from "./SampleInput"
-import { useDefaultForm } from "./useDefaultForm"
+import { GFieldType, useDefaultForm } from "./useDefaultForm"
  
 //Data型
 export type Person = {
   name: string
+  age: number
 }
  
 //Data デフォルト値
 const defaultValues: Person = {
   name: "",
+  age: 0,
 }
  
 //Data 制約
-const constrain: Record<keyof Person, Record<string, unknown>> = {
+const constrain: Record<keyof Person, GFieldType> = {
   name: {
-    required: "This is required",
+    required: "必須項目です",
     minLength: { value: 4, message: "4文字以上必須です" },
+  },
+  age: {
+    required: "必須項目です",
+    min: { value: 1, message: "1以上の数値です" },
+    validate: (item: string) => !!Number(item),
+    validateMessage: "数値のみです",
   },
 }
  
 export const SampleForm = () => {
-  const method = useDefaultForm<Person>({ defaultValues })
-  const { handleSubmit } = method
+  const method = useDefaultForm<Person>({ defaultValues, mode: "onBlur" })
+  const {
+    handleSubmit,
+    formState: { isValid },
+  } = method
  
   const onSubmit: SubmitHandler<Person> = (data) => {
     console.table(data)
   }
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Row>
         <Column>
           <Div>Name</Div>
-          <MyInput<string>
+          <MyInput<Person, string>
             methods={method}
             target={"name"}
             constrain={constrain["name"]}
@@ -65,7 +76,17 @@ export const SampleForm = () => {
         </Column>
       </Row>
       <Row>
-        <Submit value={"OK"} />
+        <Column>
+          <Div>Age</Div>
+          <MyInput<Person, number>
+            methods={method}
+            target={"age"}
+            constrain={constrain["age"]}
+          />
+        </Column>
+      </Row>
+      <Row>
+        <Submit value={"OK"} disabled={!isValid} />
       </Row>
     </form>
   )

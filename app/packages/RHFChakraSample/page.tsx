@@ -3,12 +3,11 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { ReactHookForm2 } from "@/components/features/react/reactHookForm/ReactHookForm2"
-import { ReactHookFormGeneric } from "@/components/features/react/reactHookForm/ReactHookFormGeneric"
+import { RHFChakraSample } from "@/components/features/react/reactHookForm/RHFChakraSample"
 
-const codes: (() => UseReturnType)[] = [ReactHookFormGeneric, ReactHookForm2]
+const codes: (() => UseReturnType)[] = [RHFChakraSample]
 
-export default function PageReactHookForm2() {
+export default function PageRHFChakraSample() {
   return (
     <Column padding={"6px"} gap={"40px"}>
       {!!codes.length &&

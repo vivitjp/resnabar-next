@@ -1,11 +1,13 @@
 import { useForm, UseFormProps, UseFormReturn } from "react-hook-form"
 
-const useDefaultForm = <FORM_TYPE extends Record<string, unknown>>(
-  props: UseFormProps<FORM_TYPE> & {
-    defaultValues: FORM_TYPE
+export type GFieldType = Record<string, unknown>
+
+const useDefaultForm = <FormDataType extends GFieldType>(
+  props: UseFormProps<FormDataType> & {
+    defaultValues: FormDataType
   }
-): UseFormReturn<FORM_TYPE> => {
-  return useForm(props)
+): UseFormReturn<FormDataType> => {
+  return useForm({ ...props })
 }
 
 export { useDefaultForm }

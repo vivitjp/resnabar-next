@@ -3,11 +3,11 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { ReactHookForm1 } from "@/components/features/react/reactHookForm/ReactHookForm1"
+import { RHFControlAIO } from "@/components/features/react/reactHookForm/RHFControlAIO"
 
-const codes: (() => UseReturnType)[] = [ReactHookForm1]
+const codes: (() => UseReturnType)[] = [RHFControlAIO]
 
-export default function PageReactHookForm1() {
+export default function PageRHFControlAIO() {
   return (
     <Column padding={"6px"} gap={"40px"}>
       {!!codes.length &&

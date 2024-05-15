@@ -1,11 +1,21 @@
 import { keysJSTS } from "./keys/JSTS"
 import { keysRedux } from "./keys/REDUX"
+import { keysRHF } from "./keys/RHF"
 import { keysSVG } from "./keys/SVG"
+
+import { Courier_Prime } from "next/font/google"
+
+const courierPrime = Courier_Prime({
+  weight: "400",
+  subsets: ["latin"],
+  display: "auto",
+})
 
 const codeKeyType = {
   JSTS: "JSTS",
   Redux: "Redux",
   SVG: "SVG",
+  RHF: "RHF",
 } as const
 
 export type CodeKeyType = (typeof codeKeyType)[keyof typeof codeKeyType]
@@ -36,6 +46,9 @@ export const syntaxHighlight = ({
     case "SVG":
       keyDef = keysSVG
       break
+    case "RHF":
+      keyDef = keysRHF
+      break
   }
 
   const escaped = escapeHtml(code) ?? ""
@@ -51,11 +64,11 @@ export const syntaxHighlight = ({
       '<span class="syntaxQ">&quot;$1&quot;</span>'
     )
 
-    //Quotation({})
-    result = result.replaceAll(
-      /\{(.+?)\}/g,
-      '<span class="syntaxQ">{$1}</span>'
-    )
+    // //Quotation({})
+    // result = result.replaceAll(
+    //   /\{(.+?)\}/g,
+    //   '<span class="syntaxQ">{$1}</span>'
+    // )
 
     //Keywords
     keyDef.forEach(({ color, keys }) => {
@@ -74,6 +87,7 @@ export const syntaxHighlight = ({
         dangerouslySetInnerHTML={{
           __html: result,
         }}
+        className={courierPrime.className}
       />
     )
   })

@@ -137,7 +137,7 @@ export const Div = styled.div<Div>`
     //font
     font-size: ${props.fontSize ?? "inherit"};
     font-weight: ${props.fontWeight ?? "inherit"};
-    font-family: ${props.fontFamily ?? "inherit"};
+    //font-family: ${props.fontFamily ?? "inherit"};
     ${props.lineHeight && `lineHeight: ${props.lineHeight}`};
     ${props.verticalAlign && `verticalAlign: ${props.verticalAlign}`};
 
@@ -232,8 +232,8 @@ export const Title = styled.div<Div>`
 
 export const DivPre = styled.div<Div>`
   ${(props) => css`
+  ${props.width && `width: ${props.width}`};
     font-size: ${props.fontSize ?? "16px"};
-    font-family: ui-monospace;
     overflow: auto;
     white-space: pre;
     ${props.border && `border: ${props.border}`};

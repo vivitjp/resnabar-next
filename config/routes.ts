@@ -34,8 +34,12 @@ export const routes: Routes = {
     { name: "DevTools", path: "/zustand/devTools" },
   ],
   Packages: [
-    { name: "ReactHookForm1", path: "/packages/ReactHookForm1" },
-    { name: "ReactHookForm<G>", path: "/packages/ReactHookFormG" },
+    { name: "RHF:Regsiter", path: "/packages/RHFRegisterAIOWatch" },
+    { name: "RHF:Control", path: "/packages/RHFControlAIO" },
+    { name: "RHF:ControlPC", path: "/packages/RHFControlPC" },
+    { name: "RHF:Generic", path: "/packages/RHFRegisterGenerics" },
+    { name: "RHF:Chakra", path: "/packages/RHFChakraSample" },
+    { name: "RHF:Input", path: "/packages/RHFInputSample" },
   ],
   WebAPI: [
     { name: "iObserver", path: "/webAPI/intersectionObserver" },

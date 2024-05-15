@@ -75,6 +75,7 @@ export const GroupTitle = styled.summary`
   }
   font-weight: 600;
   user-select: none;
+  font-family: ui-monospace, monospace;
 `
 
 export const GroupBody = styled.div`
@@ -89,6 +90,7 @@ export const MenuItem = styled.a`
   padding: 5px;
   text-decoration: none;
   font-size: 0.8rem;
+  font-family: ui-monospace, monospace;
   color: #777;
   :hover {
     color: var(--main-color);

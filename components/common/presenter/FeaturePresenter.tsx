@@ -67,7 +67,12 @@ export const FeaturePresenter: FC<UseCode> = ({ useCode }) => {
         <>
           <Details open={!codeFold}>
             <Summary>Code</Summary>
-            <Row padding={10} width={"100%"} backgroundColor={"ivory"}>
+            <Row
+              padding={10}
+              width={"100%"}
+              backgroundColor={"#FDFDFD"}
+              boxShadow="0 0 10px #ddd;"
+            >
               <CodeBox code={code} codeKeyType={codeKeyType} />
             </Row>
           </Details>
@@ -166,7 +171,6 @@ const Summary = styled.summary`
   padding: 0;
   width: 100%;
   text-align: right;
-  border-bottom: 1px solid #ccc;
   cursor: pointer;
 `
 

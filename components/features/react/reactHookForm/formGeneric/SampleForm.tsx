@@ -1,6 +1,6 @@
 import { SubmitHandler } from "react-hook-form"
 import { MyInput } from "./SampleInput"
-import { useDefaultForm } from "./useDefaultForm"
+import { GFieldType, useDefaultForm } from "./useDefaultForm"
 import { Row, Column, Div } from "@/components/common/styleDiv"
 import { Submit } from "@/components/common/styleInput"
 
@@ -17,7 +17,7 @@ const defaultValues: Person = {
 }
 
 //Data 制約
-const constrain: Record<keyof Person, Record<string, unknown>> = {
+const constrain: Record<keyof Person, GFieldType> = {
   name: {
     required: "必須項目です",
     minLength: { value: 4, message: "4文字以上必須です" },
@@ -25,17 +25,18 @@ const constrain: Record<keyof Person, Record<string, unknown>> = {
   age: {
     required: "必須項目です",
     min: { value: 1, message: "1以上の数値です" },
-    valueAsNumber: { message: "数値のみです" },
-    pattern: {
-      value: /^(0|[1-9]\d*)(\.\d+)?$/,
-      message: "数値のみです",
-    },
+    validate: (item: string) => !!Number(item),
+    validateMessage: "数値のみです",
   },
 }
 
 export const SampleForm = () => {
-  const method = useDefaultForm<Person>({ defaultValues })
-  const { handleSubmit } = method
+  const method = useDefaultForm<Person>({ defaultValues, mode: "onBlur" })
+
+  const {
+    handleSubmit,
+    formState: { isValid },
+  } = method
 
   const onSubmit: SubmitHandler<Person> = (data) => {
     console.table(data)
@@ -45,8 +46,8 @@ export const SampleForm = () => {
       <Row padding="10px" gap="10px" justifyContent="space-between">
         <Column width="200px" gap="4px">
           <Div>Name</Div>
-          <MyInput<string>
-            methods={method}
+          <MyInput<Person, string>
+            method={method}
             target={"name"}
             constrain={constrain["name"]}
           />
@@ -55,15 +56,15 @@ export const SampleForm = () => {
       <Row padding="10px" gap="10px" justifyContent="space-between">
         <Column width="200px" gap="4px">
           <Div>Age</Div>
-          <MyInput<number>
-            methods={method}
+          <MyInput<Person, number>
+            method={method}
             target={"age"}
             constrain={constrain["age"]}
           />
         </Column>
       </Row>
       <Row padding="10px" gap="10px" justifyContent="space-between">
-        <Submit value={"OK"} />
+        <Submit value={"OK"} disabled={!isValid} />
       </Row>
     </form>
   )
