@@ -3,7 +3,7 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { ExcelAIO } from "@/components/features/react/reactHookForm/ExcelAIO"
+import { ExcelAIO } from "@/components/features/react_package/reactHookForm/ExcelAIO"
 
 const codes: (() => UseReturnType)[] = [ExcelAIO]
 

@@ -3,7 +3,7 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { RHFControlPC } from "@/components/features/react/reactHookForm/controller/Index"
+import { RHFControlPC } from "@/components/features/react_package/reactHookForm/controller/Index"
 
 const codes: (() => UseReturnType)[] = [RHFControlPC]
 

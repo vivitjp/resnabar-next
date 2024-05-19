@@ -3,8 +3,8 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { UseZustandMap } from "@/components/features/zustand/basic/UseZustandMap"
-import { UseZustandSet } from "@/components/features/zustand/basic/UseZustandSet"
+import { UseZustandMap } from "@/components/features/react_package/zustand/basic/UseZustandMap"
+import { UseZustandSet } from "@/components/features/react_package/zustand/basic/UseZustandSet"
 
 const codes: (() => UseReturnType)[] = [UseZustandMap, UseZustandSet]
 

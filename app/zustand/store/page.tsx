@@ -3,8 +3,8 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { UseZustandStore } from "@/components/features/zustand/basic/UseZustandStore"
-import { UseZustandStoreSlice } from "@/components/features/zustand/basic/UseZustandStoreSlice"
+import { UseZustandStore } from "@/components/features/react_package/zustand/basic/UseZustandStore"
+import { UseZustandStoreSlice } from "@/components/features/react_package/zustand/basic/UseZustandStoreSlice"
 
 const codes: (() => UseReturnType)[] = [UseZustandStore, UseZustandStoreSlice]
 

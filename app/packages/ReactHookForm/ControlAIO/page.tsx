@@ -3,7 +3,7 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { ControlAIO } from "@/components/features/react/reactHookForm/ControlAIO"
+import { ControlAIO } from "@/components/features/react_package/reactHookForm/ControlAIO"
 
 const codes: (() => UseReturnType)[] = [ControlAIO]
 

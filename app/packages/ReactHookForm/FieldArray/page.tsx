@@ -3,7 +3,7 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { FieldArrayPC } from "@/components/features/react/reactHookForm/fieldArray/Index"
+import { FieldArrayPC } from "@/components/features/react_package/reactHookForm/fieldArray/Index"
 
 const codes: (() => UseReturnType)[] = [FieldArrayPC]
 

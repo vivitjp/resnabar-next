@@ -3,7 +3,7 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { ChakraAIO } from "@/components/features/react/reactHookForm/ChakraAIO"
+import { ChakraAIO } from "@/components/features/react_package/reactHookForm/ChakraAIO"
 
 const codes: (() => UseReturnType)[] = [ChakraAIO]
 

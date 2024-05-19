@@ -3,7 +3,7 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { WatchIndex } from "@/components/features/react/reactHookForm/watch/Index"
+import { WatchIndex } from "@/components/features/react_package/reactHookForm/watch/Index"
 
 const codes: (() => UseReturnType)[] = [WatchIndex]
 

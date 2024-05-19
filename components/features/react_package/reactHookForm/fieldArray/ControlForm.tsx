@@ -31,7 +31,7 @@ type People = {
 
 //Data デフォルト値
 const defaultValues = {
-  people: [{ name: "佐藤", age: 55, act: 0 }],
+  people: [{ name: "", age: 1, act: 0 }],
 }
 
 //Data 制約
@@ -56,7 +56,7 @@ export const FieldArrayForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<People>({ defaultValues, mode: "onBlur" })
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove, update } = useFieldArray({
     name: "people",
     control,
   })
@@ -79,12 +79,13 @@ export const FieldArrayForm = () => {
     return <p>Total Amount: {total}</p>
   }
 
-  const appendHandler = () => {
-    append({
-      name: "",
-      age: 0,
-      act: 0,
-    })
+  const handleAppend = () => {
+    append(defaultValues.people)
+  }
+
+  const handleUpdate = () => {
+    // const updateObject =
+    //update(index, updateObject)
   }
 
   return (
@@ -118,14 +119,21 @@ export const FieldArrayForm = () => {
                   {...register(`people.${index}.act` as const, constrain.act)}
                   className={errors?.people?.[index]?.act ? "error" : ""}
                 />
-                <Button onClick={() => remove(index)}>DELETE</Button>
+                <Button onClick={handleUpdate} width="80px">
+                  Update
+                </Button>
+                <Button onClick={() => remove(index)} width="80px">
+                  Delete
+                </Button>
               </Column>
             )
           })}
 
           <Total control={control} />
 
-          <Button onClick={appendHandler}>APPEND</Button>
+          <Button onClick={handleAppend} width="80px">
+            APPEND
+          </Button>
           <Submit />
         </form>
       </Column>

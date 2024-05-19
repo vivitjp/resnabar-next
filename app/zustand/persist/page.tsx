@@ -3,10 +3,10 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { UseZustandPersistIndexDB } from "@/components/features/zustand/persist/UseZustandPersistIndexDB"
-import { UseZustandPersistLocalStorage } from "@/components/features/zustand/persist/UseZustandPersistLocalStorage"
-import { UseZustandPersistLocalStoragePartialize } from "@/components/features/zustand/persist/UseZustandPersistLocalStoragePartialize"
-import { UseZustandPersistSession } from "@/components/features/zustand/persist/UseZustandPersistSession"
+import { UseZustandPersistIndexDB } from "@/components/features/react_package/zustand/persist/UseZustandPersistIndexDB"
+import { UseZustandPersistLocalStorage } from "@/components/features/react_package/zustand/persist/UseZustandPersistLocalStorage"
+import { UseZustandPersistLocalStoragePartialize } from "@/components/features/react_package/zustand/persist/UseZustandPersistLocalStoragePartialize"
+import { UseZustandPersistSession } from "@/components/features/react_package/zustand/persist/UseZustandPersistSession"
 
 const codes: (() => UseReturnType)[] = [
   UseZustandPersistSession,

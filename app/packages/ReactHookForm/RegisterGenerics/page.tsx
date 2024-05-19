@@ -3,8 +3,8 @@
 import { Column } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { RHFGenericComponents } from "@/components/features/react/reactHookForm/generic/Components"
-import { RHFGenericSample } from "@/components/features/react/reactHookForm/generic/Index"
+import { RHFGenericComponents } from "@/components/features/react_package/reactHookForm/generic/Components"
+import { RHFGenericSample } from "@/components/features/react_package/reactHookForm/generic/Index"
 
 const codes: (() => UseReturnType)[] = [RHFGenericComponents, RHFGenericSample]
 
