@@ -33,13 +33,15 @@ export const routes: Routes = {
     { name: "Persist", path: "/zustand/persist" },
     { name: "DevTools", path: "/zustand/devTools" },
   ],
-  Packages: [
-    { name: "RHF:Regsiter", path: "/packages/RHFRegisterAIOWatch" },
-    { name: "RHF:Control", path: "/packages/RHFControlAIO" },
-    { name: "RHF:ControlPC", path: "/packages/RHFControlPC" },
-    { name: "RHF:Generic", path: "/packages/RHFRegisterGenerics" },
-    { name: "RHF:Chakra", path: "/packages/RHFChakraSample" },
-    { name: "RHF:Input", path: "/packages/RHFInputSample" },
+  ReactHookForm: [
+    { name: "Register:AIO", path: "/packages/ReactHookForm/RegisterAIO" },
+    { name: "Control:AIO", path: "/packages/ReactHookForm/ControlAIO" },
+    { name: "Generic", path: "/packages/ReactHookForm/RegisterGenerics" },
+    { name: "ExcelCell:AIO", path: "/packages/ReactHookForm/ExcelAIO" },
+    { name: "Control", path: "/packages/ReactHookForm/ControlPC" },
+    { name: "FieldArray", path: "/packages/ReactHookForm/FieldArray" },
+    { name: "Watch", path: "/packages/ReactHookForm/Watch" },
+    { name: "Chakra:AIO", path: "/packages/ReactHookForm/Chakra" },
   ],
   WebAPI: [
     { name: "iObserver", path: "/webAPI/intersectionObserver" },
