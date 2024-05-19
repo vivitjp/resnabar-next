@@ -102,41 +102,41 @@ const ParentCompo = () => {
             boxShadow="2px 2px 10px #ddd"
           >
             {/* name */}
-            <Row>
-              <Div>名前</Div>
+            <Row width="100%" gap="10px" alignItems="flex-start">
+              <Div width="60px">名前</Div>
               <Input {...register("name", constrain.name)} />
               {errors.name && <span>{errors.name.message}</span>}
             </Row>
 
             {/* address */}
-            <Row>
-              <Div>住所</Div>
+            <Row width="100%" gap="10px" alignItems="flex-start">
+              <Div width="60px">住所</Div>
               <Input {...register("address", constrain.address)} />
               {errors.address && <span>必須</span>}
             </Row>
 
             {/* age */}
-            <Row>
-              <Div>年齢</Div>
+            <Row width="100%" gap="10px" alignItems="flex-start">
+              <Div width="60px">年齢</Div>
               <Input {...register("age", constrain.age)} />
               {errors.age && <span>数値のみ</span>}
             </Row>
 
-            <Row>
-              <Div>年(自動)</Div>
+            <Row width="100%" gap="10px" alignItems="flex-start">
+              <Div width="60px">年(自動)</Div>
               <BorderDiv>{ageCalcAuto}</BorderDiv>
             </Row>
 
-            <Row>
-              <Button onClick={handleWatch} padding="0px">
+            <Row width="100%" gap="10px" alignItems="flex-start">
+              <Button onClick={handleWatch} padding="0px" width="60px">
                 年(手動)
               </Button>
               <BorderDiv>{calcAgeMan}</BorderDiv>
             </Row>
 
             {/* act */}
-            <Row>
-              <Div>有効</Div>
+            <Row width="100%" gap="10px" alignItems="flex-start">
+              <Div width="60px">有効</Div>
               <BorderDiv>
                 <Checkbox width="120px" {...register("act", constrain.act)} />
               </BorderDiv>
