@@ -138,6 +138,7 @@ export const Div = styled.div<Div>`
     font-size: ${props.fontSize ?? "inherit"};
     font-weight: ${props.fontWeight ?? "inherit"};
     //font-family: ${props.fontFamily ?? "inherit"};
+    font-family: Consolas, monospace;
     ${props.lineHeight && `lineHeight: ${props.lineHeight}`};
     ${props.verticalAlign && `verticalAlign: ${props.verticalAlign}`};
 
@@ -247,6 +248,7 @@ export const Span = styled.span`
   margin: 0;
   padding: 0;
   font-size: inherit;
+  font-family: Consolas, monospace;
 `
 
 export const SpanRed = styled.span`
@@ -254,4 +256,5 @@ export const SpanRed = styled.span`
   padding: 0;
   color: var(--main-color);
   font-size: inherit;
+  font-family: Consolas, monospace;
 `

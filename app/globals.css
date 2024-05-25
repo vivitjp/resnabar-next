@@ -56,9 +56,3 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
-/* input.number-only {
-  color: blue;
-  -ms-ime-mode: inactive;
-  ime-mode: inactive;
-} */

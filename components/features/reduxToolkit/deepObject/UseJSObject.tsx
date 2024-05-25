@@ -232,11 +232,21 @@ const ParentCompo = () => {
 
       <Column width="200px" marginRight="10px">
         ローカル初期値(initOject)
-        <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
+        <DivPre
+          border={"1px solid #aaa"}
+          padding="10px"
+          margin="10px"
+          fontSize="14px"
+        >
           {JSON.stringify(initOject, undefined, 2)}
         </DivPre>
         ローカルState(localObject)
-        <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
+        <DivPre
+          border={"1px solid #aaa"}
+          padding="10px"
+          margin="10px"
+          fontSize="14px"
+        >
           {JSON.stringify(localObject, undefined, 2)}
         </DivPre>
       </Column>

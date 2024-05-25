@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import styled from "styled-components"
 
 export const Section = styled.section`
@@ -46,6 +45,7 @@ export const MenuNav = styled.nav`
   padding: 5px;
   padding-bottom: 50px;
   background-color: #f3eed5;
+  font-family: Consolas, monospace;
 `
 
 export const Group = styled.details`
@@ -75,7 +75,6 @@ export const GroupTitle = styled.summary`
   }
   font-weight: 600;
   user-select: none;
-  font-family: ui-monospace, monospace;
 `
 
 export const GroupBody = styled.div`
@@ -90,7 +89,6 @@ export const MenuItem = styled.a`
   padding: 5px;
   text-decoration: none;
   font-size: 0.8rem;
-  font-family: ui-monospace, monospace;
   color: #777;
   :hover {
     color: var(--main-color);

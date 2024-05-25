@@ -196,7 +196,9 @@ const ParentCompo = () => {
           </Column>
         </form>
       </Column>
-      <DivPre>{inputData}</DivPre>
+      <DivPre fontSize="14px" padding="5px">
+        {inputData}
+      </DivPre>
     </Row>
   )
 }

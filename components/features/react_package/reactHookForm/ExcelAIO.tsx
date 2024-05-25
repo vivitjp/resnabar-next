@@ -137,7 +137,9 @@ function InputSample() {
           </Button>
         </form>
       </Div>
-      <DivPre>{JSON.stringify(dataValues, undefined, 2)}</DivPre>
+      <DivPre fontSize="14px" padding="5px">
+        {JSON.stringify(dataValues, undefined, 2)}
+      </DivPre>
     </Row>
   )
 }

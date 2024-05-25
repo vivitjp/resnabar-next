@@ -1,22 +1,31 @@
+import { keysJotai } from "./keys/Jotai"
 import { keysJSTS } from "./keys/JSTS"
 import { keysRedux } from "./keys/REDUX"
 import { keysRHF } from "./keys/RHF"
 import { keysSVG } from "./keys/SVG"
-
-import { Courier_Prime } from "next/font/google"
-
-const courierPrime = Courier_Prime({
-  weight: "400",
-  subsets: ["latin"],
-  display: "auto",
-})
 
 const codeKeyType = {
   JSTS: "JSTS",
   Redux: "Redux",
   SVG: "SVG",
   RHF: "RHF",
+  Jotai: "Jotai",
 } as const
+
+const KeySelector = (codeKeyType: string) => {
+  switch (codeKeyType) {
+    case "Redux":
+      return keysRedux
+    case "SVG":
+      return keysSVG
+    case "RHF":
+      return keysRHF
+    case "Jotai":
+      return [...keysJSTS, ...keysJotai]
+    default:
+      return keysJSTS
+  }
+}
 
 export type CodeKeyType = (typeof codeKeyType)[keyof typeof codeKeyType]
 
@@ -36,20 +45,7 @@ export const syntaxHighlight = ({
   codeKeyType = "SVG",
 }: SyntaxHighlight) => {
   let keyDef: KeyDef[] = []
-  switch (codeKeyType) {
-    case "JSTS":
-      keyDef = keysJSTS
-      break
-    case "Redux":
-      keyDef = keysRedux
-      break
-    case "SVG":
-      keyDef = keysSVG
-      break
-    case "RHF":
-      keyDef = keysRHF
-      break
-  }
+  keyDef = KeySelector(codeKeyType)
 
   const escaped = escapeHtml(code) ?? ""
 
@@ -87,7 +83,6 @@ export const syntaxHighlight = ({
         dangerouslySetInnerHTML={{
           __html: result,
         }}
-        className={courierPrime.className}
       />
     )
   })

@@ -135,6 +135,7 @@ const TitleWrapper = styled.div`
 const MainTitle = styled.div`
   font-size: 20px;
   font-weight: 300;
+  font-family: 'Times New Roman', Times, serif;
   color: var(--main-color);
   :before {
     content: "■";

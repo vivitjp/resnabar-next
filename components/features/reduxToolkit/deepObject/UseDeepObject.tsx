@@ -224,11 +224,21 @@ const ParentCompo = () => {
       </Column>
       <Column width="200px" marginRight="10px">
         Global初期値(initOject)
-        <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
+        <DivPre
+          border={"1px solid #aaa"}
+          padding="10px"
+          margin="10px"
+          fontSize="14px"
+        >
           {JSON.stringify(initialState, undefined, 2)}
         </DivPre>
         GlobalState(state)
-        <DivPre border={"1px solid #aaa"} padding="10px" margin="10px">
+        <DivPre
+          border={"1px solid #aaa"}
+          padding="10px"
+          margin="10px"
+          fontSize="14px"
+        >
           {JSON.stringify(deepObject, undefined, 2)}
         </DivPre>
       </Column>

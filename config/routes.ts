@@ -26,12 +26,16 @@ export const routes: Routes = {
     { name: "Shallow/Deep", path: "/reduxToolkit/deepObject" },
   ],
   Zustand: [
-    { name: "Store", path: "/zustand/store" },
-    { name: "再描画", path: "/zustand/basic" },
-    { name: "Map & Set", path: "/zustand/mapSet" },
-    { name: "Subscribe", path: "/zustand/subscribe" },
-    { name: "Persist", path: "/zustand/persist" },
-    { name: "DevTools", path: "/zustand/devTools" },
+    { name: "Store", path: "/packages/zustand/store" },
+    { name: "再描画", path: "/packages/zustand/basic" },
+    { name: "Map & Set", path: "/packages/zustand/mapSet" },
+    { name: "Subscribe", path: "/packages/zustand/subscribe" },
+    { name: "Persist", path: "/packages/zustand/persist" },
+    { name: "DevTools", path: "/packages/zustand/devTools" },
+  ],
+  Jotai: [
+    { name: "基礎", path: "/packages/Jotai/basic" },
+    { name: "非同期", path: "/packages/Jotai/async" },
   ],
   ReactHookForm: [
     { name: "Register:AIO", path: "/packages/ReactHookForm/RegisterAIO" },
