@@ -21,7 +21,7 @@ export const addingCountDerivedAtom = atom(
 )
 
 //非同期fetch: 即時コール
-export const urlAtom = atom("https://vercel-express-ts-01.vercel.app/2")
+export const urlAtom = atom("https://vivit-mock-company.vercel.app/2")
 export const fetchUrlAtom = atom(async (get) => {
   const response = await fetch(get(urlAtom))
   return await response.json()
