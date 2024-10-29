@@ -13,6 +13,7 @@ import {
 import "./globals.css"
 import StyledComponentsRegistry from "@/library/libs/registry"
 import { ProvidersReduxToolkit } from "@/store/reduxToolkit/provider"
+import { Provider } from "@/components/ui/provider"
 
 export const metadata = {
   title: "re:Sunabar",
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body>
         <ProvidersReduxToolkit>
           {/* <ProvidersRedux> */}
+          {/* <Provider> */}
           <StyledComponentsRegistry>
             <Section>
               <Header>re:Sunabar React on Next v13.4</Header>
@@ -51,6 +53,7 @@ export default function RootLayout({
             </Section>
           </StyledComponentsRegistry>
           {/* </ProvidersRedux> */}
+          {/* </Provider> */}
         </ProvidersReduxToolkit>
       </body>
     </html>
