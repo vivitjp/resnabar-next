@@ -1,7 +1,11 @@
 import React, { useMemo, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
 import { DivPre, BorderBox } from "@/components/common/styleDivChakra"
-import { Button, Checkbox, Input } from "@/components/common/styleInputChakra"
+import {
+  Button,
+  CheckboxRef,
+  InputRef,
+} from "@/components/common/styleInputChakra"
 import { useForm, SubmitHandler, useWatch } from "react-hook-form"
 import { Box, Flex } from "@chakra-ui/react"
 
@@ -111,7 +115,7 @@ const ParentCompo = () => {
               alignItems="flex-start"
             >
               <Box width="60px">名前</Box>
-              <Input {...register("name", constrain.name)} />
+              <InputRef {...register("name", constrain.name)} />
               {errors.name && <span>{errors.name.message}</span>}
             </Flex>
 
@@ -123,7 +127,7 @@ const ParentCompo = () => {
               alignItems="flex-start"
             >
               <Box width="60px">住所</Box>
-              <Input {...register("address", constrain.address)} />
+              <InputRef {...register("address", constrain.address)} />
               {errors.address && <span>必須</span>}
             </Flex>
 
@@ -135,7 +139,7 @@ const ParentCompo = () => {
               alignItems="flex-start"
             >
               <Box width="60px">年齢</Box>
-              <Input {...register("age", constrain.age)} />
+              <InputRef {...register("age", constrain.age)} />
               {errors.age && <span>数値のみ</span>}
             </Flex>
 
@@ -170,7 +174,10 @@ const ParentCompo = () => {
             >
               <Box width="60px">有効</Box>
               <BorderBox>
-                <Checkbox width="120px" {...register("act", constrain.act)} />
+                <CheckboxRef
+                  width="120px"
+                  {...register("act", constrain.act)}
+                />
               </BorderBox>
             </Flex>
             <Flex flexFlow="row" width="100%" justifyContent="flex-end">

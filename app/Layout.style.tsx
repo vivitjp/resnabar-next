@@ -31,9 +31,9 @@ export const MenuNav: FC<FlexProps> = (props) => {
       justifyContent="flex-start"
       alignItems="flex-start"
       gap="5px"
-      minWidth="140px; // <---- Side Menu "
-      maxWidth="140px; // <---- Side Menu "
-      padding="5px"
+      minWidth="140px"
+      maxWidth="140px"
+      paddingRight="2px"
       paddingBottom="50px"
       backgroundColor="#f3eed5"
       fontFamily="Consolas, monospace"
@@ -41,16 +41,6 @@ export const MenuNav: FC<FlexProps> = (props) => {
     />
   )
 }
-
-// export const Group = ({ children, ...props }: PropsWithChildren) => {
-//   return (
-//     <details css={cssGroup} {...props}>
-//       {children}
-//     </details>
-//   )
-// }
-
-//DetailsHTMLAttributes<HTMLDetailsElement>.open?: boolean | undefined
 
 export const Group = ({ children, ...props }: PropsWithChildren) => {
   return (

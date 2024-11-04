@@ -1,7 +1,8 @@
 import { Path, UseFormReturn } from "react-hook-form"
-import { ErrorBox, Input } from "@/components/common/styleInputChakra"
+import { Input } from "@/components/common/styleInputChakra"
 import { GFieldType } from "./useDefaultForm"
 import { Flex } from "@chakra-ui/react"
+import { ErrorBox } from "../watch/Error"
 
 type GenericInput<T extends GFieldType, R> = {
   method: UseFormReturn<T>

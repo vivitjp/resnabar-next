@@ -1,7 +1,7 @@
 import { shallow } from "zustand/shallow"
 
 import { Flex } from "@chakra-ui/react"
-import { Input } from "@/components/common/styleInputChakra"
+import { InputRef } from "@/components/common/styleInputChakra"
 import { UseReturnType } from "@/components/type/type"
 import { usePersistLocalStoragePartializeStore } from "@/store/zustand/usePersistLocalStorageStore"
 import { useRef } from "react"
@@ -43,7 +43,7 @@ const NameLocalStorage = () => {
       <Flex flexFlow="row" fontSize="16px" padding="5px" width={"100px"}>
         Name:
       </Flex>
-      <Input ref={nameRef} width={"160px"} />
+      <InputRef ref={nameRef} width={"160px"} />
       <button onClick={handleClickButton} value="Save">
         Submit
       </button>
@@ -93,7 +93,7 @@ const NameLocalStorage = () => {
   return (
     <Flex flexFlow="row" >
       <Flex flexFlow="row" > Name: </Flex>
-      <Input ref={nameRef} />
+      <InputRef ref={nameRef} />
       <button onClick={handleClickButton} value="Save"> Submit </button>
       <Flex flexFlow="row" > {Person.name} </Flex>
     </Flex>

@@ -67,7 +67,7 @@ export const Title: FC<BoxProps> = (Props) => {
   return (
     <Box
       _before={{
-        content: `■`,
+        content: `"■"`,
         marginRight: "5px",
         color: "var(--main-color)",
       }}

@@ -1,6 +1,6 @@
 "use client"
 
-import { FC } from "react"
+import { CSSProperties, FC } from "react"
 import {
   InputProps,
   Input as ChakraInput,
@@ -11,6 +11,7 @@ import {
   ButtonProps,
   Button as ChakraButton,
   Checkbox as ChakraCheckbox,
+  CheckboxProps,
   forwardRef,
 } from "@chakra-ui/react"
 
@@ -30,12 +31,28 @@ export const Input: FC<InputProps> = (props) => {
   )
 }
 
+export const InputRef = forwardRef<InputProps, "input">((props, ref) => {
+  return (
+    <ChakraInput
+      padding="0.2rem"
+      width="100px"
+      height="40px"
+      color="grey"
+      backgroundColor="white"
+      border="1px solid #aaa"
+      borderRadius="5px"
+      textAlign="center"
+      {...props}
+    />
+  )
+})
+
 export const Number: FC<InputProps> = (props) => {
   return <Input type="number" {...props} />
 }
 
-export const Submit: FC<InputProps & { disabled: boolean }> = ({
-  disabled,
+export const Submit: FC<InputProps & { disabled?: boolean }> = ({
+  disabled = false,
   ...props
 }) => {
   return (
@@ -130,24 +147,17 @@ export const Button: FC<ButtonProps> = (props) => {
   )
 }
 
-//   `}
-//   ${(props) =>
-//     props.disabled &&
-//     css`
-//       background-color: #aaa;
-
-export const Checkbox: FC<typeof ChakraCheckbox & { width?: number }> = ({
-  width,
-  ...props
-}) => {
+export const Checkbox: FC<
+  CheckboxProps & { width?: CSSProperties["width"] }
+> = ({ width, ...props }) => {
   return <ChakraCheckbox padding="0" width={width ?? "30px"} {...props} />
 }
 
-// export const Checkbox = styled.input.attrs<CSSProperties>({ type: "checkbox" })`
-//   padding: 0;
-//   width: 30px;
-// `
-
-// export const ErrorBox = styled.span<CSSProperties>`
-//   color: red;
-// `
+export const CheckboxRef = forwardRef<
+  CheckboxProps & { width?: CSSProperties["width"] },
+  "input"
+>(({ width, ...props }, ref) => {
+  return (
+    <ChakraCheckbox ref={ref} padding="0" width={width ?? "30px"} {...props} />
+  )
+})

@@ -15,6 +15,7 @@ import {
   FlexProps,
   Input as ChakraInput,
   InputProps,
+  Text,
 } from "@chakra-ui/react"
 
 type UseCode = {
@@ -82,7 +83,7 @@ export const FeaturePresenter: FC<UseCode> = ({ useCode }) => {
             <Summary>Code</Summary>
             <Flex
               flexFlow="row"
-              padding={10}
+              padding={"10px"}
               width={"100%"}
               backgroundColor={"#FDFDFD"}
               boxShadow="0 0 10px #ddd;"
@@ -178,8 +179,8 @@ const MainTitle: FC<BoxProps> = (props) => {
       fontFamily="'Times New Roman', Times, serif"
       color="var(--main-color)"
       _before={{
-        content: "■",
-        margiRright: "5px",
+        content: `"■"`,
+        marginRight: "5px",
         color: "var(--main-color)",
       }}
       {...props}
@@ -198,14 +199,14 @@ const MainTitle: FC<BoxProps> = (props) => {
 
 const SubTitle: FC<BoxProps> = (props) => {
   return (
-    <Box
+    <Text
       as="pre"
       fontSize="14px"
       color="#666"
       padding="0 30px"
       width="100%"
       whiteSpace="pre-wrap"
-      wordWrap="break-word"
+      // wordWrap="break-word"
       {...props}
     />
   )
@@ -223,8 +224,8 @@ const OptionSubTitle: FC<BoxProps> = (props) => {
   return (
     <Box
       _after={{
-        content: ":",
-        margi: "0 3px",
+        content: `":"`,
+        margin: "0 3px",
         color: "#666",
       }}
       {...props}
@@ -278,7 +279,7 @@ const CodeBox: FC<CodeBox> = ({ code, codeKeyType }) => {
     <Flex
       flexFlow="column"
       gap={"2px"}
-      padding={"16px"}
+      padding={"10px"}
       width={"100%"}
       cursor="text"
     >

@@ -1,6 +1,6 @@
 import { shallow } from "zustand/shallow"
 import { Flex } from "@chakra-ui/react"
-import { Button, Input } from "@/components/common/styleInputChakra"
+import { Button, InputRef } from "@/components/common/styleInputChakra"
 import { UseReturnType } from "@/components/type/type"
 import { useMapSet } from "@/store/zustand/useMapSet"
 import { useRef, useState } from "react"
@@ -60,14 +60,14 @@ const City = () => {
         <Flex flexFlow="row" fontSize="16px" padding="5px">
           Value:
         </Flex>
-        <Input ref={refValue} />
+        <InputRef ref={refValue} />
         <Button onClick={handleSetCity}>Save</Button>
       </Flex>
       <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
         <Flex flexFlow="row" fontSize="16px" padding="5px">
           Key:
         </Flex>
-        <Input ref={refSearchKey} />
+        <InputRef ref={refSearchKey} />
         <Button onClick={handleSearch}>Find</Button>
         <Flex flexFlow="row" fontSize="16px" padding="5px">
           Found(boolean): {foundValue ? "Yes" : "No"}
@@ -120,14 +120,14 @@ const City = () => {
     <>
       <Flex flexFlow="row" >
         <Flex flexFlow="row" > Key: </Flex>
-        <Input ref={refKey} />
+        <InputRef ref={refKey} />
         <Flex flexFlow="row" > Value: </Flex>
-        <Input ref={refValue} />
+        <InputRef ref={refValue} />
         <Button onClick={handleSetCity}> Save </Button>
       </Flex>
       <Flex flexFlow="row" >
         <Flex flexFlow="row" > Key: </Flex>
-        <Input ref={refSearchKey} />
+        <InputRef ref={refSearchKey} />
         <Button onClick={handleSearch}> Find </Button>
         <Flex flexFlow="row" > Found: {foundValue ? "Yes" : "No"} </Flex>
       </Flex>
