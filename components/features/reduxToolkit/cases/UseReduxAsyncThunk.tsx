@@ -1,5 +1,5 @@
 import { UseReturnType } from "@/components/type/type"
-import { BorderDiv, Column, Row } from "@/components/common/styleDiv"
+import { BorderDiv } from "@/components/common/styleDiv"
 
 import { Button, Input } from "@/components/common/styleInput"
 import { useState } from "react"
@@ -10,6 +10,7 @@ import {
   setCounter,
   incrementAsync,
 } from "@/store/reduxToolkit/slices/counterSlice"
+import { Flex } from "@chakra-ui/react"
 
 export function UseReduxAsyncThunk(): UseReturnType {
   const title = `Redux Toolkit AsyncThunk 同期・非同期値取得`
@@ -29,25 +30,25 @@ const counter = useAppSelector(selectCounter)
 const [amount, setAmount] = useState<number>(2)
  
 return (
-  <Column>
-    <Row>
+  <Flex flexFlow="column" >
+    <Flex flexFlow="row" >
       {counter}
       <Button onClick={() => dispatch(resetCounter())}>リセット</Button>
-    </Row>
-    <Row>
+    </Flex>
+    <Flex flexFlow="row" >
       <Button onClick={() => dispatch(setCounter(counter + 1))}>
         同期加算
       </Button>
-    </Row>
-    <Row>
+    </Flex>
+    <Flex flexFlow="row" >
       <Input value={amount}
         onChange={(e) => setAmount(parseInt(e.target.value))}
       />
       <Button onClick={() => dispatch(incrementAsync(amount))}>
         非同期加算
       </Button>
-    </Row>
-  </Column>
+    </Flex>
+  </Flex>
 )`
 
 const ParentCompo = () => {
@@ -56,17 +57,28 @@ const ParentCompo = () => {
   const [amount, setAmount] = useState<number>(2)
 
   return (
-    <Column gap="10px">
-      <Row padding="10px" gap="10px" justifyContent="flex-start">
+    <Flex flexFlow="column" gap="10px">
+      <Flex
+        flexFlow="row"
+        padding="10px"
+        gap="10px"
+        justifyContent="flex-start"
+      >
         <BorderDiv width="160px">{counter}</BorderDiv>
         <Button onClick={() => dispatch(resetCounter())}>リセット</Button>
-      </Row>
-      <Row padding="10px" gap="10px" justifyContent="flex-start">
+      </Flex>
+      <Flex
+        flexFlow="row"
+        padding="10px"
+        gap="10px"
+        justifyContent="flex-start"
+      >
         <Button onClick={() => dispatch(setCounter(counter + 1))}>
           同期加算
         </Button>
-      </Row>
-      <Row
+      </Flex>
+      <Flex
+        flexFlow="row"
         padding="10px"
         gap="10px"
         justifyContent="flex-start"
@@ -80,7 +92,7 @@ const ParentCompo = () => {
           value={amount}
           onChange={(e) => setAmount(parseInt(e.target.value))}
         />
-      </Row>
-    </Column>
+      </Flex>
+    </Flex>
   )
 }

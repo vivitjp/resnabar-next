@@ -1,14 +1,9 @@
 import { SubmitHandler, useForm, useWatch } from "react-hook-form"
-import {
-  Row,
-  Column,
-  Div,
-  DivPre,
-  BorderDiv,
-} from "@/components/common/styleDiv"
+import { Div, DivPre, BorderDiv } from "@/components/common/styleDiv"
 import { Button, Submit } from "@/components/common/styleInput"
 import { ControlInput } from "./ControlInput"
 import { useMemo, useState } from "react"
+import { Flex } from "@chakra-ui/react"
 
 type GFieldType = Record<string, unknown>
 
@@ -69,65 +64,81 @@ export const ControlForm = () => {
   const ageCalcAuto = useMemo(() => (Number(watchAge) || 0) * 2, [watchAge])
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column padding="10px" gap="10px">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" padding="10px" gap="10px">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Column
+          <Flex
+            flexFlow="column"
             padding="10px"
             gap="4px"
             alignItems="flex-start"
             justifyContent="flex-start"
             boxShadow="2px 2px 10px #ddd"
           >
-            <Row width="100%" gap="10px" alignItems="flex-start">
+            <Flex
+              flexFlow="row"
+              width="100%"
+              gap="10px"
+              alignItems="flex-start"
+            >
               <ControlInput
                 method={method}
                 target={"name"}
                 title={"氏名"}
                 constrain={constrain.name}
               />
-            </Row>
+            </Flex>
 
             {/* age */}
-            <Row width="100%" gap="10px" alignItems="flex-start">
+            <Flex
+              flexFlow="row"
+              width="100%"
+              gap="10px"
+              alignItems="flex-start"
+            >
               <ControlInput
                 method={method}
                 target={"age"}
                 title={"年齢"}
                 constrain={constrain.age}
               />
-            </Row>
+            </Flex>
 
-            <Row width="100%" gap="10px" alignItems="center">
+            <Flex flexFlow="row" width="100%" gap="10px" alignItems="center">
               <Div width="60px">年(自動)</Div>
               <BorderDiv width="200px">{ageCalcAuto}</BorderDiv>
-            </Row>
+            </Flex>
 
-            <Row width="100%" gap="10px" alignItems="center">
+            <Flex flexFlow="row" width="100%" gap="10px" alignItems="center">
               <Button width="60px" onClick={handleWatch} padding="0px">
                 年(手動)
               </Button>
               <BorderDiv width="200px">{calcAgeMan}</BorderDiv>
-            </Row>
+            </Flex>
 
             {/* act */}
-            <Row width="100%" gap="10px" alignItems="center">
+            <Flex flexFlow="row" width="100%" gap="10px" alignItems="center">
               <ControlInput
                 method={method}
                 target={"act"}
                 title={"有効"}
                 constrain={constrain.act}
               />
-            </Row>
-            <Row width="100%" justifyContent="flex-end">
+            </Flex>
+            <Flex flexFlow="row" width="100%" justifyContent="flex-end">
               <Submit value={"保存"} disabled={!isValid} />
-            </Row>
-          </Column>
+            </Flex>
+          </Flex>
         </form>
-      </Column>
+      </Flex>
       <DivPre fontSize="14px" padding="5px">
         {inputData}
       </DivPre>
-    </Row>
+    </Flex>
   )
 }

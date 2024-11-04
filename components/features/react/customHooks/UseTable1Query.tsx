@@ -2,8 +2,9 @@ import { useState } from "react"
 import { ProgrammingLanguage } from "../../mock/programmingLanguage"
 import { useFetch } from "../components/UseFetch"
 import { UseReturnType } from "@/components/type/type"
-import { Column, Row, Div } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
+import { Flex } from "@chakra-ui/react"
 
 export function UseTable1Query(): UseReturnType {
   const title = `CustomHooks`
@@ -22,9 +23,9 @@ export function UseTable1Query(): UseReturnType {
 
 const CustomFetch = () => {
   return (
-    <Column padding="10px">
+    <Flex flexFlow="column" padding="10px">
       <TableFromQuery />
-    </Column>
+    </Flex>
   )
 }
 
@@ -50,13 +51,24 @@ const TableFromQuery = () => {
   }
 
   return (
-    <Row width="100%" padding="10px" justifyContent="space-between">
-      <Row width="200px" padding="10px" gap="30px" alignItems="center">
+    <Flex
+      flexFlow="row"
+      width="100%"
+      padding="10px"
+      justifyContent="space-between"
+    >
+      <Flex
+        flexFlow="row"
+        width="200px"
+        padding="10px"
+        gap="30px"
+        alignItems="center"
+      >
         <Button onClick={handleCount}>カウント</Button>
         <Div fontSize="24px">{count}</Div>
-      </Row>
+      </Flex>
       <Table data={data} />
-    </Row>
+    </Flex>
   )
 }
 
@@ -66,13 +78,18 @@ const Table = ({ data }: { data: ProgrammingLanguage[] | undefined }) => {
   return (
     <>
       {!!data?.length && (
-        <Column width="300px" border="1px solid #aaa" padding="10px">
+        <Flex
+          flexFlow="column"
+          width="300px"
+          border="1px solid #aaa"
+          padding="10px"
+        >
           {data.map((item, index) => (
-            <Row key={index} borderBottom="1px solid #aaa">
+            <Flex flexFlow="row" key={index} borderBottom="1px solid #aaa">
               {item.name} : {item.difficulty}
-            </Row>
+            </Flex>
           ))}
-        </Column>
+        </Flex>
       )}
     </>
   )

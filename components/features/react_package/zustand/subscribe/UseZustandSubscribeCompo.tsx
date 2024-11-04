@@ -1,7 +1,7 @@
 import { UseReturnType } from "@/components/type/type"
-import { Row } from "@/components/common/styleDiv"
 import { Input } from "@/components/common/styleInput"
 import { useSubscribeStore } from "./UseZustandSubscribe"
+import { Flex } from "@chakra-ui/react"
 
 export function UseZustandSubscribeComponent(): UseReturnType {
   return {
@@ -21,10 +21,10 @@ const ComponentInside = () => {
   const nameInside = useSubscribeStore((state) => state.name)
  
   return (
-    <Row>
+    <Flex flexFlow="row" >
       リアクティブ
-      <Row> {nameInside} </Row>
-    </Row>
+      <Flex flexFlow="row" > {nameInside} </Flex>
+    </Flex>
   )
 }
   
@@ -37,22 +37,22 @@ const ComponentOutside = () => {
   }
  
   return (
-    <Row>
+    <Flex flexFlow="row" >
       Nonリアクティブ
-      <Row>
+      <Flex flexFlow="row" >
         <Input onChange={handleName} value={nameOutside} />
-        <Row> {nameOutside} </Row> //この値は不変(NonReactive)
-      </Row>
-    </Row>
+        <Flex flexFlow="row" > {nameOutside} </Flex> //この値は不変(NonReactive)
+      </Flex>
+    </Flex>
   )
 }`
 
 const ZustandNonReactive = () => {
   return (
-    <Row gap="10px">
+    <Flex flexFlow="row" gap="10px">
       <ComponentOutside />
       <ComponentInside />
-    </Row>
+    </Flex>
   )
 }
 
@@ -61,12 +61,23 @@ const ComponentInside = () => {
   const nameInside = useSubscribeStore((state) => state.name)
 
   return (
-    <Row fontSize="18px" padding="5px" gap="20px" alignItems="center">
+    <Flex
+      flexFlow="row"
+      fontSize="18px"
+      padding="5px"
+      gap="20px"
+      alignItems="center"
+    >
       リアクティブ
-      <Row fontSize="24px" padding="5px" border="1px solid #aaa">
+      <Flex
+        flexFlow="row"
+        fontSize="24px"
+        padding="5px"
+        border="1px solid #aaa"
+      >
         {nameInside}
-      </Row>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -80,14 +91,20 @@ const ComponentOutside = () => {
   }
 
   return (
-    <Row fontSize="18px" gap="10px" alignItems="center">
+    <Flex flexFlow="row" fontSize="18px" gap="10px" alignItems="center">
       Nonリアクティブ
-      <Row fontSize="18px" padding="5px" gap="20px" border="1px solid #aaa">
+      <Flex
+        flexFlow="row"
+        fontSize="18px"
+        padding="5px"
+        gap="20px"
+        border="1px solid #aaa"
+      >
         <Input onChange={handleName} value={nameOutside} width={"160px"} />
-        <Row fontSize="24px" padding="5px">
+        <Flex flexFlow="row" fontSize="24px" padding="5px">
           {nameOutside} {/* この値は不変(NonReactive)  */}
-        </Row>
-      </Row>
-    </Row>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }

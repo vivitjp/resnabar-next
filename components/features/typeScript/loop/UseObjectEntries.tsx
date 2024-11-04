@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Column, Row } from "@/components/common/styleDiv"
+import { Flex } from "@chakra-ui/react"
 import { Data, data } from "./baseData"
 import { Table } from "@/components/common/Table"
 
@@ -46,12 +46,22 @@ const ParentCompo = () => {
   }, [])
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="fit-content" gap="10px" padding="10px">
-        <Row width="400px" justifyContent="space-between" alignItems="center">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="fit-content" gap="10px" padding="10px">
+        <Flex
+          flexFlow="row"
+          width="400px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Table<Entries> data={entries} callback={displayDataArray} />
-        </Row>
-      </Column>
-    </Row>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }

@@ -4,9 +4,9 @@ import { useState } from "react"
 import styled from "styled-components"
 import { ContainerHidden } from "./ContainerHide"
 import { UseReturnType } from "@/components/type/type"
-import { Row } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
+import { Flex } from "@chakra-ui/react"
 
 export function useIntersectionObserverHideFeature(): UseReturnType {
   const title = `Intersection Observer`
@@ -53,10 +53,10 @@ const Component =()=>{
           <Button>A</Button>
         </FunctionArea>
       </>
-      <Row zIndex={100}> //fixed at bottom
+      <Flex flexFlow="row"  zIndex={100}> //fixed at bottom
         <Button onClick={someHandler}>Back A</Button>
         ...
-      </Row>
+      </Flex>
     </>
   )
  
@@ -102,7 +102,8 @@ const Component =()=>{
           <Button>B</Button>
         </FunctionArea>
       </SectionWrapper>
-      <Row
+      <Flex
+        flexFlow="row"
         position="fixed"
         zIndex="100"
         bottom="0"
@@ -117,7 +118,7 @@ const Component =()=>{
         <Button onClick={handleBackButton}>Back A</Button>
         <Button onClick={handleBackButton}>Back B</Button>
         <Button onClick={handleBackButton}>Back C</Button>
-      </Row>
+      </Flex>
     </>
   )
 

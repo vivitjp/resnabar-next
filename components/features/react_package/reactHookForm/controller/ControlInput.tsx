@@ -1,7 +1,7 @@
 import { Controller, Path, UseFormReturn } from "react-hook-form"
-import { Div, Row } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { ErrorBox } from "@/components/common/styleInput"
-import { Input as ChakraInput } from "@chakra-ui/react"
+import { Input as ChakraInput, Flex } from "@chakra-ui/react"
 
 type GFieldType = Record<string, unknown>
 
@@ -21,7 +21,7 @@ export const ControlInput = <T extends GFieldType, R extends string | number>({
   const { control } = method
 
   return (
-    <Row width="100%" gap="10px" alignItems="flex-start">
+    <Flex flexFlow="row" width="100%" gap="10px" alignItems="flex-start">
       <Div width="60px">{title}</Div>
       <Controller
         render={({ field, fieldState: { error } }) => {
@@ -37,6 +37,6 @@ export const ControlInput = <T extends GFieldType, R extends string | number>({
         control={control}
         rules={constrain}
       />
-    </Row>
+    </Flex>
   )
 }

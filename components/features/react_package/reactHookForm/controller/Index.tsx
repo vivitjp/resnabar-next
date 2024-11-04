@@ -85,52 +85,52 @@ export const ControlForm = () => {
   const ageCalcAuto = useMemo(() => (Number(watchAge) || 0) * 2, [watchAge])
 
   return (
-    <Row>
-      <Column>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="column" >
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Column>
-            <Row>
+          <Flex flexFlow="column" >
+            <Flex flexFlow="row" >
               <ControlInput
                 method={method}
                 target={"name"}
                 title={"氏名"}
                 constrain={constrain.name}
               />
-            </Row>
-            <Row>
+            </Flex>
+            <Flex flexFlow="row" >
               <ControlInput
                 method={method}
                 target={"age"}
                 title={"年齢"}
                 constrain={constrain.age}
               />
-            </Row>
-            <Row>
+            </Flex>
+            <Flex flexFlow="row" >
               <Div>年(自動)</Div>
               <BorderDiv>{ageCalcAuto}</BorderDiv>
-            </Row>
-            <Row>
+            </Flex>
+            <Flex flexFlow="row" >
               <Button onClick={handleWatch}>
                 年(手動)
               </Button>
               <BorderDiv>{calcAgeMan}</BorderDiv>
-            </Row>
-            <Row>
+            </Flex>
+            <Flex flexFlow="row" >
               <ControlInput
                 method={method}
                 target={"act"}
                 title={"有効"}
                 constrain={constrain.act}
               />
-            </Row>
-            <Row>
+            </Flex>
+            <Flex flexFlow="row" >
               <Submit value={"保存"} disabled={!isValid} />
-            </Row>
-          </Column>
+            </Flex>
+          </Flex>
         </form>
-      </Column>
+      </Flex>
       <DivPre>{inputData}</DivPre>
-    </Row>
+    </Flex>
   )
 }
 `

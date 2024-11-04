@@ -4,8 +4,9 @@ import { useRef, useState } from "react"
 import { Container } from "./Container"
 import styled from "styled-components"
 import { UseReturnType } from "@/components/type/type"
-import { Column, Row, Div } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
+import { Flex } from "@chakra-ui/react"
 
 export function useIntersectionObserverFeature(): UseReturnType {
   const title = `Intersection Observer`
@@ -46,9 +47,9 @@ const Component =()=>{
     <Section>
       {items.map((i) => (
         <IntersectionContainer key={i} index={i} onIntersectCallback={intersectCallback}>
-          <Column ref={ref}>
+          <Flex flexFlow="column"  ref={ref}>
             {[...Array(10)].map((_, k) => ( <Div>{k + 1}</Div> ))}
-          </Column>
+          </Flex>
         </Container>
       ))}
     </Section>
@@ -63,8 +64,9 @@ const Component =()=>{
   const items = [1, 2, 3, 4, 5]
 
   const jsx = (
-    <Column width="100%" borderGray>
-      <Row
+    <Flex flexFlow="column" width="100%" borderColor="gray">
+      <Flex
+        flexFlow="row"
         fontSize="24px"
         justifyContent="center"
         alignItems="center"
@@ -81,21 +83,21 @@ const Component =()=>{
         <Div height="30px" justifyContent="center" alignItems="center">
           セクションまで移動
         </Div>
-      </Row>
+      </Flex>
       <Section>
         {items.map((i) => (
           <Container key={i} index={i} onIntersectCallback={intersectCallback}>
-            <Column ref={ref}>
+            <Flex flexFlow="column" ref={ref}>
               {[...Array(10)].fill("").map((_, k) => (
                 <Div key={k} fontSize="18px" padding="2px">
                   {k + 1}
                 </Div>
               ))}
-            </Column>
+            </Flex>
           </Container>
         ))}
       </Section>
-    </Column>
+    </Flex>
   )
 
   const codeKeyType: CodeKeyType = "JSTS"

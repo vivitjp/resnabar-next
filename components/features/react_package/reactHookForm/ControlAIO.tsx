@@ -1,17 +1,12 @@
 import React, { useMemo, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
-import {
-  Row,
-  Column,
-  Div,
-  DivPre,
-  BorderDiv,
-} from "@/components/common/styleDiv"
+import { Div, DivPre, BorderDiv } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 import { useForm, SubmitHandler, useWatch, Controller } from "react-hook-form"
 import {
   Input as ChakraInput,
   Checkbox as ChakraCheckbox,
+  Flex,
 } from "@chakra-ui/react"
 
 export function ControlAIO(): UseReturnType {
@@ -93,10 +88,16 @@ const ParentCompo = () => {
   const ageCalcAuto = useMemo(() => (Number(watchAge) || 0) * 2, [watchAge])
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column padding="10px" gap="10px">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" padding="10px" gap="10px">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Column
+          <Flex
+            flexFlow="column"
             padding="10px"
             gap="4px"
             alignItems="flex-start"
@@ -104,7 +105,12 @@ const ParentCompo = () => {
             boxShadow="2px 2px 10px #ddd"
           >
             {/* name */}
-            <Row width="100%" gap="10px" alignItems="flex-start">
+            <Flex
+              flexFlow="row"
+              width="100%"
+              gap="10px"
+              alignItems="flex-start"
+            >
               <Div width="60px">名前</Div>
               <Controller
                 render={({ field, fieldState: { error } }) => {
@@ -119,10 +125,15 @@ const ParentCompo = () => {
                 control={control}
                 rules={constrain.name}
               />
-            </Row>
+            </Flex>
 
             {/* address */}
-            <Row width="100%" gap="10px" alignItems="flex-start">
+            <Flex
+              flexFlow="row"
+              width="100%"
+              gap="10px"
+              alignItems="flex-start"
+            >
               <Div width="60px">住所</Div>
               <Controller
                 render={({ field, fieldState: { error } }) => {
@@ -137,10 +148,15 @@ const ParentCompo = () => {
                 control={control}
                 rules={constrain.address}
               />
-            </Row>
+            </Flex>
 
             {/* age */}
-            <Row width="100%" gap="10px" alignItems="flex-start">
+            <Flex
+              flexFlow="row"
+              width="100%"
+              gap="10px"
+              alignItems="flex-start"
+            >
               <Div width="60px">年齢</Div>
               <Controller
                 render={({ field, fieldState: { error } }) => {
@@ -161,22 +177,27 @@ const ParentCompo = () => {
                 control={control}
                 rules={constrain.age}
               />
-            </Row>
+            </Flex>
 
-            <Row width="100%" gap="10px" alignItems="center">
+            <Flex flexFlow="row" width="100%" gap="10px" alignItems="center">
               <Div width="60px">年(自動)</Div>
               <BorderDiv width="200px">{ageCalcAuto}</BorderDiv>
-            </Row>
+            </Flex>
 
-            <Row width="100%" gap="10px" alignItems="center">
+            <Flex flexFlow="row" width="100%" gap="10px" alignItems="center">
               <Button width="60px" onClick={handleWatch} padding="0px">
                 年(手動)
               </Button>
               <BorderDiv width="200px">{calcAgeMan}</BorderDiv>
-            </Row>
+            </Flex>
 
             {/* act */}
-            <Row width="100%" gap="10px" alignItems="flex-start">
+            <Flex
+              flexFlow="row"
+              width="100%"
+              gap="10px"
+              alignItems="flex-start"
+            >
               <Div width="60px">有効</Div>
               <Controller
                 render={({ field }) => {
@@ -186,20 +207,20 @@ const ParentCompo = () => {
                 control={control}
                 rules={constrain.act}
               />
-            </Row>
+            </Flex>
 
-            <Row width="100%" justifyContent="flex-end">
+            <Flex flexFlow="row" width="100%" justifyContent="flex-end">
               <Button type="submit" disabled={!isValid}>
                 保存
               </Button>
-            </Row>
-          </Column>
+            </Flex>
+          </Flex>
         </form>
-      </Column>
+      </Flex>
       <DivPre fontSize="14px" padding="5px">
         {inputData}
       </DivPre>
-    </Row>
+    </Flex>
   )
 }
 
@@ -265,12 +286,12 @@ const ParentCompo = () => {
   const ageCalcAuto = useMemo(() => (Number(watchAge) || 0) * 2, [watchAge])
  
   return (
-    <Row>
-      <Column>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="column" >
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Column>
+          <Flex flexFlow="column" >
             {/* name */}
-            <Row>
+            <Flex flexFlow="row" >
               <Div>名前</Div>
               <Controller
                 render={({ field, fieldState: { error } }) => {
@@ -285,10 +306,10 @@ const ParentCompo = () => {
                 control={control}
                 rules={constrain.name}
               />
-            </Row>
+            </Flex>
  
             {/* address */}
-            <Row>
+            <Flex flexFlow="row" >
               <Div>住所</Div>
               <Controller
                 render={({ field, fieldState: { error } }) => {
@@ -303,10 +324,10 @@ const ParentCompo = () => {
                 control={control}
                 rules={constrain.address}
               />
-            </Row>
+            </Flex>
  
             {/* age */}
-            <Row>
+            <Flex flexFlow="row" >
               <Div>年齢</Div>
               <Controller
                 render={({ field, fieldState: { error } }) => {
@@ -327,20 +348,20 @@ const ParentCompo = () => {
                 control={control}
                 rules={constrain.age}
               />
-            </Row>
+            </Flex>
  
-            <Row>
+            <Flex flexFlow="row" >
               <Div>年(自動)</Div>
               <BorderDiv>{ageCalcAuto}</BorderDiv>
-            </Row>
+            </Flex>
  
-            <Row>
+            <Flex flexFlow="row" >
               <Button onClick={handleWatch}> 年(手動) </Button>
               <BorderDiv>{calcAgeMan}</BorderDiv>
-            </Row>
+            </Flex>
  
             {/* act */}
-            <Row>
+            <Flex flexFlow="row" >
               <Div>有効</Div>
               <Controller
                 render={({ field }) => {
@@ -350,15 +371,15 @@ const ParentCompo = () => {
                 control={control}
                 rules={constrain.act}
               />
-            </Row>
+            </Flex>
  
-            <Row>
+            <Flex flexFlow="row" >
               <Button type="submit" disabled={!isValid}> 保存 </Button>
-            </Row>
-          </Column>
+            </Flex>
+          </Flex>
         </form>
-      </Column>
+      </Flex>
       <DivPre>{inputData}</DivPre>
-    </Row>
+    </Flex>
   )
 }`

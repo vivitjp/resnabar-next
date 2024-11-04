@@ -1,7 +1,7 @@
 import { UseReturnType } from "@/components/type/type"
-import { Row } from "@/components/common/styleDiv"
 import { useSubscribeStore } from "./UseZustandSubscribe"
 import React, { useCallback, useEffect, useRef, useState } from "react"
+import { Flex } from "@chakra-ui/react"
 
 export function UseZustandSubscribeCompoTransient(): UseReturnType {
   return {
@@ -23,10 +23,10 @@ useEffect(
 )
 
 return (
-  <Row>
+  <Flex flexFlow="row" >
     Nonリアクティブ
-    <Row> {nameRef.current} </Row>
-  </Row>
+    <Flex flexFlow="row" > {nameRef.current} </Flex>
+  </Flex>
 )`
 
 const ZustandNonReactive = () => {
@@ -43,7 +43,7 @@ const ZustandNonReactive = () => {
   )
 
   return (
-    <Row gap="10px" alignItems="center">
+    <Flex flexFlow="row" gap="10px" alignItems="center">
       <input
         type="checkbox"
         id={id}
@@ -52,7 +52,7 @@ const ZustandNonReactive = () => {
       />
       <label htmlFor={id}>マウント コンポーネント</label>
       {isChecked && <TransientComponent />}
-    </Row>
+    </Flex>
   )
 }
 
@@ -68,11 +68,22 @@ const TransientComponent = () => {
   )
 
   return (
-    <Row fontSize="18px" padding="5px" gap="20px" alignItems="center">
+    <Flex
+      flexFlow="row"
+      fontSize="18px"
+      padding="5px"
+      gap="20px"
+      alignItems="center"
+    >
       Nonリアクティブ
-      <Row fontSize="24px" padding="5px" border="1px solid #aaa">
+      <Flex
+        flexFlow="row"
+        fontSize="24px"
+        padding="5px"
+        border="1px solid #aaa"
+      >
         {nameRef.current}
-      </Row>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }

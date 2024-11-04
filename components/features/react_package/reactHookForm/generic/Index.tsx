@@ -65,29 +65,29 @@ export const SampleForm = () => {
   
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Row>
-        <Column>
+      <Flex flexFlow="row" >
+        <Flex flexFlow="column" >
           <Div>Name</Div>
           <MyInput<Person, string>
             methods={method}
             target={"name"}
             constrain={constrain["name"]}
           />
-        </Column>
-      </Row>
-      <Row>
-        <Column>
+        </Flex>
+      </Flex>
+      <Flex flexFlow="row" >
+        <Flex flexFlow="column" >
           <Div>Age</Div>
           <MyInput<Person, number>
             methods={method}
             target={"age"}
             constrain={constrain["age"]}
           />
-        </Column>
-      </Row>
-      <Row>
+        </Flex>
+      </Flex>
+      <Flex flexFlow="row" >
         <Submit value={"OK"} disabled={!isValid} />
-      </Row>
+      </Flex>
     </form>
   )
 }`

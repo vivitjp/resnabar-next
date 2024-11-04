@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import { useFetch } from "../components/UseFetch"
 import { ProgrammingLanguage } from "../../mock/programmingLanguage"
 import { UseReturnType } from "@/components/type/type"
-import { Row, Column, Div } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { Button, Input } from "@/components/common/styleInput"
+import { Flex } from "@chakra-ui/react"
 
 let Count = 0
 let CounterMemo = 0
@@ -55,54 +56,89 @@ const ParentCompo = () => {
   }
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="200px" gap="4px">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="200px" gap="4px">
         <Div>回数表示</Div>
         <Button onClick={handle}>Add</Button>
         <Div>Primitive引数(id)</Div>
         <Input onChange={handleChangeText} value={id} />
-      </Column>
-      <Column width="fit-content" gap="10px" padding="10px">
-        <Row width="600px" justifyContent="space-between" alignItems="center">
+      </Flex>
+      <Flex flexFlow="column" width="fit-content" gap="10px" padding="10px">
+        <Flex
+          flexFlow="row"
+          width="600px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <ChildNoParam />
           <Div fontSize="20px" color="lightGray">
             コール回数: {counters[0]}
           </Div>
-        </Row>
-        <Row width="600px" justifyContent="space-between" alignItems="center">
+        </Flex>
+        <Flex
+          flexFlow="row"
+          width="600px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <ChildNoParamMemo />
           <Div fontSize="20px" color="CadetBlue">
             コール回数: {counters[1]}
           </Div>
-        </Row>
+        </Flex>
 
-        <Row width="600px" justifyContent="space-between" alignItems="center">
+        <Flex
+          flexFlow="row"
+          width="600px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <ChildParamPrimitive id={id} />
           <Div fontSize="20px" color="lightGray">
             コール回数: {counters[2]}
           </Div>
-        </Row>
-        <Row width="600px" justifyContent="space-between" alignItems="center">
+        </Flex>
+        <Flex
+          flexFlow="row"
+          width="600px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <ChildParamPrimitiveMemo id={id} />
           <Div fontSize="20px" color="CadetBlue">
             コール回数: {counters[3]}
           </Div>
-        </Row>
+        </Flex>
 
-        <Row width="600px" justifyContent="space-between" alignItems="center">
+        <Flex
+          flexFlow="row"
+          width="600px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <ChildParamArray data={data} />
           <Div fontSize="20px" color="lightGray">
             コール回数: {counters[4]}
           </Div>
-        </Row>
-        <Row width="600px" justifyContent="space-between" alignItems="center">
+        </Flex>
+        <Flex
+          flexFlow="row"
+          width="600px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <ChildParamArrayMemo data={data} />
           <Div fontSize="20px" color="CadetBlue">
             コール回数: {counters[5]}
           </Div>
-        </Row>
-      </Column>
-    </Row>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -111,54 +147,60 @@ const ParentCompo = () => {
   const { data } = useFetch({ id: 1 })  //Dummy Fetch
 
   return (
-    <Column>
+    <Flex flexFlow="column" >
       <ChildNoParam />
       <ChildNoParamMemo />
       <ChildParamPrimitive id={7} />
       <ChildParamPrimitiveMemo id={7} />
       <ChildParamArray data={data} />
       <ChildParamArrayMemo data={data} />
-    </Column>
+    </Flex>
   )
 }
   
 const ChildNoParam = () => {
   Count += 1
-  return <Row> 引数なし </Row>
+  return <Flex flexFlow="row" > 引数なし </Flex>
 }
  
 const ChildNoParamMemo = React.memo(() => {
   CounterMemo += 1
-  return <Row> 引数なし、Memo化 </Row>
+  return <Flex flexFlow="row" > 引数なし、Memo化 </Flex>
 })
  
 const ChildParamPrimitive = ({ id }: { id: number }) => {
   CounterParamPrimitive += 1
-  return <Row> 引数あり(id)、id:{id} </Row>
+  return <Flex flexFlow="row" > 引数あり(id)、id:{id} </Flex>
 }
  
 const ChildParamPrimitiveMemo = React.memo(({ id }: { id: number }) => {
   CounterParamPrimitiveMemo += 1
-  return <Row> 引数あり(id)、Memo化、id:{id} </Row>
+  return <Flex flexFlow="row" > 引数あり(id)、Memo化、id:{id} </Flex>
 })
  
 const ChildParamArray = ({ data }: Props) => {
   CounterParamArray += 1
-  return <Row> 引数あり(配列)、Data数:{data.length} </Row>
+  return <Flex flexFlow="row" > 引数あり(配列)、Data数:{data.length} </Flex>
 }
  
 const ChildParamArrayMemo = React.memo(({ data }: Props) => {
   CounterParamArrayMemo += 1
-  return <Row> 引数あり(配列)、Memoあり、Data数:{data.length} </Row>
+  return <Flex flexFlow="row" > 引数あり(配列)、Memoあり、Data数:{data.length} </Flex>
 })`
 
 const ChildNoParam = () => {
   Count += 1
 
   return (
-    <Row width="350px" padding="10px" fontSize="18px" border="1px solid #aaa">
+    <Flex
+      flexFlow="row"
+      width="350px"
+      padding="10px"
+      fontSize="18px"
+      border="1px solid #aaa"
+    >
       引数なし
-    </Row>
+    </Flex>
   )
 }
 
@@ -166,9 +208,15 @@ const ChildNoParamMemo = React.memo(() => {
   CounterMemo += 1
 
   return (
-    <Row width="350px" padding="10px" fontSize="18px" border="1px solid #aaa">
+    <Flex
+      flexFlow="row"
+      width="350px"
+      padding="10px"
+      fontSize="18px"
+      border="1px solid #aaa"
+    >
       引数なし、Memo化
-    </Row>
+    </Flex>
   )
 })
 ChildNoParamMemo.displayName = "ChildNoParamMemo"
@@ -179,9 +227,15 @@ const ChildParamPrimitive = ({ id }: PropsPrimitive) => {
   CounterParamPrimitive += 1
 
   return (
-    <Row width="350px" padding="10px" fontSize="18px" border="1px solid #aaa">
+    <Flex
+      flexFlow="row"
+      width="350px"
+      padding="10px"
+      fontSize="18px"
+      border="1px solid #aaa"
+    >
       引数あり(id)、id:{id}
-    </Row>
+    </Flex>
   )
 }
 
@@ -189,9 +243,15 @@ const ChildParamPrimitiveMemo = React.memo(({ id }: PropsPrimitive) => {
   CounterParamPrimitiveMemo += 1
 
   return (
-    <Row width="350px" padding="10px" fontSize="18px" border="1px solid #aaa">
+    <Flex
+      flexFlow="row"
+      width="350px"
+      padding="10px"
+      fontSize="18px"
+      border="1px solid #aaa"
+    >
       引数あり(id)、Memo化、id:{id}
-    </Row>
+    </Flex>
   )
 })
 ChildParamPrimitiveMemo.displayName = "ChildParamPrimitiveMemo"
@@ -202,9 +262,15 @@ const ChildParamArray = ({ data }: PropsArray) => {
   CounterParamArray += 1
 
   return (
-    <Row width="350px" padding="10px" fontSize="18px" border="1px solid #aaa">
+    <Flex
+      flexFlow="row"
+      width="350px"
+      padding="10px"
+      fontSize="18px"
+      border="1px solid #aaa"
+    >
       引数あり(配列)、Data数:{data?.length ?? 0}
-    </Row>
+    </Flex>
   )
 }
 
@@ -212,9 +278,15 @@ const ChildParamArrayMemo = React.memo(({ data }: PropsArray) => {
   CounterParamArrayMemo += 1
 
   return (
-    <Row width="350px" padding="10px" fontSize="18px" border="1px solid #aaa">
+    <Flex
+      flexFlow="row"
+      width="350px"
+      padding="10px"
+      fontSize="18px"
+      border="1px solid #aaa"
+    >
       引数あり(配列)、Memo化、Data数:{data?.length ?? 0}
-    </Row>
+    </Flex>
   )
 })
 ChildParamArrayMemo.displayName = "ChildParamArrayMemo"

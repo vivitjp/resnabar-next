@@ -1,9 +1,10 @@
-import { Column, Div, Row } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { useAtom } from "jotai"
 import { Button, Input } from "@/components/common/styleInput"
 import { addingCountDerivedAtom } from "./atoms"
 import { useState } from "react"
 import { UseReturnType } from "@/components/type/type"
+import { Flex } from "@chakra-ui/react"
 
 export function JotaiDerivedCounterReducer(): UseReturnType {
   const title = `Derived Atom: Reducer`
@@ -31,21 +32,22 @@ const DerivedCounterReducer = () => {
   }
 
   return (
-    <Row
+    <Flex
+      flexFlow="row"
       padding="5px"
       alignItems="center"
       justifyContent="space-between"
       gap="10px"
     >
-      <Row padding="5px" alignItems="center" gap="10px">
+      <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
         <Div width="100px">派生カウント</Div>
         <Input defaultValue={value} onChange={handleOnChange} />
         <Button onClick={handleSetValue}>セット</Button>
-      </Row>
+      </Flex>
       <Div fontSize="16px" padding="5px">
         {countDerived}
       </Div>
-    </Row>
+    </Flex>
   )
 }
 
@@ -73,13 +75,13 @@ const DerivedCounterReducer = () => {
   }
  
   return (
-    <Row>
-      <Row>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="row" >
         <Div>派生カウント</Div>
         <Input defaultValue={value} onChange={handleOnChange} />
         <Button onClick={handleSetValue}>セット</Button>
-      </Row>
+      </Flex>
       <Div fontSize="16px" padding="5px"> {countDerived} </Div>
-    </Row>
+    </Flex>
   )
 }`

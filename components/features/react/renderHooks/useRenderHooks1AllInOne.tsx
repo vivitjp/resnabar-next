@@ -1,4 +1,4 @@
-import { Column, Row } from "@/components/common/styleDiv"
+import { Flex } from "@chakra-ui/react"
 import { UseReturnType } from "@/components/type/type"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
 import { ChangeEvent, useState } from "react"
@@ -28,13 +28,17 @@ const RenderHooksAllInOne = () => {
   const { RenderInput: RenderInput1 } = useInput()
   const { RenderInput: RenderInput2 } = useInput()
   return (
-    <Column padding="10px">
-      <Row padding="5px">
+    <Flex flexFlow="column" padding="10px">
+      <Flex flexFlow="row" padding="5px">
         <input onChange={handleChange} value={typedValue} />
-      </Row>
-      <Row padding="5px">{RenderInput1}</Row>
-      <Row padding="5px">{RenderInput2}</Row>
-    </Column>
+      </Flex>
+      <Flex flexFlow="row" padding="5px">
+        {RenderInput1}
+      </Flex>
+      <Flex flexFlow="row" padding="5px">
+        {RenderInput2}
+      </Flex>
+    </Flex>
   )
 }
 
@@ -45,10 +49,10 @@ const code = `const RenderHooksAllInOne = () => {
   const handleChange = () => {}
  
   return (
-    <Column>
-      <Row><input onChange={handleChange} value={typedValue} /></Row>
-      <Row>{RenderInput1}</Row>
-      <Row>{RenderInput2}</Row>
-    </Column>
+    <Flex flexFlow="column" >
+      <Flex flexFlow="row" ><input onChange={handleChange} value={typedValue} /></Flex>
+      <Flex flexFlow="row" >{RenderInput1}</Flex>
+      <Flex flexFlow="row" >{RenderInput2}</Flex>
+    </Flex>
   )
 }`

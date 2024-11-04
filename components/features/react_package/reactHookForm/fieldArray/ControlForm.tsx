@@ -5,16 +5,10 @@ import {
   useForm,
   useWatch,
 } from "react-hook-form"
-import {
-  Row,
-  Column,
-  Div,
-  DivPre,
-  BorderDiv,
-} from "@/components/common/styleDiv"
+import { DivPre } from "@/components/common/styleDiv"
 import { Button, Submit } from "@/components/common/styleInput"
-import { ControlInput } from "./ControlInput"
-import { useMemo, useState } from "react"
+import { useState } from "react"
+import { Flex } from "@chakra-ui/react"
 
 type GFieldType = Record<string, unknown>
 
@@ -89,12 +83,18 @@ export const FieldArrayForm = () => {
   }
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column padding="10px" gap="10px">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" padding="10px" gap="10px">
         <form onSubmit={handleSubmit(onSubmit)}>
           {fields.map((field, index) => {
             return (
-              <Column
+              <Flex
+                flexFlow="column"
                 key={field.id}
                 padding="10px"
                 gap="4px"
@@ -125,7 +125,7 @@ export const FieldArrayForm = () => {
                 <Button onClick={() => remove(index)} width="80px">
                   Delete
                 </Button>
-              </Column>
+              </Flex>
             )
           })}
 
@@ -136,10 +136,10 @@ export const FieldArrayForm = () => {
           </Button>
           <Submit />
         </form>
-      </Column>
+      </Flex>
       <DivPre fontSize="14px" padding="5px">
         {inputData}
       </DivPre>
-    </Row>
+    </Flex>
   )
 }

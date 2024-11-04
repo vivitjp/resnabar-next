@@ -1,5 +1,5 @@
 import { UseReturnType } from "@/components/type/type"
-import { Column, Div, DivPre, Row } from "@/components/common/styleDiv"
+import { Div, DivPre } from "@/components/common/styleDiv"
 import { useState } from "react"
 
 import { Button, Input } from "@/components/common/styleInput"
@@ -14,6 +14,7 @@ import {
   setDeepObject,
   setDeepOjectAddressPref,
 } from "@/store/reduxToolkit/slices/deepObjectSlice"
+import { Flex } from "@chakra-ui/react"
 
 export function UseDeepObject(): UseReturnType {
   const title = `Redux Toolkit: Shallow & Deep`
@@ -93,9 +94,19 @@ const ParentCompo = () => {
   const [localAge, setLocalAge] = useState<number>(18)
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="fit-width" padding="10px">
-        <Row padding="10px" gap="10px" justifyContent="space-between">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="fit-width" padding="10px">
+        <Flex
+          flexFlow="row"
+          padding="10px"
+          gap="10px"
+          justifyContent="space-between"
+        >
           pref:
           <Input
             aria-label="Pref"
@@ -128,9 +139,9 @@ const ParentCompo = () => {
               setLocalAge(() => +e.target.value)
             }}
           />
-        </Row>
-        <Column padding="10px">
-          <Row padding="5px" gap="10px" alignItems="center">
+        </Flex>
+        <Flex flexFlow="column" padding="10px">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -154,9 +165,9 @@ const ParentCompo = () => {
               <br />
               state.address.city = action.payload.address.city
             </Div>
-          </Row>
+          </Flex>
 
-          <Row padding="5px" gap="10px" alignItems="center">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -165,9 +176,9 @@ const ParentCompo = () => {
               2.初期値を値/参照(structuredClone/spread構文)で代入
             </Button>
             <Div>state.address = &#123; ...initOject.address &#125;</Div>
-          </Row>
+          </Flex>
 
-          <Row padding="5px" gap="10px" alignItems="center">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -176,9 +187,9 @@ const ParentCompo = () => {
               3.初期値を値で代入/深いobjectには参照で代入
             </Button>
             <Div>state.address = initOject.address //参照</Div>
-          </Row>
+          </Flex>
 
-          <Row padding="5px" gap="10px" alignItems="center">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -190,9 +201,9 @@ const ParentCompo = () => {
               state = &#123; ...initOject &#125; //上書🆖:
               stateトップはimmutable
             </Div>
-          </Row>
+          </Flex>
 
-          <Row padding="5px" gap="10px" alignItems="center">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -204,9 +215,9 @@ const ParentCompo = () => {
               state = structuredClone(initOject) //上書🆖:
               stateトップはimmutable
             </Div>
-          </Row>
+          </Flex>
 
-          <Row padding="5px" gap="10px" alignItems="center">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -219,10 +230,10 @@ const ParentCompo = () => {
               <br />
               🧡 参照先に代入したが初期objectに変化なし!! 👉 Reduxの特質
             </Div>
-          </Row>
-        </Column>
-      </Column>
-      <Column width="200px" marginRight="10px">
+          </Flex>
+        </Flex>
+      </Flex>
+      <Flex flexFlow="column" width="200px" marginRight="10px">
         Global初期値(initOject)
         <DivPre
           border={"1px solid #aaa"}
@@ -241,7 +252,7 @@ const ParentCompo = () => {
         >
           {JSON.stringify(deepObject, undefined, 2)}
         </DivPre>
-      </Column>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }

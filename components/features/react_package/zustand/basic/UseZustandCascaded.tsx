@@ -1,4 +1,4 @@
-import { Column, Row } from "@/components/common/styleDiv"
+import { Flex } from "@chakra-ui/react"
 import { Button, Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/type/type"
 import { useCount2 } from "@/store/zustand/storeBasic"
@@ -21,17 +21,17 @@ export function UseZustandCascaded(): UseReturnType {
 
 const ZustandCascaded = () => {
   return (
-    <Column gap="10px">
+    <Flex flexFlow="column" gap="10px">
       <Count />
-      <Row padding="5px" alignItems="center" gap="10px">
-        <Row fontSize="16px" padding="5px" width={"100px"}>
+      <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
+        <Flex flexFlow="row" fontSize="16px" padding="5px" width={"100px"}>
           Name:
-        </Row>
+        </Flex>
         <InputName />
         <Name />
-      </Row>
+      </Flex>
       <Address />
-    </Column>
+    </Flex>
   )
 }
 
@@ -40,12 +40,12 @@ const Count = () => {
   const count = useCount2((state) => state.count)
 
   return (
-    <Row fontSize="18px" padding="5px" gap="20px">
+    <Flex flexFlow="row" fontSize="18px" padding="5px" gap="20px">
       <Button onClick={countUp}>Count Up</Button>
-      <Row fontSize="24px" padding="5px">
+      <Flex flexFlow="row" fontSize="24px" padding="5px">
         {count}
-      </Row>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -64,9 +64,9 @@ const Name = () => {
   const name = useCount2((state) => state.name)
 
   return (
-    <Row fontSize="16px" padding="5px" width={"300px"}>
+    <Flex flexFlow="row" fontSize="16px" padding="5px" width={"300px"}>
       {name}
-    </Row>
+    </Flex>
   )
 }
 
@@ -79,15 +79,15 @@ const Address = () => {
   }
 
   return (
-    <Row padding="5px" alignItems="center" gap="10px">
-      <Row fontSize="16px" padding="5px" width={"100px"}>
+    <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
+      <Flex flexFlow="row" fontSize="16px" padding="5px" width={"100px"}>
         Address:
-      </Row>
+      </Flex>
       <Input onChange={handleAddress} value={address} width={"160px"} />
-      <Row fontSize="16px" padding="5px" width={"300px"}>
+      <Flex flexFlow="row" fontSize="16px" padding="5px" width={"300px"}>
         {address}
-      </Row>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }
 

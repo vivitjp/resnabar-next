@@ -1,8 +1,9 @@
 import { UseReturnType } from "@/components/type/type"
-import { Column, Div, DivPre, Row } from "@/components/common/styleDiv"
+import { Div, DivPre } from "@/components/common/styleDiv"
 import { useState } from "react"
 import { Button, Input } from "@/components/common/styleInput"
 import { DeepObjectState } from "@/store/reduxToolkit/slices/deepObjectSlice"
+import { Flex } from "@chakra-ui/react"
 
 export function UseJSObject(): UseReturnType {
   const title = `JavaScript の Shallow & Deep`
@@ -137,9 +138,19 @@ const ParentCompo = () => {
   }
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="fit-width" padding="10px">
-        <Row padding="10px" gap="10px" justifyContent="space-between">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="fit-width" padding="10px">
+        <Flex
+          flexFlow="row"
+          padding="10px"
+          gap="10px"
+          justifyContent="space-between"
+        >
           pref:
           <Input
             aria-label="Pref"
@@ -172,10 +183,10 @@ const ParentCompo = () => {
               setLocalAge(() => +e.target.value)
             }}
           />
-        </Row>
+        </Flex>
 
-        <Column padding="10px">
-          <Row padding="5px" gap="10px" alignItems="center">
+        <Flex flexFlow="column" padding="10px">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -183,15 +194,15 @@ const ParentCompo = () => {
             >
               1.入力値を代入
             </Button>
-          </Row>
-          <Row padding="5px" gap="10px" alignItems="center">
+          </Flex>
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button textAlign="left" width="350px" onClick={clearHandler}>
               🔺2A.初期値Objectの「値と参照」を代入
             </Button>
             <Div>localObject.address = initOject.address(参照)</Div>
-          </Row>
+          </Flex>
 
-          <Row padding="5px" gap="10px" alignItems="center">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -200,9 +211,9 @@ const ParentCompo = () => {
               🔺2B.初期値Objectを「Spread構文」で代入
             </Button>
             <Div>localObject = &#123; ...initOject &#125; </Div>
-          </Row>
+          </Flex>
 
-          <Row padding="5px" gap="10px" alignItems="center">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -211,9 +222,9 @@ const ParentCompo = () => {
               ⭕2C.初期値Objectを「structuredClone」で代入
             </Button>
             <Div>localObject = structuredClone(initOject) </Div>
-          </Row>
+          </Flex>
 
-          <Row padding="5px" gap="10px" alignItems="center">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -226,11 +237,11 @@ const ParentCompo = () => {
               <br />
               初期値objectも同時に変わる様子を観察
             </Div>
-          </Row>
-        </Column>
-      </Column>
+          </Flex>
+        </Flex>
+      </Flex>
 
-      <Column width="200px" marginRight="10px">
+      <Flex flexFlow="column" width="200px" marginRight="10px">
         ローカル初期値(initOject)
         <DivPre
           border={"1px solid #aaa"}
@@ -249,7 +260,7 @@ const ParentCompo = () => {
         >
           {JSON.stringify(localObject, undefined, 2)}
         </DivPre>
-      </Column>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }

@@ -1,8 +1,9 @@
 import { useReducer, MouseEvent } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Row, Column, Title } from "@/components/common/styleDiv"
+import { Title } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 import { StateItem, reducerItem } from "./reducer"
+import { Flex } from "@chakra-ui/react"
 
 export function UseReducerCascade(): UseReturnType {
   const title = `NG: useReducer(親子コンポーネント)`
@@ -23,17 +24,17 @@ export function UseReducerCascade(): UseReturnType {
 }
 const code = `const ParentCompo = () => {
   return (
-    <Row>
-      <Column>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="column" >
         <Title>useReducer(cascaded)</Title>
-        <Row>
+        <Flex flexFlow="row" >
           <ChildCompoAdd />
           <ChildCompoSubtract />
           <ChildCompoReset />
           <ChildCompoState />
-        </Row>
-      </Column>
-    </Row>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }
  
@@ -65,7 +66,7 @@ const ChildCompoReset = () => {
  
 const ChildCompoState = () => {
   const [state] = useReducer(reducerItem, initialState)
-  return <Column> {state.item} </Column>
+  return <Flex flexFlow="column" > {state.item} </Flex>
 }
 `
 
@@ -75,17 +76,22 @@ const initialState: StateItem = {
 
 const ParentCompo = () => {
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="400px" gap="10px">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="400px" gap="10px">
         <Title>useReducer(cascaded)</Title>
-        <Row alignItems="center" gap="20px">
+        <Flex flexFlow="row" alignItems="center" gap="20px">
           <ChildCompoAdd />
           <ChildCompoSubtract />
           <ChildCompoReset />
           <ChildCompoState />
-        </Row>
-      </Column>
-    </Row>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -146,8 +152,8 @@ const ChildCompoState = () => {
   const [state] = useReducer(reducerItem, initialState)
 
   return (
-    <Column padding="10px" fontSize="24px">
+    <Flex flexFlow="column" padding="10px" fontSize="24px">
       {state.item}
-    </Column>
+    </Flex>
   )
 }

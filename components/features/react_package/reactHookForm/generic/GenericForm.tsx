@@ -1,8 +1,9 @@
 import { SubmitHandler } from "react-hook-form"
 import { GenericInput } from "./GenericInput"
 import { GFieldType, useDefaultForm } from "./useDefaultForm"
-import { Row, Column, Div } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { Submit } from "@/components/common/styleInput"
+import { Flex } from "@chakra-ui/react"
 
 //Data型
 export type Person = {
@@ -43,29 +44,44 @@ export const GenericForm = () => {
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Row padding="10px" gap="10px" justifyContent="space-between">
-        <Column width="200px" gap="4px">
+      <Flex
+        flexFlow="row"
+        padding="10px"
+        gap="10px"
+        justifyContent="space-between"
+      >
+        <Flex flexFlow="column" width="200px" gap="4px">
           <Div>Name</Div>
           <GenericInput<Person, string>
             method={method}
             target={"name"}
             constrain={constrain["name"]}
           />
-        </Column>
-      </Row>
-      <Row padding="10px" gap="10px" justifyContent="space-between">
-        <Column width="200px" gap="4px">
+        </Flex>
+      </Flex>
+      <Flex
+        flexFlow="row"
+        padding="10px"
+        gap="10px"
+        justifyContent="space-between"
+      >
+        <Flex flexFlow="column" width="200px" gap="4px">
           <Div>Age</Div>
           <GenericInput<Person, number>
             method={method}
             target={"age"}
             constrain={constrain["age"]}
           />
-        </Column>
-      </Row>
-      <Row padding="10px" gap="10px" justifyContent="space-between">
+        </Flex>
+      </Flex>
+      <Flex
+        flexFlow="row"
+        padding="10px"
+        gap="10px"
+        justifyContent="space-between"
+      >
         <Submit value={"OK"} disabled={!isValid} />
-      </Row>
+      </Flex>
     </form>
   )
 }

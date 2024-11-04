@@ -1,6 +1,6 @@
 import { shallow } from "zustand/shallow"
 
-import { Column, Row } from "@/components/common/styleDiv"
+import { Flex } from "@chakra-ui/react"
 import { Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/type/type"
 import { usePerson2 } from "@/store/zustand/storeBasic"
@@ -25,10 +25,10 @@ export function UseZustandObjectNamedShallow(): UseReturnType {
 
 const ZustandObject = () => {
   return (
-    <Column gap="10px">
+    <Flex flexFlow="column" gap="10px">
       <Name />
       <Address />
-    </Column>
+    </Flex>
   )
 }
 
@@ -43,15 +43,15 @@ const Name = () => {
   }
 
   return (
-    <Row padding="5px" alignItems="center" gap="10px">
-      <Row fontSize="16px" padding="5px" width={"100px"}>
+    <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
+      <Flex flexFlow="row" fontSize="16px" padding="5px" width={"100px"}>
         Name:
-      </Row>
+      </Flex>
       <Input onChange={handleName} value={Person.name} width={"160px"} />
-      <Row fontSize="16px" padding="5px" width={"300px"}>
+      <Flex flexFlow="row" fontSize="16px" padding="5px" width={"300px"}>
         {Person.name}
-      </Row>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -64,15 +64,15 @@ const Address = () => {
   }
 
   return (
-    <Row padding="5px" alignItems="center" gap="10px">
-      <Row fontSize="16px" padding="5px" width={"100px"}>
+    <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
+      <Flex flexFlow="row" fontSize="16px" padding="5px" width={"100px"}>
         Address:
-      </Row>
+      </Flex>
       <Input onChange={handleAddress} value={address} width={"160px"} />
-      <Row fontSize="16px" padding="5px" width={"300px"}>
+      <Flex flexFlow="row" fontSize="16px" padding="5px" width={"300px"}>
         {address}
-      </Row>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -95,11 +95,11 @@ const Name = () => {
   )
 
   return (
-    <Row>
-      <Row> Name: </Row>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="row" > Name: </Flex>
       <Input onChange={() => Person.setName(...)} value={name}/>
-      <Row> {Person.name} </Row>
-    </Row>
+      <Flex flexFlow="row" > {Person.name} </Flex>
+    </Flex>
   )
 }
  
@@ -109,10 +109,10 @@ const Address = () => {
   const setAddress = usePerson((state) => state.setAddress)
  
   return (
-    <Row>
-      <Row> Address: </Row>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="row" > Address: </Flex>
       <Input onChange={() => setAddress(...)} value={address} />
-      <Row> {address} </Row>
-    </Row>
+      <Flex flexFlow="row" > {address} </Flex>
+    </Flex>
   )
 }`

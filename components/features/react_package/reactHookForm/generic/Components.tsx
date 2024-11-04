@@ -52,7 +52,7 @@ export const MyInput = <T extends GFieldType, R extends string | number>({
   } = method
  
   return (
-    <Row>
+    <Flex flexFlow="row" >
       <Input {...register(target, constrain)} />
       {errors?.[target] && (
         <ErrorBox>
@@ -61,6 +61,6 @@ export const MyInput = <T extends GFieldType, R extends string | number>({
             : (errors?.[target]?.message as string)}
         </ErrorBox>
       )}
-    </Row>
+    </Flex>
   )
 }`

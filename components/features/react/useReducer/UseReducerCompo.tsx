@@ -1,8 +1,9 @@
 import { useReducer, MouseEvent } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Row, Column, Title } from "@/components/common/styleDiv"
+import { Title } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 import { reducerItem } from "./reducer"
+import { Flex } from "@chakra-ui/react"
 
 export function UseReducerCompo(): UseReturnType {
   const title = `useReducer(基本サンプル)`
@@ -36,17 +37,17 @@ const ParentCompo = () => {
   }
  
   return (
-    <Row>
-      <Column>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="column" >
         <Title>useReducer</Title>
-        <Row>
+        <Flex flexFlow="row" >
           <Button onClick={countAdd}> Add </Button>
           <Button onClick={countSubtract}> Subtract </Button>
           <Button onClick={countReset}> Reset </Button>
-          <Column> {state.item} </Column>
-        </Row>
-      </Column>
-    </Row>
+          <Flex flexFlow="column" > {state.item} </Flex>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }
 `
@@ -80,18 +81,23 @@ const ParentCompo = () => {
   }
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="400px" gap="10px">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="400px" gap="10px">
         <Title>useReducer</Title>
-        <Row alignItems="center" gap="20px">
+        <Flex flexFlow="row" alignItems="center" gap="20px">
           <Button onClick={countAdd}>Add</Button>
           <Button onClick={countSubtract}>Subtract</Button>
           <Button onClick={countReset}>Reset</Button>
-          <Column padding="10px" fontSize="24px">
+          <Flex flexFlow="column" padding="10px" fontSize="24px">
             {state.item}
-          </Column>
-        </Row>
-      </Column>
-    </Row>
+          </Flex>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }

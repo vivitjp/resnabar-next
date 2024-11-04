@@ -1,8 +1,9 @@
 import { useReducer, MouseEvent, Dispatch } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Row, Column, Title } from "@/components/common/styleDiv"
+import { Title } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 import { ActionItem, StateItem, reducerItem } from "./reducer"
+import { Flex } from "@chakra-ui/react"
 
 export function UseReducerCascadeByParameter(): UseReturnType {
   const title = `NG: useReducer(親子コンポーネント by 引数)`
@@ -25,17 +26,17 @@ const code = `const ParentCompo = () => {
   const [state, dispatch] = useReducer(reducerItem, initialState)
 
   return (
-    <Row>
-      <Column>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="column" >
         <Title>useReducer(cascaded)</Title>
-        <Row>
+        <Flex flexFlow="row" >
           <ChildCompoAdd dispatch={dispatch} />
           <ChildCompoSubtract dispatch={dispatch} />
           <ChildCompoReset dispatch={dispatch} />
           <ChildCompoState state={state} />
-        </Row>
-      </Column>
-    </Row>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }
  
@@ -69,7 +70,7 @@ const ChildCompoReset = ({ dispatch }: Reducer) => {
 }
  
 const ChildCompoState = ({ state }: Reducer) => {
-  return <Column> {state?.item ?? ""} </Column>
+  return <Flex flexFlow="column" > {state?.item ?? ""} </Flex>
 }
 `
 
@@ -81,17 +82,22 @@ const ParentCompo = () => {
   const [state, dispatch] = useReducer(reducerItem, initialState)
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="400px" gap="10px">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="400px" gap="10px">
         <Title>useReducer(cascaded)</Title>
-        <Row alignItems="center" gap="20px">
+        <Flex flexFlow="row" alignItems="center" gap="20px">
           <ChildCompoAdd dispatch={dispatch} />
           <ChildCompoSubtract dispatch={dispatch} />
           <ChildCompoReset dispatch={dispatch} />
           <ChildCompoState state={state} />
-        </Row>
-      </Column>
-    </Row>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -152,8 +158,8 @@ const ChildCompoReset = ({ dispatch }: Reducer) => {
 
 const ChildCompoState = ({ state }: Reducer) => {
   return (
-    <Column padding="10px" fontSize="24px">
+    <Flex flexFlow="column" padding="10px" fontSize="24px">
       {state?.item ?? ""}
-    </Column>
+    </Flex>
   )
 }

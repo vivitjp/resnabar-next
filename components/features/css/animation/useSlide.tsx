@@ -1,6 +1,7 @@
-import { Column, Div, SlideWidth } from "@/components/common/styleDiv"
+import { SlideWidth } from "@/components/common/styleDivChakra"
 import { UseReturnType } from "@/components/type/type"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function useAnimationSlide(): UseReturnType {
   const title = `Animation: Slide`
@@ -22,17 +23,18 @@ export function useAnimationSlide(): UseReturnType {
 }`
 
   const jsx = (
-    <Column width="100%" borderGray>
-      <Div>Mock Div</Div>
+    <Flex flexFlow="column" width="100%" border="gray">
+      <Box>Mock Div</Box>
       <SlideWidth
         top="0px"
         right="0px"
-        openedWidth="300px"
-        closedWidth="20px"
-        duration="0.3s"
+        transition="width 0.3s ease-in-out 250ms"
+        _hover={{ width: "300px" }}
+        width="20px"
         height="100%"
       >
-        <Column
+        <Flex
+          flexFlow="column"
           width="300px"
           padding="10px"
           paddingLeft="20px"
@@ -42,18 +44,19 @@ export function useAnimationSlide(): UseReturnType {
           {mockItems.map((menu, index) => (
             <div key={index}>{menu}</div>
           ))}
-        </Column>
+        </Flex>
       </SlideWidth>
 
       <SlideWidth
         top="0px"
         left="0px"
-        openedWidth="300px"
-        closedWidth="20px"
-        duration="0.3s"
+        transition="width 0.3s ease-in-out 250ms"
+        _hover={{ width: "300px" }}
+        width="20px"
         height="100%"
       >
-        <Column
+        <Flex
+          flexFlow="column"
           width="300px"
           padding="10px"
           paddingLeft="20px"
@@ -63,9 +66,9 @@ export function useAnimationSlide(): UseReturnType {
           {mockItems.map((menu, index) => (
             <div key={index}>{menu}</div>
           ))}
-        </Column>
+        </Flex>
       </SlideWidth>
-    </Column>
+    </Flex>
   )
 
   const codeKeyType: CodeKeyType = "JSTS"

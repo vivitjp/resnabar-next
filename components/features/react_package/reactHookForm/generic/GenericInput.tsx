@@ -1,7 +1,7 @@
 import { Path, UseFormReturn } from "react-hook-form"
-import { Row } from "@/components/common/styleDiv"
 import { ErrorBox, Input } from "@/components/common/styleInput"
 import { GFieldType } from "./useDefaultForm"
+import { Flex } from "@chakra-ui/react"
 
 type GenericInput<T extends GFieldType, R> = {
   method: UseFormReturn<T>
@@ -20,7 +20,7 @@ export const GenericInput = <T extends GFieldType, R extends string | number>({
   } = method
 
   return (
-    <Row width="400px" gap="10px">
+    <Flex flexFlow="row" width="400px" gap="10px">
       <Input {...register(target, constrain)} />
       {errors?.[target] && (
         <ErrorBox>
@@ -29,6 +29,6 @@ export const GenericInput = <T extends GFieldType, R extends string | number>({
             : (errors?.[target]?.message as string)}
         </ErrorBox>
       )}
-    </Row>
+    </Flex>
   )
 }

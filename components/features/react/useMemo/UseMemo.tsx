@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from "react"
 import { useCount2 } from "@/store/zustand/storeBasic"
 import { UseReturnType } from "@/components/type/type"
-import { Row, Column, Title, Div } from "@/components/common/styleDiv"
+import { Title, Div } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 import { Table } from "@/components/common/Table"
 import {
@@ -10,6 +10,7 @@ import {
 } from "../../mock/programmingLanguage"
 import { useFetchMock } from "../components/UseFetchMock"
 import { useInputForMemo } from "./components/useInputForMemo"
+import { Flex } from "@chakra-ui/react"
 
 export function UseMemo(): UseReturnType {
   const title = `useMemo`
@@ -98,55 +99,78 @@ const ParentCompo = () => {
   }, [])
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="400px" gap="10px">
-        <Row gap="10px" alignItems="center">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="400px" gap="10px">
+        <Flex flexFlow="row" gap="10px" alignItems="center">
           <Button onClick={handle}>Fetchデータ</Button>
           <Div fontSize="18px">Fetch回数: {fetchCounter}</Div>
-        </Row>
+        </Flex>
 
-        <Column width="300px" gap="10px" border="1px solid #aaa" padding="10px">
+        <Flex
+          flexFlow="column"
+          width="300px"
+          gap="10px"
+          border="1px solid #aaa"
+          padding="10px"
+        >
           <Title>再描画チェック用入力: renderHooks Input</Title>
-          <Column width="200px">{RenderInput}</Column>
-          <Column width="160px" gap="10px">
+          <Flex flexFlow="column" width="200px">
+            {RenderInput}
+          </Flex>
+          <Flex flexFlow="column" width="160px" gap="10px">
             <Title>再描画チェック: zustand</Title>
-            <Row alignItems="center" gap="20px">
+            <Flex flexFlow="row" alignItems="center" gap="20px">
               <Button width="100px" onClick={countUp}>
                 Count
               </Button>
-              <Column padding="10px" fontSize="24px">
+              <Flex flexFlow="column" padding="10px" fontSize="24px">
                 {count}
-              </Column>
-            </Row>
-          </Column>
-        </Column>
-      </Column>
-      <Column width="fit-content" gap="10px" padding="10px">
-        <Row width="400px" justifyContent="space-between" alignItems="center">
-          <Column gap="4px">
+              </Flex>
+            </Flex>
+          </Flex>
+        </Flex>
+      </Flex>
+      <Flex flexFlow="column" width="fit-content" gap="10px" padding="10px">
+        <Flex
+          flexFlow="row"
+          width="400px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Flex flexFlow="column" gap="4px">
             useMemo1: 依存配列 [data]
             <Table<ProgrammingLanguage>
               data={memorizedData1}
               callback={displayCB}
             />
-          </Column>
-          <Column>
+          </Flex>
+          <Flex flexFlow="column">
             <Div fontSize="18px">データ生成回数: {counters[0]}</Div>
-          </Column>
-        </Row>
-        <Row width="400px" justifyContent="space-between" alignItems="center">
-          <Column gap="4px">
+          </Flex>
+        </Flex>
+        <Flex
+          flexFlow="row"
+          width="400px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Flex flexFlow="column" gap="4px">
             useMemo2: 依存配列 [data?.[0].id]
             <Table<ProgrammingLanguage>
               data={memorizedData2}
               callback={displayCB}
             />
-          </Column>
-          <Column>
+          </Flex>
+          <Flex flexFlow="column">
             <Div fontSize="18px">データ生成回数: {counters[1]}</Div>
-          </Column>
-        </Row>
-      </Column>
-    </Row>
+          </Flex>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }

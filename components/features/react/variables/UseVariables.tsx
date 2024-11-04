@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Column, Div, Row } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { Button } from "@/components/common/styleInput"
 
 //以下のような primitive な変数を import することはNG
@@ -8,6 +8,7 @@ import { Button } from "@/components/common/styleInput"
 
 //以下のような 参照のみ import することはOK
 import { valueArrayInLib } from "@/library/libs/variables"
+import { Flex } from "@chakra-ui/react"
 
 export function UseVariables(): UseReturnType {
   const title = `React: Variables`
@@ -90,28 +91,28 @@ const ParentCompo = () => {
   }
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="flex-start">
-      <Row>
-        <Row width="150px" alignItems="center">
+    <Flex flexFlow="row" padding="10px" gap="10px" justifyContent="flex-start">
+      <Flex flexFlow="row">
+        <Flex flexFlow="row" width="150px" alignItems="center">
           <Button onClick={handleCountUp}>Count Up</Button>
-        </Row>
-        <Column gap="10px">
-          <Row fontSize="18px">
+        </Flex>
+        <Flex flexFlow="column" gap="10px">
+          <Flex flexFlow="row" fontSize="18px">
             <Div width="400px">■ コンポーネント外に宣言された変数:</Div>
             <Div>{valueOutside}</Div>
-          </Row>
+          </Flex>
 
-          <Row fontSize="18px">
+          <Flex flexFlow="row" fontSize="18px">
             <Div width="400px">■ useStateで宣言された変数:</Div>
             <Div>{valueInside}</Div>
-          </Row>
+          </Flex>
 
-          <Row fontSize="18px">
+          <Flex flexFlow="row" fontSize="18px">
             <Div width="400px">■ 外部のライブラリで宣言、importされた変数:</Div>
             <Div>{valueArrayInLib[0]}</Div>
-          </Row>
-        </Column>
-      </Row>
-    </Row>
+          </Flex>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }

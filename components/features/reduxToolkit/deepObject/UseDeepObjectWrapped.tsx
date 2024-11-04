@@ -1,5 +1,5 @@
 import { UseReturnType } from "@/components/type/type"
-import { Column, Div, DivPre, Row } from "@/components/common/styleDiv"
+import { Div, DivPre } from "@/components/common/styleDiv"
 import { useState } from "react"
 
 import { Button, Input } from "@/components/common/styleInput"
@@ -11,6 +11,7 @@ import {
   setDeepObjectWrapped,
   setDeepObjectExceptName,
 } from "@/store/reduxToolkit/slices/deepObjectWrappedSlice"
+import { Flex } from "@chakra-ui/react"
 
 export function UseDeepObjectWrapped(): UseReturnType {
   const title = `Redux Toolkit: Shallow & Deep(一括処理)`
@@ -90,9 +91,19 @@ const ParentCompo = () => {
   const [localAge, setLocalAge] = useState<number>(18)
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="fit-width" padding="10px">
-        <Row padding="10px" gap="10px" justifyContent="space-between">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="fit-width" padding="10px">
+        <Flex
+          flexFlow="row"
+          padding="10px"
+          gap="10px"
+          justifyContent="space-between"
+        >
           pref:
           <Input
             value={localPref}
@@ -121,9 +132,9 @@ const ParentCompo = () => {
               setLocalAge(() => +e.target.value)
             }}
           />
-        </Row>
-        <Column padding="10px">
-          <Row padding="5px" gap="10px" alignItems="center">
+        </Flex>
+        <Flex flexFlow="column" padding="10px">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -143,9 +154,9 @@ const ParentCompo = () => {
               1.入力値をGlobalStateに保存
             </Button>
             <Div>state.data = structuredClone(action.payload)</Div>
-          </Row>
+          </Flex>
 
-          <Row padding="5px" gap="10px" alignItems="center">
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -154,8 +165,8 @@ const ParentCompo = () => {
               2.初期値代入(一括処理)
             </Button>
             <Div>state.data = structuredClone(initOject)</Div>
-          </Row>
-          <Row padding="5px" gap="10px" alignItems="center">
+          </Flex>
+          <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
               textAlign="left"
               width="350px"
@@ -169,10 +180,10 @@ const ParentCompo = () => {
               state.data = &#123; ...state.data, ...structuredClone(elses)
               &#125;
             </Div>
-          </Row>
-        </Column>
-      </Column>
-      <Column width="200px" marginRight="10px">
+          </Flex>
+        </Flex>
+      </Flex>
+      <Flex flexFlow="column" width="200px" marginRight="10px">
         Global初期値(initOject)
         <DivPre
           border={"1px solid #aaa"}
@@ -191,7 +202,7 @@ const ParentCompo = () => {
         >
           {JSON.stringify(deepObject, undefined, 2)}
         </DivPre>
-      </Column>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }

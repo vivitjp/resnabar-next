@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Row, Column, Div } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { Button, Input } from "@/components/common/styleInput"
+import { Flex } from "@chakra-ui/react"
 
 export function UseIndexAsKeyRandomUUID(): UseReturnType {
   const title = `randomUUID() for Key(Dataオブジェクトがidを含まない実装)`
@@ -66,18 +67,24 @@ const ParentCompo = () => {
   }
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="100px" gap="4px">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex flexFlow="column" width="100px" gap="4px">
         <Button onClick={handleSetInitialValues}>初期値設定</Button>
         <Button onClick={handleAddItems}>アイテム追加</Button>
-      </Column>
-      <Column width="300px" gap="5px" padding="5px">
+      </Flex>
+      <Flex flexFlow="column" width="300px" gap="5px" padding="5px">
         <Div fontSize="20px" color="gray" fontWeight="700">
           Key=Index
         </Div>
-        <Column width="100%" alignItems="flex-start" gap="5px">
+        <Flex flexFlow="column" width="100%" alignItems="flex-start" gap="5px">
           {citiesWithId.map((city, index) => (
-            <Row
+            <Flex
+              flexFlow="row"
               key={index}
               width="100%"
               fontSize="20px"
@@ -86,17 +93,18 @@ const ParentCompo = () => {
             >
               <Div>{city.name}</Div>
               <Input fontSize="12px" id={`${KEY_INDEX}${index}`} />
-            </Row>
+            </Flex>
           ))}
-        </Column>
-      </Column>
-      <Column width="300px" gap="5px" padding="5px">
+        </Flex>
+      </Flex>
+      <Flex flexFlow="column" width="300px" gap="5px" padding="5px">
         <Div fontSize="20px" color="gray" fontWeight="700">
           Key=UUID
         </Div>
-        <Column width="100%" alignItems="flex-start" gap="5px">
+        <Flex flexFlow="column" width="100%" alignItems="flex-start" gap="5px">
           {citiesWithId.map((city, index) => (
-            <Row
+            <Flex
+              flexFlow="row"
               key={city?.id ?? 0}
               width="100%"
               fontSize="20px"
@@ -105,11 +113,11 @@ const ParentCompo = () => {
             >
               <Div>{city.name}</Div>
               <Input fontSize="12px" id={`${KEY_ID}${index}`} />
-            </Row>
+            </Flex>
           ))}
-        </Column>
-      </Column>
-    </Row>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -152,33 +160,33 @@ const ParentCompo = () => {
   }
  
   return (
-    <Row>
-      <Column>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="column" >
         <Button onClick={handleSetInitialValues}>初期値設定</Button>
         <Button onClick={handleAddItems}>アイテム追加</Button>
-      </Column>
-      <Column>
+      </Flex>
+      <Flex flexFlow="column" >
         <Div> Key=Index </Div>
-        <Column>
+        <Flex flexFlow="column" >
           {citiesWithId.map((city, index) => (
-            <Row key={index}> 🚫key=index
+            <Flex flexFlow="row"  key={index}> 🚫key=index
               <Div>{city.name}</Div>
               <Input id={\`\${KEY_INDEX}\${index}\`} />
-            </Row>
+            </Flex>
           ))}
-        </Column>
-      </Column>
-      <Column>
+        </Flex>
+      </Flex>
+      <Flex flexFlow="column" >
         <Div> Key=UUID </Div>
-        <Column>
+        <Flex flexFlow="column" >
           {citiesWithId.map((city, index) => (
-            <Row key={city.id}> ⭕key=unique_id(uuidで生成)
+            <Flex flexFlow="row"  key={city.id}> ⭕key=unique_id(uuidで生成)
               <Div>{city.name}</Div>
               <Input id={\`\${KEY_ID}\${index}\`} />
-            </Row>
+            </Flex>
           ))}
-        </Column>
-      </Column>
-    </Row>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }`

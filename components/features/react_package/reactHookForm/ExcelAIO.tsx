@@ -1,21 +1,13 @@
 import React, { ComponentProps, useEffect, useRef } from "react"
 import { UseReturnType } from "@/components/type/type"
 import { useForm, useWatch } from "react-hook-form"
-import {
-  FormErrorMessage,
-  FormLabel,
-  FormControl,
-  Input as ChakraInput,
-  Button,
-} from "@chakra-ui/react"
+import { Input as ChakraInput, Button, Flex, Box, Text } from "@chakra-ui/react"
 import {
   ExcelDisplay,
   ExcelInput,
   ExcelInputGroup,
-  Input,
-  InputReadOnly,
-} from "@/components/common/styleInput"
-import { Div, Row, DivPre } from "@/components/common/styleDiv"
+} from "@/components/common/styleInputChakra"
+import { DivPre } from "@/components/common/styleDivChakra"
 
 export function ExcelAIO(): UseReturnType {
   const title = `RHF & Normal Input Sample`
@@ -97,23 +89,23 @@ function InputSample() {
   }
 
   return (
-    <Row>
-      <Div width={"300px"}>
+    <Flex flexFlow="row">
+      <Box width={"300px"}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl isInvalid={!!errors.name}>
-            <FormLabel htmlFor="name">氏名</FormLabel>
+          <Box>
+            <Text>氏名</Text>
             <ChakraInput
               id="name"
               placeholder="田中太郎"
               {...register("name", constrain.name)}
             />
-            <FormErrorMessage>
+            <Box>
               <>{errors.name && errors.name.message}</>
-            </FormErrorMessage>
-          </FormControl>
+            </Box>
+          </Box>
 
-          <FormControl isInvalid={!!errors.name}>
-            <FormLabel htmlFor="name">年齢</FormLabel>
+          <Box>
+            <Text>年齢</Text>
             <ExcelInputGroup>
               {/* <ExcelInputRef {...(regAge, { onBlur: onInputBlur })} /> */}
               <ExcelDisplayRef
@@ -122,10 +114,8 @@ function InputSample() {
                 //ref={refDisplay}
               />
             </ExcelInputGroup>
-            <FormErrorMessage>
-              <>{errors.age && errors.age.message}</>
-            </FormErrorMessage>
-          </FormControl>
+            <Box>{errors.age && errors.age.message}</Box>
+          </Box>
 
           <Button
             mt={4}
@@ -136,11 +126,11 @@ function InputSample() {
             Submit
           </Button>
         </form>
-      </Div>
+      </Box>
       <DivPre fontSize="14px" padding="5px">
         {JSON.stringify(dataValues, undefined, 2)}
       </DivPre>
-    </Row>
+    </Flex>
   )
 }
 

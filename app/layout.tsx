@@ -8,12 +8,11 @@ import {
   MenuItem,
   MenuNav,
   Playground,
-  Section,
 } from "./Layout.style"
 import "./globals.css"
 import StyledComponentsRegistry from "@/library/libs/registry"
 import { ProvidersReduxToolkit } from "@/store/reduxToolkit/provider"
-import { Provider } from "@/components/ui/provider"
+import { ChakraProvider, VStack } from "@chakra-ui/react"
 
 export const metadata = {
   title: "re:Sunabar",
@@ -38,22 +37,22 @@ export default function RootLayout({
       <body>
         <ProvidersReduxToolkit>
           {/* <ProvidersRedux> */}
-          {/* <Provider> */}
-          <StyledComponentsRegistry>
-            <Section>
-              <Header>re:Sunabar React on Next v13.4</Header>
-              <Body>
-                <MenuNav>
-                  {Object.entries(routes).map((group) => (
-                    <MenuGroup key={group[0]} group={group} />
-                  ))}
-                </MenuNav>
-                <Playground>{children}</Playground>
-              </Body>
-            </Section>
-          </StyledComponentsRegistry>
-          {/* </ProvidersRedux> */}
-          {/* </Provider> */}
+          <ChakraProvider>
+            <StyledComponentsRegistry>
+              <VStack>
+                <Header>re:Sunabar React on Next v13.4</Header>
+                <Body>
+                  <MenuNav>
+                    {Object.entries(routes).map((group) => (
+                      <MenuGroup key={group[0]} group={group} />
+                    ))}
+                  </MenuNav>
+                  <Playground>{children}</Playground>
+                </Body>
+              </VStack>
+            </StyledComponentsRegistry>
+            {/* </ProvidersRedux> */}
+          </ChakraProvider>
         </ProvidersReduxToolkit>
       </body>
     </html>

@@ -1,4 +1,4 @@
-import { Column, Row } from "@/components/common/styleDiv"
+import { Flex } from "@chakra-ui/react"
 import { UseReturnType } from "@/components/type/type"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
 import { useState, ChangeEvent } from "react"
@@ -23,11 +23,11 @@ export function useRenderHooks2Cascaded(): UseReturnType {
 
 const RenderHooksCascaded = () => {
   return (
-    <Column padding="10px">
+    <Flex flexFlow="column" padding="10px">
       <LocalCompo1 />
       <RenderHooksCompo1 />
       <RenderHooksCompo2 />
-    </Column>
+    </Flex>
   )
 }
 const LocalCompo1 = () => {
@@ -36,29 +36,37 @@ const LocalCompo1 = () => {
     setValue(e.currentTarget.value)
   }
   return (
-    <Row padding="5px">
+    <Flex flexFlow="row" padding="5px">
       <input onChange={handleChange} value={value} />
-    </Row>
+    </Flex>
   )
 }
 
 const RenderHooksCompo1 = () => {
   const { RenderInput } = useInput()
-  return <Row padding="5px">{RenderInput}</Row>
+  return (
+    <Flex flexFlow="row" padding="5px">
+      {RenderInput}
+    </Flex>
+  )
 }
 
 const RenderHooksCompo2 = () => {
   const { RenderInput } = useInput()
-  return <Row padding="5px">{RenderInput}</Row>
+  return (
+    <Flex flexFlow="row" padding="5px">
+      {RenderInput}
+    </Flex>
+  )
 }
 
 const code = `const RenderHooksCascaded = () => {
   return (
-    <Column>
+    <Flex flexFlow="column" >
       <LocalCompo1 />
       <RenderHooksCompo1 />
       <RenderHooksCompo2 />
-    </Column>
+    </Flex>
   )
 }
  
@@ -70,10 +78,10 @@ const LocalCompo1 = () => {
  
 const RenderHooksCompo1 = () => {
   const { RenderInput } = useInput() //renderHooks
-  return <Row>{RenderInput}</Row>
+  return <Flex flexFlow="row" >{RenderInput}</Flex>
 }
  
 const RenderHooksCompo2 = () => {
   const { RenderInput } = useInput() //renderHooks
-  return <Row>{RenderInput}</Row>
+  return <Flex flexFlow="row" >{RenderInput}</Flex>
 }`

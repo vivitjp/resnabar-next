@@ -1,9 +1,10 @@
 import { SubmitHandler } from "react-hook-form"
 import { InputWatch } from "./InputWatch"
-import { Row, Column, Div } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { Submit } from "@/components/common/styleInput"
 import { GFieldType, useDefaultForm } from "../generic/useDefaultForm"
 import { useEffect } from "react"
+import { Flex } from "@chakra-ui/react"
 
 //Data型
 export type Person = {
@@ -69,43 +70,53 @@ export const FormWatch = () => {
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Column padding="10px" gap="10px" justifyContent="space-between">
-        <Row width="600px" gap="4px">
+      <Flex
+        flexFlow="column"
+        padding="10px"
+        gap="10px"
+        justifyContent="space-between"
+      >
+        <Flex flexFlow="row" width="600px" gap="4px">
           <Div width="100px">Name</Div>
           <InputWatch<Person, string>
             method={method}
             target={"name"}
             constrain={constrain["name"]}
           />
-        </Row>
-        <Row width="600px" gap="4px">
+        </Flex>
+        <Flex flexFlow="row" width="600px" gap="4px">
           <Div width="100px">address</Div>
           <InputWatch<Person, string>
             method={method}
             target={"address"}
             constrain={constrain["address"]}
           />
-        </Row>
-        <Row width="600px" gap="4px">
+        </Flex>
+        <Flex flexFlow="row" width="600px" gap="4px">
           <Div width="100px">Name+address動的生成</Div>
           <InputWatch<Person, string>
             method={method}
             target={"auto_1"}
             constrain={constrain["auto_1"]}
           />
-        </Row>
-        <Row width="600px" gap="4px">
+        </Flex>
+        <Flex flexFlow="row" width="600px" gap="4px">
           <Div width="100px">Age</Div>
           <InputWatch<Person, number>
             method={method}
             target={"age"}
             constrain={constrain["age"]}
           />
-        </Row>
-        <Row padding="10px" gap="10px" justifyContent="space-between">
+        </Flex>
+        <Flex
+          flexFlow="row"
+          padding="10px"
+          gap="10px"
+          justifyContent="space-between"
+        >
           <Submit value={"OK"} disabled={!isValid} />
-        </Row>
-      </Column>
+        </Flex>
+      </Flex>
     </form>
   )
 }

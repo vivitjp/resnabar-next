@@ -1,6 +1,6 @@
 import { shallow } from "zustand/shallow"
 
-import { Column, Row } from "@/components/common/styleDiv"
+import { Flex } from "@chakra-ui/react"
 import { Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/type/type"
 import { usePersistSession } from "@/store/zustand/usePersistSession"
@@ -19,9 +19,9 @@ export function UseZustandPersistSession(): UseReturnType {
 
 const ZustandObject = () => {
   return (
-    <Column gap="10px">
+    <Flex flexFlow="column" gap="10px">
       <NameSession />
-    </Column>
+    </Flex>
   )
 }
 
@@ -38,18 +38,18 @@ const NameSession = () => {
   }
 
   return (
-    <Row padding="5px" alignItems="center" gap="10px">
-      <Row fontSize="16px" padding="5px" width={"100px"}>
+    <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
+      <Flex flexFlow="row" fontSize="16px" padding="5px" width={"100px"}>
         Name:
-      </Row>
+      </Flex>
       <Input ref={nameRef} width={"160px"} />
       <button onClick={handleClickButton} value="Save">
         Submit
       </button>
-      <Row fontSize="16px" padding="5px" width={"300px"}>
+      <Flex flexFlow="row" fontSize="16px" padding="5px" width={"300px"}>
         {Person.name}
-      </Row>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -79,12 +79,12 @@ const NameSession = () => {
   }
  
   return (
-    <Row>
-      <Row> Name: </Row>
+    <Flex flexFlow="row" >
+      <Flex flexFlow="row" > Name: </Flex>
       <Input ref={nameRef} />
       <button onClick={handleClickButton} value="Save"> Submit </button>
-      <Row> {Person.name} </Row>
-    </Row>
+      <Flex flexFlow="row" > {Person.name} </Flex>
+    </Flex>
   )
 }
  

@@ -1,5 +1,5 @@
 import { shallow } from "zustand/shallow"
-import { Column, Row } from "@/components/common/styleDiv"
+import { Flex } from "@chakra-ui/react"
 import { Button, Input } from "@/components/common/styleInput"
 import { UseReturnType } from "@/components/type/type"
 import { useMapSet } from "@/store/zustand/useMapSet"
@@ -21,9 +21,9 @@ export function UseZustandSet(): UseReturnType {
 
 const ZustandObject = () => {
   return (
-    <Column gap="10px">
+    <Flex flexFlow="column" gap="10px">
       <City />
-    </Column>
+    </Flex>
   )
 }
 
@@ -56,23 +56,23 @@ const City = () => {
 
   return (
     <>
-      <Row padding="5px" alignItems="center" gap="10px">
-        <Row fontSize="16px" padding="5px">
+      <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
+        <Flex flexFlow="row" fontSize="16px" padding="5px">
           Value:
-        </Row>
+        </Flex>
         <Input ref={refValue} />
         <Button onClick={handleSetCity}>Save</Button>
-      </Row>
-      <Row padding="5px" alignItems="center" gap="10px">
-        <Row fontSize="16px" padding="5px">
+      </Flex>
+      <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
+        <Flex flexFlow="row" fontSize="16px" padding="5px">
           Key:
-        </Row>
+        </Flex>
         <Input ref={refSearchKey} />
         <Button onClick={handleSearch}>Find</Button>
-        <Row fontSize="16px" padding="5px">
+        <Flex flexFlow="row" fontSize="16px" padding="5px">
           Found(boolean): {foundValue ? "Yes" : "No"}
-        </Row>
-      </Row>
+        </Flex>
+      </Flex>
     </>
   )
 }
@@ -118,19 +118,19 @@ const City = () => {
  
   return (
     <>
-      <Row>
-        <Row> Key: </Row>
+      <Flex flexFlow="row" >
+        <Flex flexFlow="row" > Key: </Flex>
         <Input ref={refKey} />
-        <Row> Value: </Row>
+        <Flex flexFlow="row" > Value: </Flex>
         <Input ref={refValue} />
         <Button onClick={handleSetCity}> Save </Button>
-      </Row>
-      <Row>
-        <Row> Key: </Row>
+      </Flex>
+      <Flex flexFlow="row" >
+        <Flex flexFlow="row" > Key: </Flex>
         <Input ref={refSearchKey} />
         <Button onClick={handleSearch}> Find </Button>
-        <Row> Found: {foundValue ? "Yes" : "No"} </Row>
-      </Row>
+        <Flex flexFlow="row" > Found: {foundValue ? "Yes" : "No"} </Flex>
+      </Flex>
     </>
   )
 }`

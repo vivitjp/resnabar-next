@@ -1,6 +1,7 @@
 "use client"
 
-import styled, { CSSProperties } from "styled-components"
+import { FC } from "react"
+import { Select as ChakraSelect, SelectProps } from "@chakra-ui/react"
 
 export const makeOptions = <T,>(items: T[]) => {
   return items.map((item) => ({
@@ -14,17 +15,22 @@ export type Options<T> = {
   value: T
 }
 
-export type SelectSet<T> = {
+export type SelectSet<T> = Omit<
+  SelectProps,
+  "translate" | "SelectProps" | "defaultValue"
+> & {
   options: Options<T>[]
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
   withBlanc?: boolean
   defaultValue?: T
-} & Omit<CSSProperties, "translate">
+}
 
 export const SelectSet = <T,>({
   options,
   onChange,
   withBlanc,
+  gridAutoColumns,
+  gridAutoRows,
   defaultValue = options[0].value,
   ...args
 }: SelectSet<T>) => {
@@ -33,7 +39,7 @@ export const SelectSet = <T,>({
     : [...options]
 
   return (
-    <Select {...args} onChange={onChange} defaultValue={defaultValue as string}>
+    <Select onChange={onChange} defaultValue={defaultValue as string} {...args}>
       {!!options.length &&
         revOptions.map((n, index) => (
           <option key={index} value={n.value as string}>
@@ -44,14 +50,19 @@ export const SelectSet = <T,>({
   )
 }
 
-const Select = styled.select<CSSProperties>`
-  width: ${({ width = 160 }) => `${width}px`};
-  height: ${({ height = 40 }) => `${height}px`};
-  padding: 0;
-  padding-left: 10px;
-  border: 1px solid #aaa;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #eee;
-  font-size: ${({ fontSize }) => `${fontSize ? `${fontSize}px` : "inherit"}`};
-`
+const Select: FC<SelectProps> = (props) => {
+  return (
+    <ChakraSelect
+      width="160px"
+      height="40px"
+      padding="0"
+      paddingLeft="10px"
+      border="1px solid #aaa"
+      backgroundColor="white"
+      borderRadius="5px"
+      boxShadow="0 0 5px #eee"
+      fontSize="inherit"
+      {...props}
+    />
+  )
+}

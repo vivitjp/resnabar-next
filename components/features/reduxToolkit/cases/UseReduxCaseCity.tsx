@@ -1,7 +1,5 @@
 import { UseReturnType } from "@/components/type/type"
-import { BorderDiv, Column, Row } from "@/components/common/styleDiv"
 import { useState } from "react"
-
 import { Button, Input } from "@/components/common/styleInput"
 import { useAppDispatch, useAppSelector } from "@/store/reduxToolkit/hooks"
 import {
@@ -11,6 +9,8 @@ import {
   capitalizeCity,
   setCityLower,
 } from "@/store/reduxToolkit/slices/addressSlice"
+import { Box, Flex } from "@chakra-ui/react"
+import { BorderBox } from "@/components/common/styleDivChakra"
 
 export function UseReduxCaseCity(): UseReturnType {
   const title = `Redux Toolkit`
@@ -36,7 +36,7 @@ const Compo = () => {
   const [cityLocal, setCityLocal] = useState("Tokyo")
  
   return (
-    <Row>
+    <Flex flexFlow="row" >
       <Input aria-label="Set City" value={cityLocal}
       onChange={(e) => {
         setCityLocal(e.target.value)
@@ -45,7 +45,7 @@ const Compo = () => {
       <Button onClick={() => dispatch(capitalizeCity())}>Capitalize</Button>
       <BorderDiv> {city} </BorderDiv>
       <BorderDiv> {flagIsTokyo ? "Yes" : "No"} </BorderDiv>
-    </Row>
+    </Flex>
   )
 }`
 
@@ -56,7 +56,12 @@ const ParentCompo = () => {
   const [cityLocal, setCityLocal] = useState("Tokyo")
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
       <Input
         aria-label="Set City"
         value={cityLocal}
@@ -67,11 +72,11 @@ const ParentCompo = () => {
       />
       <Button onClick={() => dispatch(capitalizeCity())}>Capitalize</Button>
       <Button onClick={() => dispatch(setCityLower())}>Lower</Button>
-      <BorderDiv width="160px">{city}</BorderDiv>
-      <Column>
+      <BorderBox width="160px">{city}</BorderBox>
+      <Flex flexFlow="column">
         Is Tokyo Flag
-        <BorderDiv width="160px"> {flagIsTokyo ? "Yes" : "No"} </BorderDiv>
-      </Column>
-    </Row>
+        <BorderBox width="160px">{flagIsTokyo ? "Yes" : "No"}</BorderBox>
+      </Flex>
+    </Flex>
   )
 }

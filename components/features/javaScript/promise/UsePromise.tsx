@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Column, Row } from "@/components/common/styleDiv"
+import { Flex } from "@chakra-ui/react"
 
 const sleep = async (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms))
@@ -111,21 +111,38 @@ const ParentCompo = () => {
   }
 
   return (
-    <Row padding="10px" gap="10px" justifyContent="space-between">
-      <Column width="fit-content" gap="10px" padding="10px" fontSize="20px">
-        <Row>
-          <Column width="80px">Results:</Column>
-          <Column>{JSON.stringify(results, undefined, 2)}</Column>
-        </Row>
-        <Row>
-          <Column width="80px">Errors:</Column>
-          <Column>{JSON.stringify(errors, undefined, 2)}</Column>
-        </Row>
-        <Row>
-          <Column width="80px">Throws:</Column>
-          <Column>{JSON.stringify(throws, undefined, 2)}</Column>
-        </Row>
-      </Column>
-    </Row>
+    <Flex
+      flexFlow="row"
+      padding="10px"
+      gap="10px"
+      justifyContent="space-between"
+    >
+      <Flex
+        flexFlow="column"
+        width="fit-content"
+        gap="10px"
+        padding="10px"
+        fontSize="20px"
+      >
+        <Flex flexFlow="row">
+          <Flex flexFlow="column" width="80px">
+            Results:
+          </Flex>
+          <Flex flexFlow="column">{JSON.stringify(results, undefined, 2)}</Flex>
+        </Flex>
+        <Flex flexFlow="row">
+          <Flex flexFlow="column" width="80px">
+            Errors:
+          </Flex>
+          <Flex flexFlow="column">{JSON.stringify(errors, undefined, 2)}</Flex>
+        </Flex>
+        <Flex flexFlow="row">
+          <Flex flexFlow="column" width="80px">
+            Throws:
+          </Flex>
+          <Flex flexFlow="column">{JSON.stringify(throws, undefined, 2)}</Flex>
+        </Flex>
+      </Flex>
+    </Flex>
   )
 }

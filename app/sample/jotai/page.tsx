@@ -1,6 +1,6 @@
 "use client"
 
-import { Column, Row } from "@/components/common/styleDiv"
+import { Flex } from "@chakra-ui/react"
 
 type Props = {
   header: React.ReactNode
@@ -9,14 +9,14 @@ type Props = {
 
 const MyCompo = ({ header, body }: Props) => {
   return (
-    <Column>
+    <Flex flexFlow="column">
       {header}
       {body}
-    </Column>
+    </Flex>
   )
 }
 
 export default function Sample() {
   const name = "ABC"
-  return <MyCompo header={<Row>{name}</Row>} body={"ボディ"} />
+  return <MyCompo header={<Flex flexFlow="row">{name}</Flex>} body={"ボディ"} />
 }

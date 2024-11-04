@@ -1,7 +1,8 @@
 import { UseReturnType } from "@/components/type/type"
-import { Div, Row } from "@/components/common/styleDiv"
+import { Div } from "@/components/common/styleDiv"
 import { useState } from "react"
 import { Button } from "@/components/common/styleInput"
+import { Flex } from "@chakra-ui/react"
 
 export function UseTryCatch(): UseReturnType {
   const title = `TypeScript: Try Catch & Error Types`
@@ -77,11 +78,12 @@ const ParentCompo = () => {
   }
 
   return (
-    <Row padding="10px" gap="10px">
+    <Flex flexFlow="row" padding="10px" gap="10px">
       <Button width="160px" onClick={handler}>
         Get Errors
       </Button>
-      <Row
+      <Flex
+        flexFlow="row"
         width="fit-width"
         justifyContent="flex-start"
         alignItems="center"
@@ -91,7 +93,7 @@ const ParentCompo = () => {
         {messages.map((val, idx) => (
           <Div key={idx}>{val}</Div>
         ))}
-      </Row>
-    </Row>
+      </Flex>
+    </Flex>
   )
 }

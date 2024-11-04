@@ -47,18 +47,18 @@ export const FormWatch = () => {
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Column>
-        <Row>
+      <Flex flexFlow="column" >
+        <Flex flexFlow="row" >
           <Div>Name</Div>
           <InputWatch<Person, string>
             method={method}
             target={"name"}
             constrain={constrain["name"]}
           />
-        </Row>
+        </Flex>
         ... その他
         <Submit value={"OK"} disabled={!isValid} />
-      </Column>
+      </Flex>
     </form>
   )
 }
@@ -69,7 +69,7 @@ export const InputWatch = <T extends GFieldType, R extends string | number>
   const { register, formState: { errors } } = method
  
   return (
-    <Row>
+    <Flex flexFlow="row" >
       <Input {...register(target, constrain)} />
       {errors?.[target] && (
         <ErrorBox>
@@ -78,6 +78,6 @@ export const InputWatch = <T extends GFieldType, R extends string | number>
             : (errors?.[target]?.message as string)}
         </ErrorBox>
       )}
-    </Row>
+    </Flex>
   )
 }`
