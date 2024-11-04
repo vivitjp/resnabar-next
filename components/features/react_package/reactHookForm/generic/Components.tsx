@@ -31,8 +31,8 @@ export { useDefaultForm }
   
 ■ ジェネリック Input(子) 定義
 import { Path, UseFormReturn } from "react-hook-form"
-import { Row } from "@/components/common/styleDiv"
-import { ErrorBox, Input } from "@/components/common/styleInput"
+import { Row } from "@/components/common/styleDivChakra"
+import { ErrorBox, Input } from "@/components/common/styleInputChakra"
 import { GFieldType } from "./useDefaultForm"
  
 type MyInput<T extends GFieldType, R> = {

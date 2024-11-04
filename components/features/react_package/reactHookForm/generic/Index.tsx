@@ -67,7 +67,7 @@ export const SampleForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Flex flexFlow="row" >
         <Flex flexFlow="column" >
-          <Div>Name</Div>
+          <Box>Name</Box>
           <MyInput<Person, string>
             methods={method}
             target={"name"}
@@ -77,7 +77,7 @@ export const SampleForm = () => {
       </Flex>
       <Flex flexFlow="row" >
         <Flex flexFlow="column" >
-          <Div>Age</Div>
+          <Box>Age</Box>
           <MyInput<Person, number>
             methods={method}
             target={"age"}

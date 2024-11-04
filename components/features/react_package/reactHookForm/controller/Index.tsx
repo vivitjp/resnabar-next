@@ -106,14 +106,14 @@ export const ControlForm = () => {
               />
             </Flex>
             <Flex flexFlow="row" >
-              <Div>年(自動)</Div>
-              <BorderDiv>{ageCalcAuto}</BorderDiv>
+              <Box>年(自動)</Box>
+              <BorderBox>{ageCalcAuto}</BorderBox>
             </Flex>
             <Flex flexFlow="row" >
               <Button onClick={handleWatch}>
                 年(手動)
               </Button>
-              <BorderDiv>{calcAgeMan}</BorderDiv>
+              <BorderBox>{calcAgeMan}</BorderBox>
             </Flex>
             <Flex flexFlow="row" >
               <ControlInput

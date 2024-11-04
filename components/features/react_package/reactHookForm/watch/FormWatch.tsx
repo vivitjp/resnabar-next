@@ -1,10 +1,9 @@
 import { SubmitHandler } from "react-hook-form"
 import { InputWatch } from "./InputWatch"
-import { Div } from "@/components/common/styleDiv"
-import { Submit } from "@/components/common/styleInput"
+import { Submit } from "@/components/common/styleInputChakra"
 import { GFieldType, useDefaultForm } from "../generic/useDefaultForm"
 import { useEffect } from "react"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 //Data型
 export type Person = {
@@ -77,7 +76,7 @@ export const FormWatch = () => {
         justifyContent="space-between"
       >
         <Flex flexFlow="row" width="600px" gap="4px">
-          <Div width="100px">Name</Div>
+          <Box width="100px">Name</Box>
           <InputWatch<Person, string>
             method={method}
             target={"name"}
@@ -85,7 +84,7 @@ export const FormWatch = () => {
           />
         </Flex>
         <Flex flexFlow="row" width="600px" gap="4px">
-          <Div width="100px">address</Div>
+          <Box width="100px">address</Box>
           <InputWatch<Person, string>
             method={method}
             target={"address"}
@@ -93,7 +92,7 @@ export const FormWatch = () => {
           />
         </Flex>
         <Flex flexFlow="row" width="600px" gap="4px">
-          <Div width="100px">Name+address動的生成</Div>
+          <Box width="100px">Name+address動的生成</Box>
           <InputWatch<Person, string>
             method={method}
             target={"auto_1"}
@@ -101,7 +100,7 @@ export const FormWatch = () => {
           />
         </Flex>
         <Flex flexFlow="row" width="600px" gap="4px">
-          <Div width="100px">Age</Div>
+          <Box width="100px">Age</Box>
           <InputWatch<Person, number>
             method={method}
             target={"age"}

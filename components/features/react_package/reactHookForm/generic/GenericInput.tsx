@@ -1,5 +1,5 @@
 import { Path, UseFormReturn } from "react-hook-form"
-import { ErrorBox, Input } from "@/components/common/styleInput"
+import { ErrorBox, Input } from "@/components/common/styleInputChakra"
 import { GFieldType } from "./useDefaultForm"
 import { Flex } from "@chakra-ui/react"
 

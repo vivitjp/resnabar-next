@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Div, DivPre, BorderDiv } from "@/components/common/styleDiv"
-import { Button, Checkbox, Input } from "@/components/common/styleInput"
+import { DivPre, BorderBox } from "@/components/common/styleDivChakra"
+import { Button, Checkbox, Input } from "@/components/common/styleInputChakra"
 import { useForm, SubmitHandler, useWatch } from "react-hook-form"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function RegisterAIO(): UseReturnType {
   const title = `ReactHookForm By Register`
@@ -110,7 +110,7 @@ const ParentCompo = () => {
               gap="10px"
               alignItems="flex-start"
             >
-              <Div width="60px">名前</Div>
+              <Box width="60px">名前</Box>
               <Input {...register("name", constrain.name)} />
               {errors.name && <span>{errors.name.message}</span>}
             </Flex>
@@ -122,7 +122,7 @@ const ParentCompo = () => {
               gap="10px"
               alignItems="flex-start"
             >
-              <Div width="60px">住所</Div>
+              <Box width="60px">住所</Box>
               <Input {...register("address", constrain.address)} />
               {errors.address && <span>必須</span>}
             </Flex>
@@ -134,7 +134,7 @@ const ParentCompo = () => {
               gap="10px"
               alignItems="flex-start"
             >
-              <Div width="60px">年齢</Div>
+              <Box width="60px">年齢</Box>
               <Input {...register("age", constrain.age)} />
               {errors.age && <span>数値のみ</span>}
             </Flex>
@@ -145,8 +145,8 @@ const ParentCompo = () => {
               gap="10px"
               alignItems="flex-start"
             >
-              <Div width="60px">年(自動)</Div>
-              <BorderDiv>{ageCalcAuto}</BorderDiv>
+              <Box width="60px">年(自動)</Box>
+              <BorderBox>{ageCalcAuto}</BorderBox>
             </Flex>
 
             <Flex
@@ -158,7 +158,7 @@ const ParentCompo = () => {
               <Button onClick={handleWatch} padding="0px" width="60px">
                 年(手動)
               </Button>
-              <BorderDiv>{calcAgeMan}</BorderDiv>
+              <BorderBox>{calcAgeMan}</BorderBox>
             </Flex>
 
             {/* act */}
@@ -168,10 +168,10 @@ const ParentCompo = () => {
               gap="10px"
               alignItems="flex-start"
             >
-              <Div width="60px">有効</Div>
-              <BorderDiv>
+              <Box width="60px">有効</Box>
+              <BorderBox>
                 <Checkbox width="120px" {...register("act", constrain.act)} />
-              </BorderDiv>
+              </BorderBox>
             </Flex>
             <Flex flexFlow="row" width="100%" justifyContent="flex-end">
               <Button type="submit" disabled={!isValid}>
@@ -258,43 +258,43 @@ const ParentCompo = () => {
           <Flex flexFlow="column" >
             {/* name */}
             <Flex flexFlow="row" >
-              <Div>名前</Div>
+              <Box>名前</Box>
               <Input {...register("name", constrain.name)} />
               {errors.name && <span>{errors.name.message}</span>}
             </Flex>
 
             {/* address */}
             <Flex flexFlow="row" >
-              <Div>住所</Div>
+              <Box>住所</Box>
               <Input {...register("address", constrain.address)} />
               {errors.address && <span>必須</span>}
             </Flex>
 
             {/* age */}
             <Flex flexFlow="row" >
-              <Div>年齢</Div>
+              <Box>年齢</Box>
               <Input {...register("age", constrain.age)} />
               {errors.age && <span>数値のみ</span>}
             </Flex>
 
             <Flex flexFlow="row" >
-              <Div>年(自動)</Div>
-              <BorderDiv>{ageCalcAuto}</BorderDiv>
+              <Box>年(自動)</Box>
+              <BorderBox>{ageCalcAuto}</BorderBox>
             </Flex>
 
             <Flex flexFlow="row" >
               <Button onClick={handleWatch} >
                 年(手動)
               </Button>
-              <BorderDiv>{calcAgeMan}</BorderDiv>
+              <BorderBox>{calcAgeMan}</BorderBox>
             </Flex>
 
             {/* act */}
             <Flex flexFlow="row" >
-              <Div>有効</Div>
-              <BorderDiv>
+              <Box>有効</Box>
+              <BorderBox>
                 <Checkbox {...register("act", constrain.act)} />
-              </BorderDiv>
+              </BorderBox>
             </Flex>
             <Button type="submit" disabled={!isValid}>
               保存

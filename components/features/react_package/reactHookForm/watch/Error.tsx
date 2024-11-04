@@ -1,4 +1,7 @@
-import { CSSProperties, styled } from "styled-components"
+"use client"
+
+import { Box, BoxProps } from "@chakra-ui/react"
+import { FC } from "react"
 
 type ErrorMessage = {
   errorMessage?: string | undefined
@@ -10,6 +13,10 @@ export const ErrorMessage = ({ errorMessage = "" }: ErrorMessage) => {
   )
 }
 
-const ErrorBox = styled.span<CSSProperties>`
-  color: red;
-`
+// const ErrorBox = styled.span<CSSProperties>`
+//   color: red;
+// `
+
+export const ErrorBox: FC<BoxProps> = (props) => {
+  return <Box as="span" color="red" {...props} />
+}

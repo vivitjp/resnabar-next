@@ -1,6 +1,6 @@
 "use client"
 
-import { chakra, Box } from "@chakra-ui/react"
+import { Box, chakra } from "@chakra-ui/react"
 
 const Section = chakra(Box, {
   baseStyle: {

@@ -72,7 +72,7 @@
 //     | string
 // } & Pick<CSSProperties, AttrPosition>
 
-// type Div = Pick<
+// type Box = Pick<
 //   CSSProperties,
 //   | AttrPosition
 //   | AttrFlex
@@ -88,7 +88,7 @@
 // > &
 //   Custom
 
-// export const Div = styled.div<Div>`
+// export const Box = styled.div<Box>`
 //   ${(props) => css`
 //     //position
 //     ${props.position && `position: ${props.position}`};
@@ -160,14 +160,14 @@
 // //以下使用不可
 // //${Object.entries(props).map(([key, value]) => key && `${key}:${value}`)}
 
-// // export const Column = styled(Div)`
+// // export const Column = styled(Box)`
 // //   display: flex;
 // //   flex-direction: column;
 // //   justify-content: ${({ $justifyContent = "flex-start" }) => $justifyContent};
 // //   align-items: ${({ $alignItems = "flex-start" }) => $alignItems};
 // //   border: ${({ $border }) => $border};
 // // `
-// // export const Column = styled(Div)`
+// // export const Column = styled(Box)`
 // //   ${(props) => css`
 // //     display: flex;
 // //     flex-direction: column;
@@ -178,7 +178,7 @@
 // //   `}
 // // `
 
-// // export const Row = styled(Div)`
+// // export const Row = styled(Box)`
 // //   ${({ justifyContent, alignItems, border }) => css`
 // //     display: flex;
 // //     flex-direction: row;
@@ -189,7 +189,7 @@
 // //   `}
 // // `
 
-// export const BorderDiv = styled(Div)`
+// export const BorderBox = styled(Box)`
 //   ${(props) => css`
 //     display: flex;
 //     flex-direction: row;
@@ -206,7 +206,7 @@
 //   `}
 // `
 
-// export const SlideWidth = styled(Div)<Slide>`
+// export const SlideWidth = styled(Box)<Slide>`
 //   ${(props) => css`
 //     position: ${props.position ?? "fixed"};
 //     ${props.top && `top: ${props.top}`};
@@ -227,7 +227,7 @@
 //   `}
 // `
 
-// export const Title = styled.div<Div>`
+// export const Title = styled.div<Box>`
 //   ${(props) => css`
 //     :before {
 //       content: "■";
@@ -238,7 +238,7 @@
 //   `}
 // `
 
-// export const DivPre = styled.div<Div>`
+// export const DivPre = styled.div<Box>`
 //   ${(props) => css`
 //   ${props.width && `width: ${props.width}`};
 //     font-size: ${props.fontSize ?? "16px"};

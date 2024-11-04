@@ -1,9 +1,9 @@
 import { SubmitHandler, useForm, useWatch } from "react-hook-form"
-import { Div, DivPre, BorderDiv } from "@/components/common/styleDiv"
-import { Button, Submit } from "@/components/common/styleInput"
+import { DivPre, BorderBox } from "@/components/common/styleDivChakra"
+import { Button, Submit } from "@/components/common/styleInputChakra"
 import { ControlInput } from "./ControlInput"
 import { useMemo, useState } from "react"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 type GFieldType = Record<string, unknown>
 
@@ -110,15 +110,15 @@ export const ControlForm = () => {
             </Flex>
 
             <Flex flexFlow="row" width="100%" gap="10px" alignItems="center">
-              <Div width="60px">年(自動)</Div>
-              <BorderDiv width="200px">{ageCalcAuto}</BorderDiv>
+              <Box width="60px">年(自動)</Box>
+              <BorderBox width="200px">{ageCalcAuto}</BorderBox>
             </Flex>
 
             <Flex flexFlow="row" width="100%" gap="10px" alignItems="center">
               <Button width="60px" onClick={handleWatch} padding="0px">
                 年(手動)
               </Button>
-              <BorderDiv width="200px">{calcAgeMan}</BorderDiv>
+              <BorderBox width="200px">{calcAgeMan}</BorderBox>
             </Flex>
 
             {/* act */}

@@ -1,9 +1,8 @@
-import { Div } from "@/components/common/styleDiv"
 import { useAtom } from "jotai"
-import { Button, Input } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInputChakra"
 import { countAtom } from "../atoms"
 import { useState } from "react"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export const Counter = () => {
   const [value, setValue] = useState(0)
@@ -19,7 +18,7 @@ export const Counter = () => {
 
   return (
     <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
-      <Div width="100px">カウント</Div>
+      <Box width="100px">カウント</Box>
       <Input defaultValue={value} onChange={handleOnChange} />
       <Button onClick={handleSetValue}>セット</Button>
     </Flex>

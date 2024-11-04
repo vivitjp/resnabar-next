@@ -1,3 +1,5 @@
+"use client"
+
 import { SlideWidth } from "@/components/common/styleDivChakra"
 import { UseReturnType } from "@/components/type/type"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
@@ -24,7 +26,7 @@ export function useAnimationSlide(): UseReturnType {
 
   const jsx = (
     <Flex flexFlow="column" width="100%" border="gray">
-      <Box>Mock Div</Box>
+      <Box>Mock Box</Box>
       <SlideWidth
         top="0px"
         right="0px"

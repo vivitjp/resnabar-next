@@ -5,8 +5,8 @@ import {
   useForm,
   useWatch,
 } from "react-hook-form"
-import { DivPre } from "@/components/common/styleDiv"
-import { Button, Submit } from "@/components/common/styleInput"
+import { DivPre } from "@/components/common/styleDivChakra"
+import { Button, Submit } from "@/components/common/styleInputChakra"
 import { useState } from "react"
 import { Flex } from "@chakra-ui/react"
 

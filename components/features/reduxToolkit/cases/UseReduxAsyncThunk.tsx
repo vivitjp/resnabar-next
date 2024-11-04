@@ -1,7 +1,7 @@
 import { UseReturnType } from "@/components/type/type"
-import { BorderDiv } from "@/components/common/styleDiv"
+import { BorderBox } from "@/components/common/styleDivChakra"
 
-import { Button, Input } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInputChakra"
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "@/store/reduxToolkit/hooks"
 import {
@@ -64,7 +64,7 @@ const ParentCompo = () => {
         gap="10px"
         justifyContent="flex-start"
       >
-        <BorderDiv width="160px">{counter}</BorderDiv>
+        <BorderBox width="160px">{counter}</BorderBox>
         <Button onClick={() => dispatch(resetCounter())}>リセット</Button>
       </Flex>
       <Flex

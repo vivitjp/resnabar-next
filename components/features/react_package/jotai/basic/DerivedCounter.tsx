@@ -1,10 +1,9 @@
-import { Div } from "@/components/common/styleDiv"
 import { useAtom } from "jotai"
-import { Button, Input } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInputChakra"
 import { doubledCountAtom, doubledOrigAtom } from "./atoms"
 import { useState } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function JotaiDerivedCounter(): UseReturnType {
   const title = `Derived Atom`
@@ -41,13 +40,13 @@ const DerivedCounter = () => {
       gap="10px"
     >
       <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
-        <Div width="100px">派生カウント</Div>
+        <Box width="100px">派生カウント</Box>
         <Input defaultValue={value} onChange={handleOnChange} />
         <Button onClick={handleSetCount}>セット</Button>
       </Flex>
-      <Div fontSize="16px" padding="5px">
+      <Box fontSize="16px" padding="5px">
         {origCount} : {doubledCount}
-      </Div>
+      </Box>
     </Flex>
   )
 }
@@ -75,11 +74,11 @@ const DerivedCounter = () => {
   return (
     <Flex flexFlow="row" >
       <Flex flexFlow="row" >
-        <Div>派生カウント</Div>
+        <Box>派生カウント</Box>
         <Input defaultValue={value} onChange={handleOnChange} />
         <Button onClick={handleSetCount}>セット</Button>
       </Flex>
-      <Div> {origCount} : {doubledCount} </Div>
+      <Box> {origCount} : {doubledCount} </Box>
     </Flex>
   )
 }`

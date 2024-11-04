@@ -2,9 +2,8 @@ import React, { useState } from "react"
 import { useFetch } from "../components/UseFetch"
 import { ProgrammingLanguage } from "../../mock/programmingLanguage"
 import { UseReturnType } from "@/components/type/type"
-import { Div } from "@/components/common/styleDiv"
-import { Button, Input } from "@/components/common/styleInput"
-import { Flex } from "@chakra-ui/react"
+import { Button, Input } from "@/components/common/styleInputChakra"
+import { Box, Flex } from "@chakra-ui/react"
 
 let Count = 0
 let CounterMemo = 0
@@ -63,9 +62,9 @@ const ParentCompo = () => {
       justifyContent="space-between"
     >
       <Flex flexFlow="column" width="200px" gap="4px">
-        <Div>回数表示</Div>
+        <Box>回数表示</Box>
         <Button onClick={handle}>Add</Button>
-        <Div>Primitive引数(id)</Div>
+        <Box>Primitive引数(id)</Box>
         <Input onChange={handleChangeText} value={id} />
       </Flex>
       <Flex flexFlow="column" width="fit-content" gap="10px" padding="10px">
@@ -76,9 +75,9 @@ const ParentCompo = () => {
           alignItems="center"
         >
           <ChildNoParam />
-          <Div fontSize="20px" color="lightGray">
+          <Box fontSize="20px" color="lightGray">
             コール回数: {counters[0]}
-          </Div>
+          </Box>
         </Flex>
         <Flex
           flexFlow="row"
@@ -87,9 +86,9 @@ const ParentCompo = () => {
           alignItems="center"
         >
           <ChildNoParamMemo />
-          <Div fontSize="20px" color="CadetBlue">
+          <Box fontSize="20px" color="CadetBlue">
             コール回数: {counters[1]}
-          </Div>
+          </Box>
         </Flex>
 
         <Flex
@@ -99,9 +98,9 @@ const ParentCompo = () => {
           alignItems="center"
         >
           <ChildParamPrimitive id={id} />
-          <Div fontSize="20px" color="lightGray">
+          <Box fontSize="20px" color="lightGray">
             コール回数: {counters[2]}
-          </Div>
+          </Box>
         </Flex>
         <Flex
           flexFlow="row"
@@ -110,9 +109,9 @@ const ParentCompo = () => {
           alignItems="center"
         >
           <ChildParamPrimitiveMemo id={id} />
-          <Div fontSize="20px" color="CadetBlue">
+          <Box fontSize="20px" color="CadetBlue">
             コール回数: {counters[3]}
-          </Div>
+          </Box>
         </Flex>
 
         <Flex
@@ -122,9 +121,9 @@ const ParentCompo = () => {
           alignItems="center"
         >
           <ChildParamArray data={data} />
-          <Div fontSize="20px" color="lightGray">
+          <Box fontSize="20px" color="lightGray">
             コール回数: {counters[4]}
-          </Div>
+          </Box>
         </Flex>
         <Flex
           flexFlow="row"
@@ -133,9 +132,9 @@ const ParentCompo = () => {
           alignItems="center"
         >
           <ChildParamArrayMemo data={data} />
-          <Div fontSize="20px" color="CadetBlue">
+          <Box fontSize="20px" color="CadetBlue">
             コール回数: {counters[5]}
-          </Div>
+          </Box>
         </Flex>
       </Flex>
     </Flex>

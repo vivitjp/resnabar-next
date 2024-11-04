@@ -1,6 +1,6 @@
 import { UseReturnType } from "@/components/type/type"
 import { useState } from "react"
-import { Button, Input } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInputChakra"
 import { useAppDispatch, useAppSelector } from "@/store/reduxToolkit/hooks"
 import {
   selectCity,
@@ -43,8 +43,8 @@ const Compo = () => {
         dispatch(setCity(e.target.value))
       }}
       <Button onClick={() => dispatch(capitalizeCity())}>Capitalize</Button>
-      <BorderDiv> {city} </BorderDiv>
-      <BorderDiv> {flagIsTokyo ? "Yes" : "No"} </BorderDiv>
+      <BorderBox> {city} </BorderBox>
+      <BorderBox> {flagIsTokyo ? "Yes" : "No"} </BorderBox>
     </Flex>
   )
 }`

@@ -2,9 +2,8 @@ import { useState } from "react"
 import { ProgrammingLanguage } from "../../mock/programmingLanguage"
 import { useFetch } from "../components/UseFetch"
 import { UseReturnType } from "@/components/type/type"
-import { Div } from "@/components/common/styleDiv"
-import { Button } from "@/components/common/styleInput"
-import { Flex } from "@chakra-ui/react"
+import { Button } from "@/components/common/styleInputChakra"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function UseTable1Query(): UseReturnType {
   const title = `CustomHooks`
@@ -65,7 +64,7 @@ const TableFromQuery = () => {
         alignItems="center"
       >
         <Button onClick={handleCount}>カウント</Button>
-        <Div fontSize="24px">{count}</Div>
+        <Box fontSize="24px">{count}</Box>
       </Flex>
       <Table data={data} />
     </Flex>

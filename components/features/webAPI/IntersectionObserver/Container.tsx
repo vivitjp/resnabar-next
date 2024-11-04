@@ -1,7 +1,7 @@
 "use client"
 
+import { SectionRef } from "@/components/common/styleDivChakra"
 import { FC, ReactNode, useEffect, useRef } from "react"
-import styled from "styled-components"
 
 /*
 IntersectionObserverEntry
@@ -46,14 +46,9 @@ export const Container: FC<Props> = ({
     }
   }, [index, onIntersectCallback, threshold])
 
-  return <Section ref={ref}>{children}</Section>
+  return (
+    <SectionRef ref={ref} overflowY={undefined}>
+      {children}
+    </SectionRef>
+  )
 }
-
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  //min-height: 400px;
-  border: 1px solid #aaa;
-`

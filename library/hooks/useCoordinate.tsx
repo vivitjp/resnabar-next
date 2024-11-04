@@ -3,8 +3,7 @@
 import { useState } from "react"
 
 import { OptionsType } from "./type"
-import { Div } from "@/components/common/styleDiv"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 type Props = {
   title?: string
@@ -36,9 +35,9 @@ export const useCoordinate = ({
     handleClick,
     JSX: (
       <Flex flexFlow="row">
-        <Div width={300} fontSize={18}>
+        <Box width={300} fontSize={18}>
           x: {value[0]}, y: {value[1]}
-        </Div>
+        </Box>
       </Flex>
     ),
   }

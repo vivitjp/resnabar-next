@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react"
-import { Button, Input } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInputChakra"
 import { UseReturnType } from "@/components/type/type"
 import { useCount2 } from "@/store/zustand/storeBasic"
 

@@ -1,8 +1,8 @@
 import { UseReturnType } from "@/components/type/type"
-import { Div, DivPre } from "@/components/common/styleDiv"
+import { DivPre } from "@/components/common/styleDivChakra"
 import { useState } from "react"
 
-import { Button, Input } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInputChakra"
 import { useAppDispatch, useAppSelector } from "@/store/reduxToolkit/hooks"
 import {
   clearDeepOjectWrapped,
@@ -11,7 +11,7 @@ import {
   setDeepObjectWrapped,
   setDeepObjectExceptName,
 } from "@/store/reduxToolkit/slices/deepObjectWrappedSlice"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function UseDeepObjectWrapped(): UseReturnType {
   const title = `Redux Toolkit: Shallow & Deep(一括処理)`
@@ -153,7 +153,7 @@ const ParentCompo = () => {
             >
               1.入力値をGlobalStateに保存
             </Button>
-            <Div>state.data = structuredClone(action.payload)</Div>
+            <Box>state.data = structuredClone(action.payload)</Box>
           </Flex>
 
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
@@ -164,7 +164,7 @@ const ParentCompo = () => {
             >
               2.初期値代入(一括処理)
             </Button>
-            <Div>state.data = structuredClone(initOject)</Div>
+            <Box>state.data = structuredClone(initOject)</Box>
           </Flex>
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
             <Button
@@ -174,12 +174,12 @@ const ParentCompo = () => {
             >
               3.初期値部分代入
             </Button>
-            <Div>
+            <Box>
               const &#123; name, ...elses &#125; = initOject
               <br />
               state.data = &#123; ...state.data, ...structuredClone(elses)
               &#125;
-            </Div>
+            </Box>
           </Flex>
         </Flex>
       </Flex>

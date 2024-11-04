@@ -49,7 +49,7 @@ export const FormWatch = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Flex flexFlow="column" >
         <Flex flexFlow="row" >
-          <Div>Name</Div>
+          <Box>Name</Box>
           <InputWatch<Person, string>
             method={method}
             target={"name"}

@@ -1,10 +1,8 @@
-import { Div } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
-
 import { useAtom } from "jotai"
 import { countAtom } from "./atoms"
 import { Counter } from "./components/Counter"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function JotaiCounter(): UseReturnType {
   const title = `Jotai 基礎: Counter`
@@ -32,9 +30,9 @@ const Component = () => {
       gap="10px"
     >
       <Counter />
-      <Div fontSize="16px" padding="5px">
+      <Box fontSize="16px" padding="5px">
         カウント: {count}
-      </Div>
+      </Box>
     </Flex>
   )
 }
@@ -56,9 +54,9 @@ const Component = () => {
   return (
     <Flex flexFlow="row" >
       <Counter />
-      <Div>
+      <Box>
         カウント: {count}
-      </Div>
+      </Box>
     </Flex>
   )
 }
@@ -78,7 +76,7 @@ export const Counter = () => {
  
   return (
     <Flex flexFlow="row" >
-      <Div>カウント</Div>
+      <Box>カウント</Box>
       <Input defaultValue={value} onChange={handleOnChange} />
       <Button onClick={handleSetValue}>セット</Button>
     </Flex>

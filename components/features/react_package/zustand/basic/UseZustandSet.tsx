@@ -1,6 +1,6 @@
 import { shallow } from "zustand/shallow"
 import { Flex } from "@chakra-ui/react"
-import { Button, Input } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInputChakra"
 import { UseReturnType } from "@/components/type/type"
 import { useMapSet } from "@/store/zustand/useMapSet"
 import { useRef, useState } from "react"

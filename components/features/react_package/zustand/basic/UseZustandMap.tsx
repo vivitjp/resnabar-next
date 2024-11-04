@@ -3,7 +3,7 @@ import { useMapSet } from "@/store/zustand/useMapSet"
 import { useRef, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
 import { Flex } from "@chakra-ui/react"
-import { Input, Button } from "@/components/common/styleInput"
+import { Input, Button } from "@/components/common/styleInputChakra"
 
 export function UseZustandMap(): UseReturnType {
   const title = `Map`

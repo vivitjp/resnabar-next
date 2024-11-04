@@ -2,11 +2,10 @@
 
 import { useRef, useState } from "react"
 import { Container } from "./Container"
-import styled from "styled-components"
 import { UseReturnType } from "@/components/type/type"
-import { Div } from "@/components/common/styleDiv"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
+import { SectionRef } from "@/components/common/styleDivChakra"
 
 export function useIntersectionObserverFeature(): UseReturnType {
   const title = `Intersection Observer`
@@ -48,7 +47,7 @@ const Component =()=>{
       {items.map((i) => (
         <IntersectionContainer key={i} index={i} onIntersectCallback={intersectCallback}>
           <Flex flexFlow="column"  ref={ref}>
-            {[...Array(10)].map((_, k) => ( <Div>{k + 1}</Div> ))}
+            {[...Array(10)].map((_, k) => ( <Box>{k + 1}</Box> ))}
           </Flex>
         </Container>
       ))}
@@ -72,31 +71,31 @@ const Component =()=>{
         alignItems="center"
         width="100%"
       >
-        <Div
+        <Box
           height="30px"
           color="red"
           justifyContent="center"
           alignItems="center"
         >
           {progress}
-        </Div>
-        <Div height="30px" justifyContent="center" alignItems="center">
+        </Box>
+        <Box height="30px" justifyContent="center" alignItems="center">
           セクションまで移動
-        </Div>
+        </Box>
       </Flex>
-      <Section>
+      <SectionRef>
         {items.map((i) => (
           <Container key={i} index={i} onIntersectCallback={intersectCallback}>
             <Flex flexFlow="column" ref={ref}>
               {[...Array(10)].fill("").map((_, k) => (
-                <Div key={k} fontSize="18px" padding="2px">
+                <Box key={k} fontSize="18px" padding="2px">
                   {k + 1}
-                </Div>
+                </Box>
               ))}
             </Flex>
           </Container>
         ))}
-      </Section>
+      </SectionRef>
     </Flex>
   )
 
@@ -111,13 +110,3 @@ const Component =()=>{
     codeKeyType: codeKeyType,
   }
 }
-
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  max-height: 300px;
-  border: 1px solid #aaa;
-  overflow-y: scroll;
-`

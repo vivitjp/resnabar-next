@@ -1,12 +1,12 @@
 "use client"
 
-import { useState } from "react"
-import styled from "styled-components"
+import { FC, useState } from "react"
 import { ContainerHidden } from "./ContainerHide"
 import { UseReturnType } from "@/components/type/type"
-import { Button } from "@/components/common/styleInput"
+import { Button } from "@/components/common/styleInputChakra"
 import { CodeKeyType } from "@/library/syntaxHighlighter/syntaxHighlighter"
-import { Flex } from "@chakra-ui/react"
+import { Flex, FlexProps } from "@chakra-ui/react"
+import { Section } from "@/components/common/styleDivChakra"
 
 export function useIntersectionObserverHideFeature(): UseReturnType {
   const title = `Intersection Observer`
@@ -85,23 +85,26 @@ const Component =()=>{
 
   const jsx = (
     <>
-      <SectionWrapper>
-        <Section>
+      <Section maxHeight={"200px"}>
+        <Section maxHeight={"500px"}>
           <ContainerHidden onIntersect={intersectCallback}>
             {/* <ContainerHidden> */}
-            <Div>Hello World</Div>
+            <Flex padding="10px" height="200px">
+              Hello World
+            </Flex>
           </ContainerHidden>
         </Section>
-
         <Section>
-          <Div>このコンポーネントがボトムメニューのトリガー</Div>
+          <Flex padding="10px" height="200px">
+            このコンポーネントがボトムメニューのトリガー
+          </Flex>
         </Section>
 
         <FunctionArea isOpened={isOpened} zIndex={101}>
           <Button>A</Button>
           <Button>B</Button>
         </FunctionArea>
-      </SectionWrapper>
+      </Section>
       <Flex
         flexFlow="row"
         position="fixed"
@@ -134,52 +137,79 @@ const Component =()=>{
   }
 }
 
-const SectionWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  max-height: 200px;
-  border: 1px solid #aaa;
-  overflow-y: scroll;
-`
+// const SectionWrapper = styled.section`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 5px;
+//   width: 100%;
+//   max-height: 200px;
+//   border: 1px solid #aaa;
+//   overflow-y: scroll;
+// `
 
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  max-height: 500px;
-  border: 1px solid #aaa;
-`
+// const Section = styled.section`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 5px;
+//   width: 100%;
+//   max-height: 500px;
+//   border: 1px solid #aaa;
+// `
 
-const Div = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  height: 200px;
-`
+// const Box = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 10px;
+//   height: 200px;
+// `
 
-const FunctionArea = styled.section<{
-  isOpened?: boolean
-  zIndex?: number
-}>`
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  height: 50px;
-  border: 1px solid #aaa;
-  background-color: #fff;
-  z-index: ${({ zIndex = 1 }) => zIndex};
-  transition: opacity 1s ease-in-out;
-  opacity: ${({ isOpened }) => (!isOpened ? "0" : "1")};
-  pointer-events: ${({ isOpened }) => (!isOpened ? "none" : "fill")};
-  transition: all 0.2s;
-`
+// const FunctionArea = styled.section<{
+//   isOpened?: boolean
+//   zIndex?: number
+// }>`
+//   position: fixed;
+//   right: 0;
+//   bottom: 0;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 20px;
+//   width: 100%;
+//   height: 50px;
+//   border: 1px solid #aaa;
+//   background-color: #fff;
+//   z-index: ${({ zIndex = 1 }) => zIndex};
+//   transition: opacity 1s ease-in-out;
+//   opacity: ${({ isOpened }) => (!isOpened ? "0" : "1")};
+//   pointer-events: ${({ isOpened }) => (!isOpened ? "none" : "fill")};
+//   transition: all 0.2s;
+// `
+
+const FunctionArea: FC<
+  FlexProps & {
+    isOpened?: boolean
+    zIndex?: number
+  }
+> = ({ isOpened, zIndex = 1, ...props }) => {
+  return (
+    <Flex
+      justifyContent="center"
+      alignItems="center"
+      position="fixed"
+      right={0}
+      bottom={0}
+      gap="20px"
+      width="100%"
+      height="50px"
+      border="1px solid #aaa"
+      backgroundColor="#fff"
+      zIndex={1}
+      opacity={!isOpened ? "0" : "1"}
+      pointerEvents={!isOpened ? "none" : "fill"}
+      transition="all 0.2s"
+      {...props}
+    />
+  )
+}

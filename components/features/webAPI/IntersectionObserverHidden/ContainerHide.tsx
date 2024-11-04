@@ -1,7 +1,7 @@
 "use client"
 
+import { SectionRef } from "@/components/common/styleDivChakra"
 import { FC, ReactNode, useEffect, useRef } from "react"
-import styled from "styled-components"
 
 type Props = {
   children: ReactNode
@@ -33,13 +33,5 @@ export const ContainerHidden: FC<Props> = ({
     }
   }, [onIntersect, threshold])
 
-  return <Section ref={ref}>{children}</Section>
+  return <SectionRef ref={ref}>{children}</SectionRef>
 }
-
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  border: 1px solid #aaa;
-`

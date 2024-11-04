@@ -1,5 +1,5 @@
 import { UseReturnType } from "@/components/type/type"
-import { Input } from "@/components/common/styleInput"
+import { Input } from "@/components/common/styleInputChakra"
 import { useSubscribeStore } from "./UseZustandSubscribe"
 import { Flex } from "@chakra-ui/react"
 

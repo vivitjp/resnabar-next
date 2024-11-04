@@ -1,7 +1,7 @@
 import { useReducer, MouseEvent } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Title } from "@/components/common/styleDiv"
-import { Button } from "@/components/common/styleInput"
+import { Title } from "@/components/common/styleDivChakra"
+import { Button } from "@/components/common/styleInputChakra"
 import { reducerItem } from "./reducer"
 import { Flex } from "@chakra-ui/react"
 

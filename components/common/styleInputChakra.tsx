@@ -34,12 +34,15 @@ export const Number: FC<InputProps> = (props) => {
   return <Input type="number" {...props} />
 }
 
-export const Submit: FC<InputProps> = (props) => {
+export const Submit: FC<InputProps & { disabled: boolean }> = ({
+  disabled,
+  ...props
+}) => {
   return (
     <Input
       type="submit"
       _hover={{ backgroundColor: "#eee" }}
-      _disabled={{ backgroundColor: "#aaa" }}
+      _disabled={disabled ? { backgroundColor: "#aaa" } : {}}
       {...props}
     />
   )
@@ -70,7 +73,7 @@ export const ExcelInputGroup: FC<BoxProps> = (props) => {
 }
 
 // 以下は v3 で forwardRef の型問題あり
-const ExcelInput = forwardRef<InputProps, "input">((props, ref) => {
+export const ExcelInput = forwardRef<InputProps, "input">((props, ref) => {
   return (
     <ChakraInput
       padding="0"
@@ -84,9 +87,9 @@ const ExcelInput = forwardRef<InputProps, "input">((props, ref) => {
   )
 })
 
-export const ExcelDisplay: FC<InputProps> = (props) => {
-  return <ExcelInput readOnly={true} left="200px" {...props} />
-}
+export const ExcelDisplay = forwardRef<InputProps, "input">((props, ref) => {
+  return <ExcelInput readOnly={true} left="200px" ref={ref} {...props} />
+})
 
 export const InputReadOnly: FC<InputProps> = (props) => {
   return <ExcelInput readOnly={true} {...props} />
@@ -133,8 +136,11 @@ export const Button: FC<ButtonProps> = (props) => {
 //     css`
 //       background-color: #aaa;
 
-export const Checkbox: FC<typeof ChakraCheckbox> = (props) => {
-  return <ChakraCheckbox padding="0" width="30px" {...props} />
+export const Checkbox: FC<typeof ChakraCheckbox & { width?: number }> = ({
+  width,
+  ...props
+}) => {
+  return <ChakraCheckbox padding="0" width={width ?? "30px"} {...props} />
 }
 
 // export const Checkbox = styled.input.attrs<CSSProperties>({ type: "checkbox" })`

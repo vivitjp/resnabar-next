@@ -1,7 +1,36 @@
 "use client"
 
-import { Box, BoxProps, Flex } from "@chakra-ui/react"
+import { Box, BoxProps, Flex, FlexProps, forwardRef } from "@chakra-ui/react"
 import { FC } from "react"
+
+export const Section: FC<FlexProps> = (props) => {
+  return (
+    <Flex
+      flexDirection="column"
+      gap="5px"
+      width="100%"
+      border="1px solid #aaa"
+      maxHeight="300px"
+      overflowY="scroll"
+      {...props}
+    />
+  )
+}
+
+export const SectionRef = forwardRef<FlexProps, "div">((props, ref) => {
+  return (
+    <Flex
+      flexDirection="column"
+      gap="5px"
+      width="100%"
+      border="1px solid #aaa"
+      maxHeight="300px"
+      overflowY="scroll"
+      ref={ref}
+      {...props}
+    />
+  )
+})
 
 export const BorderBox: FC<BoxProps> = (props) => {
   return (

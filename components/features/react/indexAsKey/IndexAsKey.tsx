@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Div } from "@/components/common/styleDiv"
-import { Button, Input } from "@/components/common/styleInput"
-import { Flex } from "@chakra-ui/react"
+import { Button, Input } from "@/components/common/styleInputChakra"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function UseIndexAsKey(): UseReturnType {
   const title = `data自身のid/配列index for Key`
@@ -79,9 +78,9 @@ const ParentCompo = () => {
         <Button onClick={handleAddItems}>アイテム追加</Button>
       </Flex>
       <Flex flexFlow="column" width="300px" gap="5px" padding="5px">
-        <Div fontSize="20px" color="gray" fontWeight="700">
+        <Box fontSize="20px" color="gray" fontWeight="700">
           Key=Index
-        </Div>
+        </Box>
         <Flex flexFlow="column" width="100%" alignItems="flex-start" gap="5px">
           {data.map((city, index) => (
             <Flex
@@ -92,16 +91,16 @@ const ParentCompo = () => {
               color={city.color}
               justifyContent="space-between"
             >
-              <Div>{city.name}</Div>
+              <Box>{city.name}</Box>
               <Input fontSize="12px" id={`${KEY_INDEX}${index}`} />
             </Flex>
           ))}
         </Flex>
       </Flex>
       <Flex flexFlow="column" width="300px" gap="5px" padding="5px">
-        <Div fontSize="20px" color="gray" fontWeight="700">
+        <Box fontSize="20px" color="gray" fontWeight="700">
           Key=id(data自身の)
-        </Div>
+        </Box>
         <Flex flexFlow="column" width="100%" alignItems="flex-start" gap="5px">
           {data.map((city, index) => (
             <Flex
@@ -112,7 +111,7 @@ const ParentCompo = () => {
               color={city.color}
               justifyContent="space-between"
             >
-              <Div>{city.name}</Div>
+              <Box>{city.name}</Box>
               <Input fontSize="12px" id={`${KEY_ID}${index}`} />
             </Flex>
           ))}
@@ -168,22 +167,22 @@ const ParentCompo = () => {
         <Button onClick={handleAddItems}>アイテム追加</Button>
       </Flex>
       <Flex flexFlow="column" >
-        <Div> Key=Index </Div>
+        <Box> Key=Index </Box>
         <Flex flexFlow="column" >
           {data.map((city, index) => (
             <Flex flexFlow="row"  key={index}> 🚫key=index
-              <Div>{city.name}</Div>
+              <Box>{city.name}</Box>
               <Input id={\`\${KEY_INDEX}\${index}\`} />
             </Flex>
           ))}
         </Flex>
       </Flex>
       <Flex flexFlow="column" >
-        <Div> Key=unique_id </Div>
+        <Box> Key=unique_id </Box>
         <Flex flexFlow="column" >
           {data.map((city, index) => (
             <Flex flexFlow="row"  key={city.id}> ⭕key=unique_id
-              <Div>{city.name}</Div>
+              <Box>{city.name}</Box>
               <Input id={\`\${KEY_ID}\${index}\`} />
             </Flex>
           ))}

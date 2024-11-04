@@ -1,6 +1,6 @@
 import { UseReturnType } from "@/components/type/type"
-import { BorderDiv } from "@/components/common/styleDiv"
-import { Button } from "@/components/common/styleInput"
+import { BorderBox } from "@/components/common/styleDivChakra"
+import { Button } from "@/components/common/styleInputChakra"
 import { useDispatch, useSelector } from "react-redux"
 import { actions } from "@/store/redux/actions/ItemActions"
 import { StateItem } from "@/store/redux/reducers/itemReducer"
@@ -35,7 +35,7 @@ const Compo = () => {
   return (
     <Flex flexFlow="column" >
       <Flex flexFlow="row" >
-        <BorderDiv>{items.item}</BorderDiv>
+        <BorderBox>{items.item}</BorderBox>
         <Button onClick={() => dispatch(actions.increment(1))}>追加</Button>
         <Button onClick={() => dispatch(actions.decrement(1))}>削減</Button>
         <Button onClick={() => dispatch(actions.reset())}>Reset</Button>
@@ -59,7 +59,7 @@ const ParentCompo = () => {
         gap="10px"
         justifyContent="flex-start"
       >
-        <BorderDiv width="160px">{items.item}</BorderDiv>
+        <BorderBox width="160px">{items.item}</BorderBox>
         <Button onClick={() => dispatch(actions.increment(1))}>追加</Button>
         <Button onClick={() => dispatch(actions.decrement(1))}>削減</Button>
         <Button onClick={() => dispatch(actions.reset())}>Reset</Button>

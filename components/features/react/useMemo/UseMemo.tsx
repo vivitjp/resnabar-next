@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useState } from "react"
 import { useCount2 } from "@/store/zustand/storeBasic"
 import { UseReturnType } from "@/components/type/type"
-import { Title, Div } from "@/components/common/styleDiv"
-import { Button } from "@/components/common/styleInput"
+import { Title } from "@/components/common/styleDivChakra"
+import { Button } from "@/components/common/styleInputChakra"
 import { Table } from "@/components/common/Table"
 import {
   ProgrammingLanguage,
@@ -10,7 +10,7 @@ import {
 } from "../../mock/programmingLanguage"
 import { useFetchMock } from "../components/UseFetchMock"
 import { useInputForMemo } from "./components/useInputForMemo"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function UseMemo(): UseReturnType {
   const title = `useMemo`
@@ -108,7 +108,7 @@ const ParentCompo = () => {
       <Flex flexFlow="column" width="400px" gap="10px">
         <Flex flexFlow="row" gap="10px" alignItems="center">
           <Button onClick={handle}>Fetchデータ</Button>
-          <Div fontSize="18px">Fetch回数: {fetchCounter}</Div>
+          <Box fontSize="18px">Fetch回数: {fetchCounter}</Box>
         </Flex>
 
         <Flex
@@ -150,7 +150,7 @@ const ParentCompo = () => {
             />
           </Flex>
           <Flex flexFlow="column">
-            <Div fontSize="18px">データ生成回数: {counters[0]}</Div>
+            <Box fontSize="18px">データ生成回数: {counters[0]}</Box>
           </Flex>
         </Flex>
         <Flex
@@ -167,7 +167,7 @@ const ParentCompo = () => {
             />
           </Flex>
           <Flex flexFlow="column">
-            <Div fontSize="18px">データ生成回数: {counters[1]}</Div>
+            <Box fontSize="18px">データ生成回数: {counters[1]}</Box>
           </Flex>
         </Flex>
       </Flex>

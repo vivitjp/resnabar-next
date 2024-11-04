@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, PropsWithChildren } from "react"
+import { FC } from "react"
 import { OptionsType } from "@/library/hooks/type"
 import {
   CodeKeyType,
@@ -211,7 +211,7 @@ const SubTitle: FC<BoxProps> = (props) => {
   )
 }
 
-// const OptionSubTitle = styled(Div)`
+// const OptionSubTitle = styled(Box)`
 //   :after {
 //     content: ":";
 //     margin: 0 3px;

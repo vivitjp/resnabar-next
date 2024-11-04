@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
 import { Flex } from "@chakra-ui/react"

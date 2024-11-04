@@ -1,9 +1,8 @@
 import { SubmitHandler } from "react-hook-form"
 import { GenericInput } from "./GenericInput"
 import { GFieldType, useDefaultForm } from "./useDefaultForm"
-import { Div } from "@/components/common/styleDiv"
-import { Submit } from "@/components/common/styleInput"
-import { Flex } from "@chakra-ui/react"
+import { Submit } from "@/components/common/styleInputChakra"
+import { Box, Flex } from "@chakra-ui/react"
 
 //Data型
 export type Person = {
@@ -51,7 +50,7 @@ export const GenericForm = () => {
         justifyContent="space-between"
       >
         <Flex flexFlow="column" width="200px" gap="4px">
-          <Div>Name</Div>
+          <Box>Name</Box>
           <GenericInput<Person, string>
             method={method}
             target={"name"}
@@ -66,7 +65,7 @@ export const GenericForm = () => {
         justifyContent="space-between"
       >
         <Flex flexFlow="column" width="200px" gap="4px">
-          <Div>Age</Div>
+          <Box>Age</Box>
           <GenericInput<Person, number>
             method={method}
             target={"age"}

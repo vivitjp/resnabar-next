@@ -1,9 +1,9 @@
 import { UseReturnType } from "@/components/type/type"
-import { Div, DivPre } from "@/components/common/styleDiv"
+import { DivPre } from "@/components/common/styleDivChakra"
 import { useState } from "react"
-import { Button, Input } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInputChakra"
 import { DeepObjectState } from "@/store/reduxToolkit/slices/deepObjectSlice"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function UseJSObject(): UseReturnType {
   const title = `JavaScript の Shallow & Deep`
@@ -199,7 +199,7 @@ const ParentCompo = () => {
             <Button textAlign="left" width="350px" onClick={clearHandler}>
               🔺2A.初期値Objectの「値と参照」を代入
             </Button>
-            <Div>localObject.address = initOject.address(参照)</Div>
+            <Box>localObject.address = initOject.address(参照)</Box>
           </Flex>
 
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
@@ -210,7 +210,7 @@ const ParentCompo = () => {
             >
               🔺2B.初期値Objectを「Spread構文」で代入
             </Button>
-            <Div>localObject = &#123; ...initOject &#125; </Div>
+            <Box>localObject = &#123; ...initOject &#125; </Box>
           </Flex>
 
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
@@ -221,7 +221,7 @@ const ParentCompo = () => {
             >
               ⭕2C.初期値Objectを「structuredClone」で代入
             </Button>
-            <Div>localObject = structuredClone(initOject) </Div>
+            <Box>localObject = structuredClone(initOject) </Box>
           </Flex>
 
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
@@ -232,11 +232,11 @@ const ParentCompo = () => {
             >
               3.深い変数を「値」で上書き
             </Button>
-            <Div>
+            <Box>
               localObject.address.pref = &apos;北海道&apos;
               <br />
               初期値objectも同時に変わる様子を観察
-            </Div>
+            </Box>
           </Flex>
         </Flex>
       </Flex>

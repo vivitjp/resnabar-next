@@ -1,8 +1,15 @@
 "use client"
 
-import { CSSProperties, useCallback, useId, useState } from "react"
-import styled from "styled-components"
+import { CSSProperties, FC, useCallback, useId, useState } from "react"
 import { OptionsType } from "./type"
+import {
+  Checkbox as CheckboxChakra,
+  CheckboxProps,
+  Flex,
+  FlexProps,
+  Text,
+  TextProps,
+} from "@chakra-ui/react"
 
 type Props = {
   title: string
@@ -34,10 +41,11 @@ export const useCheck = ({
     extraNote,
     title,
     JSX: (
-      <Div>
-        <Input id={id} onChange={handle} width={width} checked={value} />
-        <Label htmlFor={id}>{subTitle}</Label>
-      </Div>
+      <Box>
+        <Checkbox id={id} onChange={handle} width={width} checked={value}>
+          {subTitle}
+        </Checkbox>
+      </Box>
     ),
   }
 }
@@ -45,25 +53,47 @@ export const useCheck = ({
 //----------------------------------------
 // Styled
 //----------------------------------------
-const Div = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-  padding: 0;
-`
+export const Box: FC<FlexProps> = (props) => {
+  return (
+    <Flex
+      flexDirection="row"
+      justifyContent="flex-start"
+      alignItems="center"
+      gap="10px"
+      padding={0}
+      {...props}
+    />
+  )
+}
 
-const Label = styled.label`
-  padding: 2px;
-  font-size: 1.2rem;
-`
+// const Label = styled.label`
+//   padding: 2px;
+//   font-size: 1.2rem;
+// `
 
-const Input = styled.input.attrs({ type: "checkbox" })<CSSProperties>`
-  width: ${({ width = 20 }) => `${width}px`};
-  height: 36px;
-  padding: 8px;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  font-size: 1.2rem;
-`
+// export const Label: FC<TextProps> = (props) => {
+//   return <Text padding="2px" fontSize="1.2rem" {...props} />
+// }
+
+// const Input = styled.input.attrs({ type: "checkbox" })<CSSProperties>`
+//   width: ${({ width = 20 }) => `${width}px`};
+//   height: 36px;
+//   padding: 8px;
+//   border: 1px solid #aaa;
+//   border-radius: 5px;
+//   font-size: 1.2rem;
+// `
+
+export const Checkbox: FC<CheckboxProps> = (props) => {
+  return (
+    <CheckboxChakra
+      width="20px"
+      height="36px"
+      padding="8px"
+      border="1px solid #aaa"
+      borderRadius="5px"
+      fontSize="1.2rem"
+      {...props}
+    />
+  )
+}

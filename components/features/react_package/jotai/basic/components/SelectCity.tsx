@@ -1,9 +1,8 @@
-import { Div } from "@/components/common/styleDiv"
 import { useAtom } from "jotai"
 import { citiesAtom, citySelectedAtom } from "../atoms"
 import { useSelect } from "@/library/hooks/useSelect"
-import { Button } from "@/components/common/styleInput"
-import { Flex } from "@chakra-ui/react"
+import { Button } from "@/components/common/styleInputChakra"
+import { Box, Flex } from "@chakra-ui/react"
 
 export const SelectCity = () => {
   const [cities] = useAtom(citiesAtom)
@@ -22,7 +21,7 @@ export const SelectCity = () => {
 
   return (
     <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
-      <Div width="100px">都市</Div>
+      <Box width="100px">都市</Box>
       {SnippetsStyleSelection}
       <Button onClick={handleSetValue}>セット</Button>
     </Flex>

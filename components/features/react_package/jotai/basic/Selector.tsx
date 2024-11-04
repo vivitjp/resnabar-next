@@ -1,9 +1,8 @@
-import { Div } from "@/components/common/styleDiv"
 import { UseReturnType } from "@/components/type/type"
 import { useAtom } from "jotai"
 import { citySelectedAtom } from "./atoms"
 import { SelectCity } from "./components/SelectCity"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function JotaiSelector(): UseReturnType {
   const title = `Jotai 基礎: Selector`
@@ -31,9 +30,9 @@ const Component = () => {
       gap="10px"
     >
       <SelectCity />
-      <Div fontSize="16px" padding="5px">
+      <Box fontSize="16px" padding="5px">
         選択された市 : {citySelected}
-      </Div>
+      </Box>
     </Flex>
   )
 }
@@ -55,9 +54,9 @@ const Component = () => {
   return (
     <Flex flexFlow="row" >
       <SelectCity />
-      <Div>
+      <Box>
         選択された市 : {citySelected}
-      </Div>
+      </Box>
     </Flex>
   )
 }
@@ -77,7 +76,7 @@ export const Counter = () => {
  
   return (
     <Flex flexFlow="row" >
-      <Div>カウント</Div>
+      <Box>カウント</Box>
       <Input defaultValue={value} onChange={handleOnChange} />
       <Button onClick={handleSetValue}>セット</Button>
     </Flex>

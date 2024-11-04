@@ -1,8 +1,8 @@
 import { UseReturnType } from "@/components/type/type"
-import { Div, DivPre } from "@/components/common/styleDiv"
+import { DivPre } from "@/components/common/styleDivChakra"
 import { useState } from "react"
 
-import { Button, Input } from "@/components/common/styleInput"
+import { Button, Input } from "@/components/common/styleInputChakra"
 import { useAppDispatch, useAppSelector } from "@/store/reduxToolkit/hooks"
 import {
   clearDeepOjectAddressRef,
@@ -14,7 +14,7 @@ import {
   setDeepObject,
   setDeepOjectAddressPref,
 } from "@/store/reduxToolkit/slices/deepObjectSlice"
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export function UseDeepObject(): UseReturnType {
   const title = `Redux Toolkit: Shallow & Deep`
@@ -160,11 +160,11 @@ const ParentCompo = () => {
             >
               1.入力値を個別に保存
             </Button>
-            <Div>
+            <Box>
               state.address.pref = action.payload.address.pref
               <br />
               state.address.city = action.payload.address.city
-            </Div>
+            </Box>
           </Flex>
 
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
@@ -175,7 +175,7 @@ const ParentCompo = () => {
             >
               2.初期値を値/参照(structuredClone/spread構文)で代入
             </Button>
-            <Div>state.address = &#123; ...initOject.address &#125;</Div>
+            <Box>state.address = &#123; ...initOject.address &#125;</Box>
           </Flex>
 
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
@@ -186,7 +186,7 @@ const ParentCompo = () => {
             >
               3.初期値を値で代入/深いobjectには参照で代入
             </Button>
-            <Div>state.address = initOject.address //参照</Div>
+            <Box>state.address = initOject.address //参照</Box>
           </Flex>
 
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
@@ -197,10 +197,10 @@ const ParentCompo = () => {
             >
               ⛔ state 自体をobject(Spread構文)で初期化
             </Button>
-            <Div>
+            <Box>
               state = &#123; ...initOject &#125; //上書🆖:
               stateトップはimmutable
-            </Div>
+            </Box>
           </Flex>
 
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
@@ -211,10 +211,10 @@ const ParentCompo = () => {
             >
               ⛔ state 自体をobject(structuredClone)で初期化
             </Button>
-            <Div>
+            <Box>
               state = structuredClone(initOject) //上書🆖:
               stateトップはimmutable
-            </Div>
+            </Box>
           </Flex>
 
           <Flex flexFlow="row" padding="5px" gap="10px" alignItems="center">
@@ -225,11 +225,11 @@ const ParentCompo = () => {
             >
               4.objectの深い属性に値代入
             </Button>
-            <Div>
+            <Box>
               state.address.pref = &apos;北海道&apos;
               <br />
               🧡 参照先に代入したが初期objectに変化なし!! 👉 Reduxの特質
-            </Div>
+            </Box>
           </Flex>
         </Flex>
       </Flex>

@@ -1,3 +1,5 @@
+"use client"
+
 import { RouteElements, routes } from "@/config/routes"
 import {
   Body,
@@ -10,9 +12,8 @@ import {
   Playground,
 } from "./Layout.style"
 import "./globals.css"
-import StyledComponentsRegistry from "@/library/libs/registry"
 import { ProvidersReduxToolkit } from "@/store/reduxToolkit/provider"
-import { ChakraProvider, VStack } from "@chakra-ui/react"
+import { ChakraProvider, Flex } from "@chakra-ui/react"
 
 export const metadata = {
   title: "re:Sunabar",
@@ -38,19 +39,17 @@ export default function RootLayout({
         <ProvidersReduxToolkit>
           {/* <ProvidersRedux> */}
           <ChakraProvider>
-            <StyledComponentsRegistry>
-              <VStack>
-                <Header>re:Sunabar React on Next v13.4</Header>
-                <Body>
-                  <MenuNav>
-                    {Object.entries(routes).map((group) => (
-                      <MenuGroup key={group[0]} group={group} />
-                    ))}
-                  </MenuNav>
-                  <Playground>{children}</Playground>
-                </Body>
-              </VStack>
-            </StyledComponentsRegistry>
+            <Flex flexFlow={"column"}>
+              <Header>re:Sunabar React on Next v13.4</Header>
+              <Body>
+                <MenuNav>
+                  {Object.entries(routes).map((group) => (
+                    <MenuGroup key={group[0]} group={group} />
+                  ))}
+                </MenuNav>
+                <Playground>{children}</Playground>
+              </Body>
+            </Flex>
             {/* </ProvidersRedux> */}
           </ChakraProvider>
         </ProvidersReduxToolkit>
@@ -65,7 +64,7 @@ const MenuGroup = ({
   group: [string, RouteElements[]]
 }) => {
   return (
-    <Group open>
+    <Group>
       <GroupTitle data-testid="group-title">{title}</GroupTitle>
       <>
         {!!menus.length && (

@@ -1,8 +1,9 @@
 "use client"
 
 import { CSSProperties, useCallback, useState } from "react"
-import styled from "styled-components"
+// import styled from "styled-components"
 import { OptionsType } from "./type"
+import { Input } from "@/components/common/styleInputChakra"
 
 type Props<T> = {
   title: string
@@ -32,22 +33,39 @@ export const useText = <T,>({
     subTitle,
     extraNote,
     title,
-    JSX: <Input onChange={handle} width={width} value={value as string} />,
+    JSX: (
+      <Input
+        onChange={handle}
+        width={width}
+        value={value as string}
+        sx={{
+          height: "36px",
+          padding: "8px",
+          border: "1px solid #aaa",
+          borderRadius: "5px",
+          fontSize: "1.2rem",
+          textAlign: "center",
+          "::placeholder": {
+            color: "grey",
+          },
+        }}
+      />
+    ),
   }
 }
 
 //----------------------------------------
 // Styled
 //----------------------------------------
-const Input = styled.input.attrs({ type: "text" })<CSSProperties>`
-  width: ${({ width = 160 }) => `${width}px`};
-  height: 36px;
-  padding: 8px;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  text-align: center;
-  ::placeholder {
-    color: grey;
-  }
-`
+// const Input = styled.input.attrs({ type: "text" })<CSSProperties>`
+//   width: ${({ width = 160 }) => `${width}px`};
+//   height: 36px;
+//   padding: 8px;
+//   border: 1px solid #aaa;
+//   border-radius: 5px;
+//   font-size: 1.2rem;
+//   text-align: center;
+//   ::placeholder {
+//     color: grey;
+//   }
+// `

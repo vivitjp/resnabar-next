@@ -1,12 +1,13 @@
 import React, { useMemo, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { Div, DivPre, BorderDiv } from "@/components/common/styleDiv"
-import { Button } from "@/components/common/styleInput"
+import { DivPre, BorderBox } from "@/components/common/styleDivChakra"
+import { Button } from "@/components/common/styleInputChakra"
 import { useForm, SubmitHandler, useWatch, Controller } from "react-hook-form"
 import {
   Input as ChakraInput,
   Checkbox as ChakraCheckbox,
   Flex,
+  Box,
 } from "@chakra-ui/react"
 
 export function ControlAIO(): UseReturnType {
@@ -111,7 +112,7 @@ const ParentCompo = () => {
               gap="10px"
               alignItems="flex-start"
             >
-              <Div width="60px">名前</Div>
+              <Box width="60px">名前</Box>
               <Controller
                 render={({ field, fieldState: { error } }) => {
                   return (
@@ -134,7 +135,7 @@ const ParentCompo = () => {
               gap="10px"
               alignItems="flex-start"
             >
-              <Div width="60px">住所</Div>
+              <Box width="60px">住所</Box>
               <Controller
                 render={({ field, fieldState: { error } }) => {
                   return (
@@ -157,7 +158,7 @@ const ParentCompo = () => {
               gap="10px"
               alignItems="flex-start"
             >
-              <Div width="60px">年齢</Div>
+              <Box width="60px">年齢</Box>
               <Controller
                 render={({ field, fieldState: { error } }) => {
                   return (
@@ -180,15 +181,15 @@ const ParentCompo = () => {
             </Flex>
 
             <Flex flexFlow="row" width="100%" gap="10px" alignItems="center">
-              <Div width="60px">年(自動)</Div>
-              <BorderDiv width="200px">{ageCalcAuto}</BorderDiv>
+              <Box width="60px">年(自動)</Box>
+              <BorderBox width="200px">{ageCalcAuto}</BorderBox>
             </Flex>
 
             <Flex flexFlow="row" width="100%" gap="10px" alignItems="center">
               <Button width="60px" onClick={handleWatch} padding="0px">
                 年(手動)
               </Button>
-              <BorderDiv width="200px">{calcAgeMan}</BorderDiv>
+              <BorderBox width="200px">{calcAgeMan}</BorderBox>
             </Flex>
 
             {/* act */}
@@ -198,7 +199,7 @@ const ParentCompo = () => {
               gap="10px"
               alignItems="flex-start"
             >
-              <Div width="60px">有効</Div>
+              <Box width="60px">有効</Box>
               <Controller
                 render={({ field }) => {
                   return <ChakraCheckbox {...field} />
@@ -292,7 +293,7 @@ const ParentCompo = () => {
           <Flex flexFlow="column" >
             {/* name */}
             <Flex flexFlow="row" >
-              <Div>名前</Div>
+              <Box>名前</Box>
               <Controller
                 render={({ field, fieldState: { error } }) => {
                   return (
@@ -310,7 +311,7 @@ const ParentCompo = () => {
  
             {/* address */}
             <Flex flexFlow="row" >
-              <Div>住所</Div>
+              <Box>住所</Box>
               <Controller
                 render={({ field, fieldState: { error } }) => {
                   return (
@@ -328,7 +329,7 @@ const ParentCompo = () => {
  
             {/* age */}
             <Flex flexFlow="row" >
-              <Div>年齢</Div>
+              <Box>年齢</Box>
               <Controller
                 render={({ field, fieldState: { error } }) => {
                   return (
@@ -351,18 +352,18 @@ const ParentCompo = () => {
             </Flex>
  
             <Flex flexFlow="row" >
-              <Div>年(自動)</Div>
-              <BorderDiv>{ageCalcAuto}</BorderDiv>
+              <Box>年(自動)</Box>
+              <BorderBox>{ageCalcAuto}</BorderBox>
             </Flex>
  
             <Flex flexFlow="row" >
               <Button onClick={handleWatch}> 年(手動) </Button>
-              <BorderDiv>{calcAgeMan}</BorderDiv>
+              <BorderBox>{calcAgeMan}</BorderBox>
             </Flex>
  
             {/* act */}
             <Flex flexFlow="row" >
-              <Div>有効</Div>
+              <Box>有効</Box>
               <Controller
                 render={({ field }) => {
                   return <ChakraCheckbox {...field} />
