@@ -1,12 +1,7 @@
-import React, { ComponentProps, useEffect, useRef } from "react"
+import React, { forwardRef, useEffect, useRef } from "react"
 import { UseReturnType } from "@/components/type/type"
 import { useForm, useWatch } from "react-hook-form"
-import { Input as ChakraInput, Button, Flex, Box, Text } from "@chakra-ui/react"
-import {
-  ExcelDisplay,
-  ExcelInput,
-  ExcelInputGroup,
-} from "@/components/common/styleInputChakra"
+import { Input, Button, Flex, Box, Text, InputProps } from "@chakra-ui/react"
 import { DivPre } from "@/components/common/styleDivChakra"
 
 export function ExcelAIO(): UseReturnType {
@@ -94,7 +89,7 @@ function InputSample() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box>
             <Text>氏名</Text>
-            <ChakraInput
+            <ExcelInput
               id="name"
               placeholder="田中太郎"
               {...register("name", constrain.name)}
@@ -106,14 +101,19 @@ function InputSample() {
 
           <Box>
             <Text>年齢</Text>
-            <ExcelInputGroup>
-              {/* <ExcelInputRef {...(regAge, { onBlur: onInputBlur })} /> */}
-              <ExcelDisplayRef
+            <Box
+              width="100px"
+              height="40px"
+              backgroundColor="white"
+              border="1px solid #aaa"
+            >
+              {/* <ExcelInput {...(regAge, { onBlur: onInputBlur })} /> */}
+              <ExcelInput
                 value={displayValue}
                 onFocus={onDisplayFocus}
-                //ref={refDisplay}
+                ref={refDisplay}
               />
-            </ExcelInputGroup>
+            </Box>
             <Box>{errors.age && errors.age.message}</Box>
           </Box>
 
@@ -136,22 +136,9 @@ function InputSample() {
 
 const code = ``
 
-// type ExcelInputForward = {
-//   width?: number
-// } & ComponentProps<"input">
-
-const ExcelInputRef = React.forwardRef<
-  HTMLInputElement,
-  ComponentProps<"input">
->(({ children }, ref) => {
-  return <ExcelInput ref={ref}>{children}</ExcelInput>
-})
-ExcelInputRef.displayName = "ExcelInputRef"
-
-const ExcelDisplayRef = React.forwardRef<
-  HTMLInputElement,
-  ComponentProps<"input">
->(({ children }, ref) => {
-  return <ExcelDisplay ref={ref}>{children}</ExcelDisplay>
-})
-ExcelDisplayRef.displayName = "ExcelDisplayRef"
+const ExcelInput = forwardRef<HTMLInputElement, InputProps>(
+  ({ children }, ref) => {
+    return <Input ref={ref}>{children}</Input>
+  }
+)
+ExcelInput.displayName = "ExcelInput"

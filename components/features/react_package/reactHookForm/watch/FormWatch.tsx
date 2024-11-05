@@ -77,7 +77,7 @@ export const FormWatch = () => {
       >
         <Flex flexFlow="row" width="600px" gap="4px">
           <Box width="100px">Name</Box>
-          <InputWatch<Person, string>
+          <InputWatch<Person>
             method={method}
             target={"name"}
             constrain={constrain["name"]}
@@ -85,7 +85,7 @@ export const FormWatch = () => {
         </Flex>
         <Flex flexFlow="row" width="600px" gap="4px">
           <Box width="100px">address</Box>
-          <InputWatch<Person, string>
+          <InputWatch<Person>
             method={method}
             target={"address"}
             constrain={constrain["address"]}
@@ -93,7 +93,7 @@ export const FormWatch = () => {
         </Flex>
         <Flex flexFlow="row" width="600px" gap="4px">
           <Box width="100px">Name+address動的生成</Box>
-          <InputWatch<Person, string>
+          <InputWatch<Person>
             method={method}
             target={"auto_1"}
             constrain={constrain["auto_1"]}
@@ -101,7 +101,7 @@ export const FormWatch = () => {
         </Flex>
         <Flex flexFlow="row" width="600px" gap="4px">
           <Box width="100px">Age</Box>
-          <InputWatch<Person, number>
+          <InputWatch<Person>
             method={method}
             target={"age"}
             constrain={constrain["age"]}

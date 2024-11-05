@@ -4,8 +4,6 @@ import { CSSProperties, FC } from "react"
 import {
   InputProps,
   Input as ChakraInput,
-  BoxProps,
-  Box,
   TextareaProps,
   Textarea as ChakraTextarea,
   ButtonProps,
@@ -15,7 +13,8 @@ import {
   forwardRef,
 } from "@chakra-ui/react"
 
-export const Input: FC<InputProps> = (props) => {
+// 以下は v3 で forwardRef の型問題あり
+export const Input = forwardRef<InputProps, "input">((props, ref) => {
   return (
     <ChakraInput
       padding="0.2rem"
@@ -26,22 +25,7 @@ export const Input: FC<InputProps> = (props) => {
       border="1px solid #aaa"
       borderRadius="5px"
       textAlign="center"
-      {...props}
-    />
-  )
-}
-
-export const InputRef = forwardRef<InputProps, "input">((props, ref) => {
-  return (
-    <ChakraInput
-      padding="0.2rem"
-      width="100px"
-      height="40px"
-      color="grey"
-      backgroundColor="white"
-      border="1px solid #aaa"
-      borderRadius="5px"
-      textAlign="center"
+      ref={ref}
       {...props}
     />
   )
@@ -76,41 +60,6 @@ export const Submit: FC<InputProps & { disabled?: boolean }> = ({
 //           background-color: #aaa;
 //         `}
 // `
-
-export const ExcelInputGroup: FC<BoxProps> = (props) => {
-  return (
-    <Box
-      width="100px"
-      height="40px"
-      backgroundColor="white"
-      border="1px solid #aaa"
-      {...props}
-    />
-  )
-}
-
-// 以下は v3 で forwardRef の型問題あり
-export const ExcelInput = forwardRef<InputProps, "input">((props, ref) => {
-  return (
-    <ChakraInput
-      padding="0"
-      width="inherit"
-      height="height"
-      color="grey"
-      textAlign="center"
-      ref={ref}
-      {...props}
-    />
-  )
-})
-
-export const ExcelDisplay = forwardRef<InputProps, "input">((props, ref) => {
-  return <ExcelInput readOnly={true} left="200px" ref={ref} {...props} />
-})
-
-export const InputReadOnly: FC<InputProps> = (props) => {
-  return <ExcelInput readOnly={true} {...props} />
-}
 
 export const TextArea: FC<TextareaProps> = (props) => {
   return (
@@ -147,13 +96,7 @@ export const Button: FC<ButtonProps> = (props) => {
   )
 }
 
-export const Checkbox: FC<
-  CheckboxProps & { width?: CSSProperties["width"] }
-> = ({ width, ...props }) => {
-  return <ChakraCheckbox padding="0" width={width ?? "30px"} {...props} />
-}
-
-export const CheckboxRef = forwardRef<
+export const Checkbox = forwardRef<
   CheckboxProps & { width?: CSSProperties["width"] },
   "input"
 >(({ width, ...props }, ref) => {

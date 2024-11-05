@@ -1,7 +1,7 @@
 import { shallow } from "zustand/shallow"
 
 import { Flex } from "@chakra-ui/react"
-import { InputRef } from "@/components/common/styleInputChakra"
+import { Input } from "@/components/common/styleInputChakra"
 import { UseReturnType } from "@/components/type/type"
 import { useRef } from "react"
 import { useDevTools } from "@/store/zustand/useDevTools"
@@ -43,7 +43,7 @@ const Name = () => {
       <Flex flexFlow="row" fontSize="16px" padding="5px" width={"100px"}>
         Name:
       </Flex>
-      <InputRef ref={nameRef} width={"160px"} />
+      <Input ref={nameRef} width={"160px"} />
       <button onClick={handleClickButton} value="Save">
         Submit
       </button>
@@ -89,7 +89,7 @@ const Name = () => {
   return (
     <Flex flexFlow="row" >
       <Flex flexFlow="row" > Name: </Flex>
-      <InputRef ref={nameRef}/>
+      <Input ref={nameRef}/>
       <button onClick={handleClickButton} value="Save"> Submit </button>
       <Flex flexFlow="row" > {Person.name} </Flex>
     </Flex>

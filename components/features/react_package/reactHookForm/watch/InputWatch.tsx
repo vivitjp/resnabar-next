@@ -4,17 +4,17 @@ import { GFieldType } from "../generic/useDefaultForm"
 import { ErrorMessage } from "./Error"
 import { Flex } from "@chakra-ui/react"
 
-type CompareWatchInput<T extends GFieldType, R> = {
+type CompareWatchInput<T extends GFieldType> = {
   method: UseFormReturn<T>
   target: Path<T>
   constrain: GFieldType
 }
 
-export const InputWatch = <T extends GFieldType, R extends string | number>({
+export const InputWatch = <T extends GFieldType>({
   method,
   target,
   constrain,
-}: CompareWatchInput<T, R>) => {
+}: CompareWatchInput<T>) => {
   const {
     register,
     formState: { errors },

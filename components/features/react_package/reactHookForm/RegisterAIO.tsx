@@ -1,11 +1,7 @@
 import React, { useMemo, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
 import { DivPre, BorderBox } from "@/components/common/styleDivChakra"
-import {
-  Button,
-  CheckboxRef,
-  InputRef,
-} from "@/components/common/styleInputChakra"
+import { Button, Checkbox, Input } from "@/components/common/styleInputChakra"
 import { useForm, SubmitHandler, useWatch } from "react-hook-form"
 import { Box, Flex } from "@chakra-ui/react"
 
@@ -115,7 +111,7 @@ const ParentCompo = () => {
               alignItems="flex-start"
             >
               <Box width="60px">名前</Box>
-              <InputRef {...register("name", constrain.name)} />
+              <Input {...register("name", constrain.name)} />
               {errors.name && <span>{errors.name.message}</span>}
             </Flex>
 
@@ -127,7 +123,7 @@ const ParentCompo = () => {
               alignItems="flex-start"
             >
               <Box width="60px">住所</Box>
-              <InputRef {...register("address", constrain.address)} />
+              <Input {...register("address", constrain.address)} />
               {errors.address && <span>必須</span>}
             </Flex>
 
@@ -139,7 +135,7 @@ const ParentCompo = () => {
               alignItems="flex-start"
             >
               <Box width="60px">年齢</Box>
-              <InputRef {...register("age", constrain.age)} />
+              <Input {...register("age", constrain.age)} />
               {errors.age && <span>数値のみ</span>}
             </Flex>
 
@@ -150,7 +146,7 @@ const ParentCompo = () => {
               alignItems="flex-start"
             >
               <Box width="60px">年(自動)</Box>
-              <BorderBox>{ageCalcAuto}</BorderBox>
+              <BorderBox width="100px">{ageCalcAuto}</BorderBox>
             </Flex>
 
             <Flex
@@ -162,7 +158,7 @@ const ParentCompo = () => {
               <Button onClick={handleWatch} padding="0px" width="60px">
                 年(手動)
               </Button>
-              <BorderBox>{calcAgeMan}</BorderBox>
+              <BorderBox width="100px">{calcAgeMan}</BorderBox>
             </Flex>
 
             {/* act */}
@@ -173,11 +169,8 @@ const ParentCompo = () => {
               alignItems="flex-start"
             >
               <Box width="60px">有効</Box>
-              <BorderBox>
-                <CheckboxRef
-                  width="120px"
-                  {...register("act", constrain.act)}
-                />
+              <BorderBox width="100px">
+                <Checkbox width="120px" {...register("act", constrain.act)} />
               </BorderBox>
             </Flex>
             <Flex flexFlow="row" width="100%" justifyContent="flex-end">
