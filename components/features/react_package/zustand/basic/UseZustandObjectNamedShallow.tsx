@@ -8,8 +8,8 @@ import { usePerson2 } from "@/store/zustand/storeBasic"
 export function UseZustandObjectNamedShallow(): UseReturnType {
   const title = `Object(名前付)による取り出しでShallow比較 [★]`
   const subTitle = `const Person = usePerson(
-    (state) => ({ name: state.name, setName: state.setName }), shallow
-  )`
+  (state) => ({ name: state.name, setName: state.setName }), shallow
+)`
 
   const jsx = <ZustandObject />
   return {

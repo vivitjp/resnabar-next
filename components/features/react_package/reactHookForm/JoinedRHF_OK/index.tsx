@@ -73,21 +73,26 @@ function Joined() {
     setTabIndex(tab)
   }
   async function onSubmit() {
+    //Set Tab A
     setTabIndex(0)
+    //Submit A
     await methodsA.handleSubmit((data) => {
       setPayload((prev) => ({ ...prev, A: { ...data } }))
     })()
+    //Check A
     if (!methodsA.formState.isValid) return
+
+    //Set Tab B
     setTabIndex(1)
+    //Submit B
     await methodsB.handleSubmit((data) => {
       setPayload((prev) => ({ ...prev, B: { ...data } }))
     })()
+    //Check B
+    if (!methodsB.formState.isValid) return
+    //Store Data
+    setStored(payload)
   }
-
-  useEffect(() => {
-    if (Object.keys(payload?.A).length && Object.keys(payload?.B).length)
-      setStored(payload)
-  }, [payload])
 
   return (
     <HStack justifyContent={"space-between"} alignItems={"flex-start"}>
@@ -193,27 +198,28 @@ function Joined() {
   const onChange = (tab: number) => {
     setTabIndex(tab)
   }
+    
   async function onSubmit() {
-    //タブ移動
+    //Set Tab A
     setTabIndex(0)
+    //Submit A
     await methodsA.handleSubmit((data) => {
       setPayload((prev) => ({ ...prev, A: { ...data } }))
     })()
-
-    // methodsAの validity 確認
+    //Check A
     if (!methodsA.formState.isValid) return
 
-    //タブ移動
+    //Set Tab B
     setTabIndex(1)
+    //Submit B
     await methodsB.handleSubmit((data) => {
       setPayload((prev) => ({ ...prev, B: { ...data } }))
     })()
+    //Check B
+    if (!methodsB.formState.isValid) return
+    //Store Data
+    setStored(payload)
   }
-
-  useEffect(() => {
-    if (Object.keys(payload?.A).length && Object.keys(payload?.B).length)
-      setStored(payload)
-  }, [payload])
 
   return (
     <>

@@ -71,7 +71,13 @@ export const FeaturePresenter: FC<UseCode> = ({ useCode }) => {
 
       {/* JSX */}
       {jsx && (
-        <Box width="100%" height={height} shadow="10px" padding="10px">
+        <Box
+          width="100%"
+          height={height}
+          shadow="10px"
+          padding="10px"
+          boxShadow={"2px 2px 10px rgba(0, 0, 0, 0.2)"}
+        >
           {jsx}
         </Box>
       )}
