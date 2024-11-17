@@ -46,6 +46,7 @@ export const routes: Routes = {
     { name: "FieldArray", path: "/packages/ReactHookForm/FieldArray" },
     { name: "Watch", path: "/packages/ReactHookForm/Watch" },
     { name: "Chakra:AIO", path: "/packages/ReactHookForm/Chakra" },
+    { name: "複数Methodsタブ運用", path: "/packages/ReactHookForm/Joined" },
   ],
   WebAPI: [
     { name: "iObserver", path: "/webAPI/intersectionObserver" },

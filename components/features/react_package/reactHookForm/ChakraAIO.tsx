@@ -47,7 +47,7 @@ const constrain: Record<keyof Person, GFieldType> = {
   },
   age: {
     required: "必須項目です",
-    min: { value: 1, mssage: "4文字以上必須です" },
+    min: { value: 1, message: "4文字以上必須です" },
   },
 }
 
