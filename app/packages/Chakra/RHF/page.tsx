@@ -3,9 +3,9 @@
 import { Flex } from "@chakra-ui/react"
 import { UseReturnType } from "@/components/type/type"
 import { FeaturePresenter } from "@/components/common/presenter/FeaturePresenter"
-import { ChakraAIO } from "@/components/features/react_package/reactHookForm/ChakraAIO"
+import { ChakraRHF } from "@/components/features/react_package/chakra/form/ChakraAIO"
 
-const codes: (() => UseReturnType)[] = [ChakraAIO]
+const codes: (() => UseReturnType)[] = [ChakraRHF]
 
 export default function Main() {
   return (

@@ -37,6 +37,7 @@ export const routes: Routes = {
     { name: "基礎", path: "/packages/Jotai/basic" },
     { name: "非同期", path: "/packages/Jotai/async" },
   ],
+  Chakra: [{ name: "Chakra(RHF)", path: "/packages/Chakra/RHF" }],
   ReactHookForm: [
     { name: "Register:AIO", path: "/packages/ReactHookForm/RegisterAIO" },
     { name: "Control:AIO", path: "/packages/ReactHookForm/ControlAIO" },
@@ -45,7 +46,6 @@ export const routes: Routes = {
     { name: "Control", path: "/packages/ReactHookForm/ControlPC" },
     { name: "FieldArray", path: "/packages/ReactHookForm/FieldArray" },
     { name: "Watch", path: "/packages/ReactHookForm/Watch" },
-    { name: "Chakra:AIO", path: "/packages/ReactHookForm/Chakra" },
     { name: "複数Methodsタブ運用", path: "/packages/ReactHookForm/Joined" },
   ],
   WebAPI: [

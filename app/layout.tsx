@@ -15,10 +15,10 @@ import "./globals.css"
 import { ProvidersReduxToolkit } from "@/store/reduxToolkit/provider"
 import { ChakraProvider, Flex } from "@chakra-ui/react"
 
-export const metadata = {
-  title: "re:Sunabar",
-  description: "Next v13",
-}
+// const metadata = {
+//   title: "re:Sunabar",
+//   description: "Next v13",
+// }
 
 export default function RootLayout({
   children,

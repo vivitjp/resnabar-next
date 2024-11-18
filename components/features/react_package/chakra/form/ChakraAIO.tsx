@@ -11,8 +11,8 @@ import {
   Button,
 } from "@chakra-ui/react"
 
-export function ChakraAIO(): UseReturnType {
-  const title = `【WIP】RHF & Chakra `
+export function ChakraRHF(): UseReturnType {
+  const title = `RHF & Chakra `
   const subTitle = ``
 
   const jsx = <RHFandChakra />
