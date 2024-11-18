@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
-import { useForm, UseFormReturn } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import {
-  FormErrorMessage,
-  FormLabel,
-  FormControl,
-  Input,
   Button,
   Tabs,
   TabList,
@@ -15,10 +11,13 @@ import {
   HStack,
   Box,
 } from "@chakra-ui/react"
+import { CompoA } from "../JoinedRHF_common/CompoA"
+import { CompoB } from "../JoinedRHF_common/CompoB"
+import { Person } from "../JoinedRHF_common/type"
 
 export function JoinedRHF_NG(): UseReturnType {
   const title = `複数Methodsのタブ運用(NG)`
-  const subTitle = ``
+  const subTitle = `ダミーmethodsで囲うパターンだが、ここのタブ移動を同期させられない欠点がある。`
 
   const jsx = <Joined />
 
@@ -33,13 +32,6 @@ export function JoinedRHF_NG(): UseReturnType {
   }
 }
 
-type GFieldType = Record<string, unknown>
-
-type Person = {
-  name: string
-  id: string
-}
-
 const defaultValuesA: Person = {
   name: "",
   id: "0123",
@@ -48,18 +40,6 @@ const defaultValuesA: Person = {
 const defaultValuesB: Person = {
   name: "John",
   id: "",
-}
-
-//Data 制約
-const constrain: Record<keyof Person, GFieldType> = {
-  name: {
-    required: "必須項目",
-    minLength: { value: 4, message: "4文字以上必須です" },
-  },
-  id: {
-    required: "必須項目",
-    minLength: { value: 4, message: "4文字以上必須です" },
-  },
 }
 
 //-------------------------------
@@ -118,64 +98,6 @@ function Joined() {
 }
 
 //-------------------------------
-// Component A
-//-------------------------------
-
-const CompoA = ({ methods }: { methods: UseFormReturn<Person> }) => {
-  const {
-    register,
-    formState: { errors },
-  } = methods
-
-  return (
-    <>
-      <FormControl isInvalid={!!errors.name}>
-        <FormLabel htmlFor="name">氏名(A)</FormLabel>
-        <Input {...register("name", constrain.name)} />
-        <FormErrorMessage>
-          {errors.name && errors.name.message}
-        </FormErrorMessage>
-      </FormControl>
-
-      <FormControl isInvalid={!!errors.id}>
-        <FormLabel htmlFor="id">年齢(A)</FormLabel>
-        <Input {...register("id", constrain.id)} />
-        <FormErrorMessage>{errors.id && errors.id.message}</FormErrorMessage>
-      </FormControl>
-    </>
-  )
-}
-
-//-------------------------------
-// Component B
-//-------------------------------
-
-const CompoB = ({ methods }: { methods: UseFormReturn<Person> }) => {
-  const {
-    register,
-    formState: { errors },
-  } = methods
-
-  return (
-    <>
-      <FormControl isInvalid={!!errors.name}>
-        <FormLabel htmlFor="name">氏名(B)</FormLabel>
-        <Input {...register("name", constrain.name)} />
-        <FormErrorMessage>
-          {errors.name && errors.name.message}
-        </FormErrorMessage>
-      </FormControl>
-
-      <FormControl isInvalid={!!errors.id}>
-        <FormLabel htmlFor="id">ID(B)</FormLabel>
-        <Input {...register("id", constrain.id)} />
-        <FormErrorMessage>{errors.id && errors.id.message}</FormErrorMessage>
-      </FormControl>
-    </>
-  )
-}
-
-//-------------------------------
 // Code
 //-------------------------------
 const code = `
@@ -184,16 +106,20 @@ const methodsCompo =()=>{
   const methodsA = useForm({ defaultValues: defaultValuesA, mode: "onChange" })
   const methodsB = useForm({ defaultValues: defaultValuesB, mode: "onChange" })
   ...
+
   async function onSubmit() {
+    ⛔これではタブが自動で切り替わらない
     await methodsA.handleSubmit((data) => {
       setPayload((prev) => ({ ...prev, A: { ...data } }))
     })()
+
+    ⛔これではタブが自動で切り替わらない
     await methodsB.handleSubmit((data) => {
       setPayload((prev) => ({ ...prev, B: { ...data } }))
     })()
   }
   return (
-    <form onSubmit={methodsJoin.handleSubmit(onSubmit)}>
+    <form onSubmit={methodsJoin.handleSubmit(onSubmit)}> 🔵ダミー form による管理
       <Tabs>
         <TabList>
           <Tab>A</Tab>
@@ -201,35 +127,15 @@ const methodsCompo =()=>{
         </TabList>
         <TabPanels>
           <TabPanel>
-            <CompoA methods={methodsA} />
+            <CompoA methods={methodsA} /> 🔵コンポーネントA
           </TabPanel>
           <TabPanel>
-            <CompoB methods={methodsB} />
+            <CompoB methods={methodsB} /> 🔵コンポーネントA
           </TabPanel>
         </TabPanels>
       </Tabs>
       <Button type="submit"> Submit </Button>
     </form>
-  )
-}
-
-const CompoA = ({ methods }: { methods: UseFormReturn<Person> }) => {
-  const { register, formState: { errors } } = methods
-
-  return (
-    <>
-      <FormControl isInvalid={!!errors.name}>
-        <FormLabel htmlFor="name">氏名(A)</FormLabel>
-        <Input {...register("name", constrain.name)} />
-        <FormErrorMessage> {errors.name && errors.name.message} </FormErrorMessage>
-      </FormControl>
-
-      <FormControl isInvalid={!!errors.id}>
-        <FormLabel htmlFor="id">年齢(A)</FormLabel>
-        <Input {...register("id", constrain.id)} />
-        <FormErrorMessage>{errors.id && errors.id.message}</FormErrorMessage>
-      </FormControl>
-    </>
   )
 }
 `

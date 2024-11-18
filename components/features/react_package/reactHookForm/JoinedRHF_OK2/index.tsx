@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { UseReturnType } from "@/components/type/type"
 import { Form, useForm } from "react-hook-form"
 import {
@@ -15,12 +15,9 @@ import { Person } from "../JoinedRHF_common/type"
 import { CompoA } from "../JoinedRHF_common/CompoA"
 import { CompoB } from "../JoinedRHF_common/CompoB"
 
-export function JoinedRHF_OK(): UseReturnType {
-  const title = `複数Methodのタブ運用(by isValid)`
-  const subTitle = `各viewはそれぞれの method で制御するパターン。
-1回目の submit では isValid が正常に動作する(isValid=false)が、2回目は空があっても動作しない(isValid=true)場合がある(このサンプルでは動作するが...)
-バージョンに依存？isValid が proxy を使用するため？`
-
+export function JoinedRHF_OK2(): UseReturnType {
+  const title = `複数Methodsのタブ運用(by useEffect)`
+  const subTitle = ``
   const jsx = <Joined />
   return {
     title,
@@ -56,27 +53,36 @@ function Joined() {
   const onChange = (tab: number) => {
     setTabIndex(tab)
   }
-  async function onSubmit() {
-    //Set Tab A
-    setTabIndex(0)
-    //Submit A
-    await methodsA.handleSubmit((data) => {
-      setPayload((prev) => ({ ...prev, A: { ...data } }))
-    })()
-    //Check A
-    if (!methodsA.formState.isValid) return
 
-    //Set Tab B
-    setTabIndex(1)
-    //Submit B
-    await methodsB.handleSubmit((data) => {
-      setPayload((prev) => ({ ...prev, B: { ...data } }))
+  const [isValid_A, setIsValid_A] = useState(false)
+  const [isValid_B, setIsValid_B] = useState(false)
+
+  function onSubmit() {
+    setIsValid_A(false)
+    setIsValid_B(false)
+
+    setTabIndex(0)
+    methodsA.handleSubmit((data) => {
+      setPayload((prev) => ({ ...prev, A: { ...data } }))
+      setIsValid_A(true)
     })()
-    //Check B
-    if (!methodsB.formState.isValid) return
-    //Store Data
-    setStored(payload)
   }
+
+  useEffect(() => {
+    if (!isValid_A) return
+
+    setTabIndex(1)
+    methodsB.handleSubmit((data) => {
+      setPayload((prev) => ({ ...prev, B: { ...data } }))
+      setIsValid_B(true)
+    })()
+  }, [isValid_A])
+
+  useEffect(() => {
+    if (!isValid_B) return
+
+    setStored(payload)
+  }, [isValid_B])
 
   return (
     <HStack justifyContent={"space-between"} alignItems={"flex-start"}>
@@ -119,34 +125,46 @@ function Joined() {
   const methodsB = useForm({ defaultValues: defaultValuesB, mode: "onChange" })
   const [payload, setPayload] = useState({ A: {}, B: {} })
   const [stored, setStored] = useState({ A: {}, B: {} })
-  
+   
   const [tabIndex, setTabIndex] = useState(0)
   const onChange = (tab: number) => {
     setTabIndex(tab)
   }
-    
-  async function onSubmit() {
-    //Set Tab A
+  
+  🔵isValid を state で管理
+  const [isValid_A, setIsValid_A] = useState(false)
+  const [isValid_B, setIsValid_B] = useState(false)
+  
+  🔵 state と useEffect で管理するので async 不要
+  function onSubmit() {
+    setIsValid_A(false) 🔵isValid 初期化
+    setIsValid_B(false)
+  
     setTabIndex(0)
-    //Submit A
-    await methodsA.handleSubmit((data) => {
+    methodsA.handleSubmit((data) => {
+      🔵callback関数が呼ばれた時点で valid が保証される
       setPayload((prev) => ({ ...prev, A: { ...data } }))
+      setIsValid_A(true) 🔵isValid=true
     })()
-    //Check A
-    if (!methodsA.formState.isValid) return ⛔ここが問題(2回目は無条件で true になる)
-
-    //Set Tab B
-    setTabIndex(1)
-    //Submit B
-    await methodsB.handleSubmit((data) => {
-      setPayload((prev) => ({ ...prev, B: { ...data } }))
-    })()
-    //Check B
-    if (!methodsB.formState.isValid) return ⛔ここが問題(2回目は無条件で true になる)
-    //Store Data
-    setStored(payload)
   }
+  
+  useEffect(() => {
+    if (!isValid_A) return
 
+    setTabIndex(1)
+    methodsB.handleSubmit((data) => {
+      🔵callback関数が呼ばれた時点で valid が保証される
+      setPayload((prev) => ({ ...prev, B: { ...data } }))
+      setIsValid_B(true) 🔵isValid=true
+    })()
+  }, [isValid_A])
+  
+  useEffect(() => {
+    if (!isValid_B) return
+
+    setStored(payload)
+  }, [isValid_B])
+  
   return (
     <>
       <Tabs index={tabIndex} onChange={onChange}>
@@ -156,12 +174,12 @@ function Joined() {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <Form control={methodsA.control}> 🔵複数 form による管理
+            <Form control={methodsA.control}>
               <CompoA methods={methodsA} />
             </Form>
           </TabPanel>
           <TabPanel>
-            <Form control={methodsB.control}> 🔵複数 form による管理
+            <Form control={methodsB.control}>
               <CompoB methods={methodsB} />
             </Form>
           </TabPanel>
@@ -170,5 +188,4 @@ function Joined() {
       <Button onClick={onSubmit}> Submit </Button>
     </>
   )
-}
-`
+}`
