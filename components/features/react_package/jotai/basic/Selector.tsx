@@ -5,11 +5,14 @@ import { SelectCity } from "./components/SelectCity"
 import { Box, Flex } from "@chakra-ui/react"
 
 export function JotaiSelector(): UseReturnType {
-  const title = `Jotai 基礎: Selector`
+  const title = `Atom(配列値パターン: useStateに近似)`
+  const subTitle = `const citiesAtom = atom(["A", "B", "C"])
+const [cities, setCities] = useAtom(citiesAtom)`
 
   const jsx = <Component />
   return {
     title,
+    subTitle,
     code,
     codeFold: true,
     options: [],
@@ -37,7 +40,7 @@ const Component = () => {
   )
 }
 
-const code = `■ Atoms
+const code = `■ Atoms(配列値パターン: useStateに近似)
 import { atom } from "jotai"
  
 export const citiesAtom = atom(["東京", "京都", "大阪"])

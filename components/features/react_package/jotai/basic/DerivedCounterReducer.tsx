@@ -6,11 +6,21 @@ import { UseReturnType } from "@/components/type/type"
 import { Box, Flex } from "@chakra-ui/react"
 
 export function JotaiDerivedCounterReducer(): UseReturnType {
-  const title = `Derived Atom: Reducer`
+  const title = `Derived Atom(他の配列値atom操作パターン)`
+  const subTitle = `const valueAtom = atom(0);
+const derivedAtom = atom(
+  (get) => get(valueAtom),         //Get: null = WriteOnly
+  (get, set, param: number) => {   //Set: method
+    set(valueAtom, get(valueAtom) + param)
+  }
+)
+const [value, setValue] = useAtom(derivedAtom)
+setValue(1)`
 
   const jsx = <DerivedCounterReducer />
   return {
     title,
+    subTitle,
     code,
     codeFold: true,
     options: [],
@@ -40,7 +50,7 @@ const DerivedCounterReducer = () => {
     >
       <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
         <Box width="100px">派生カウント</Box>
-        <Input defaultValue={value} onChange={handleOnChange} />
+        <Input value={value} onChange={handleOnChange} />
         <Button onClick={handleSetValue}>セット</Button>
       </Flex>
       <Box fontSize="16px" padding="5px">
@@ -53,9 +63,10 @@ const DerivedCounterReducer = () => {
 const code = `■ Atoms
 import { atom } from "jotai"
  
+// 他の配列値atom操作パターン
 export const addingCountDerivedAtom = atom(
-  (get) => get(countDerivedAtom),                  //Get(null にすれば WriteOnly)
-  (get, set, num: number) => {                     //Method
+  (get) => get(countDerivedAtom),       //Get(null にすれば WriteOnly)
+  (get, set, num: number) => {          //Method
     set(countDerivedAtom, get(countDerivedAtom) + num)
   }
 )
@@ -74,10 +85,10 @@ const DerivedCounterReducer = () => {
   }
  
   return (
-    <Flex flexFlow="row" >
-      <Flex flexFlow="row" >
+    <Flex>
+      <Flex>
         <Box>派生カウント</Box>
-        <Input defaultValue={value} onChange={handleOnChange} />
+        <Input value={value} onChange={handleOnChange} />
         <Button onClick={handleSetValue}>セット</Button>
       </Flex>
       <Box fontSize="16px" padding="5px"> {countDerived} </Box>

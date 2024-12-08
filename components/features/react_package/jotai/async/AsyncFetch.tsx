@@ -1,8 +1,8 @@
 import { DivPre } from "@/components/common/styleDivChakra"
 import { useAtom } from "jotai"
-import { fetchUrlAtom } from "../basic/atoms"
 import { UseReturnType } from "@/components/type/type"
 import { Box, Flex } from "@chakra-ui/react"
+import { fetchUrlAtom } from "./atoms"
 
 export function JotaiAsyncFetch(): UseReturnType {
   const title = `非同期 Atom`

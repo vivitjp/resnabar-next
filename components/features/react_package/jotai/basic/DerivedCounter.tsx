@@ -6,11 +6,15 @@ import { UseReturnType } from "@/components/type/type"
 import { Box, Flex } from "@chakra-ui/react"
 
 export function JotaiDerivedCounter(): UseReturnType {
-  const title = `Derived Atom`
+  const title = `Derived Atom(他の値atom操作パターン)`
+  const subTitle = `const valueAtom = atom(0);
+const derivedAtom = atom((get) => get(valueAtom) * 2);
+const [calcValue] = useAtom(derivedAtom)`
 
   const jsx = <DerivedCounter />
   return {
     title,
+    subTitle,
     code,
     codeFold: true,
     options: [],
@@ -41,7 +45,7 @@ const DerivedCounter = () => {
     >
       <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
         <Box width="100px">派生カウント</Box>
-        <Input defaultValue={value} onChange={handleOnChange} />
+        <Input value={value} onChange={handleOnChange} />
         <Button onClick={handleSetCount}>セット</Button>
       </Flex>
       <Box fontSize="16px" padding="5px">
@@ -54,7 +58,9 @@ const DerivedCounter = () => {
 const code = `■ Atoms
 import { atom } from "jotai"
  
+// 値パターン: useStateに近似
 export const doubledOrigAtom = atom(0)
+// 他のatom値操作パターン(doubledOrigAtomの変化にReactiveに対応)
 export const doubledCountAtom = atom((get) => get(doubledOrigAtom) * 2)
  
 ■ Component
@@ -72,10 +78,10 @@ const DerivedCounter = () => {
   }
  
   return (
-    <Flex flexFlow="row" >
-      <Flex flexFlow="row" >
+    <Flex>
+      <Flex>
         <Box>派生カウント</Box>
-        <Input defaultValue={value} onChange={handleOnChange} />
+        <Input value={value} onChange={handleOnChange} />
         <Button onClick={handleSetCount}>セット</Button>
       </Flex>
       <Box> {origCount} : {doubledCount} </Box>

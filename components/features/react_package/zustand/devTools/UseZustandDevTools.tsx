@@ -29,6 +29,7 @@ const ZustandObject = () => {
 const Name = () => {
   const nameRef = useRef<HTMLInputElement>(null)
 
+  //@deprecated — Use createWithEqualityFn from 'zustand/traditional'
   const Person = useDevTools(
     (state) => ({ name: state.name, setName: state.setName }),
     shallow

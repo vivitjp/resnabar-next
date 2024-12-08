@@ -32,10 +32,12 @@ export const routes: Routes = {
     { name: "Subscribe", path: "/packages/zustand/subscribe" },
     { name: "Persist", path: "/packages/zustand/persist" },
     { name: "DevTools", path: "/packages/zustand/devTools" },
+    { name: "Excel連鎖", path: "/packages/zustand/Excel" },
   ],
   Jotai: [
     { name: "基礎", path: "/packages/Jotai/basic" },
     { name: "非同期", path: "/packages/Jotai/async" },
+    { name: "Excel連鎖", path: "/packages/Jotai/excel" },
   ],
   Chakra: [{ name: "Chakra(RHF)", path: "/packages/Chakra/RHF" }],
   ReactHookForm: [

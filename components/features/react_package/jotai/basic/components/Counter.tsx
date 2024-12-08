@@ -19,7 +19,7 @@ export const Counter = () => {
   return (
     <Flex flexFlow="row" padding="5px" alignItems="center" gap="10px">
       <Box width="100px">カウント</Box>
-      <Input defaultValue={value} onChange={handleOnChange} />
+      <Input value={value} onChange={handleOnChange} />
       <Button onClick={handleSetValue}>セット</Button>
     </Flex>
   )

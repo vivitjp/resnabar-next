@@ -6,8 +6,10 @@ import { UseReturnType } from "@/components/type/type"
 import { usePerson3 } from "@/store/zustand/storeBasic"
 
 export function UseZustandObjectNamedShallowNoState(): UseReturnType {
-  const title = `Object(名前付:Stateまるごと)による取り出しでShallow比較`
-  const subTitle = `const Person = usePerson((state) => state, shallow) 無効果`
+  const title = `無効果: Object(名前付:Stateまるごと)による取り出しでShallow比較`
+  const subTitle = `⛔ deprecated: const Person = usePerson((state) => state, shallow); 無効果
+   
+⭕ const Person = usePerson(useShallow((state) => state, shallow)); 無効果`
 
   const jsx = <ZustandObject />
   return {

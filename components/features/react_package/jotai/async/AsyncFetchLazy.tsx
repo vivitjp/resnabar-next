@@ -1,7 +1,7 @@
 import { DivPre } from "@/components/common/styleDivChakra"
 import { useAtom } from "jotai"
 import { Button } from "@/components/common/styleInputChakra"
-import { fetchUrlLazyAtom } from "../basic/atoms"
+import { fetchUrlLazyAtom } from "./atoms"
 import { UseReturnType } from "@/components/type/type"
 import { Box, Flex } from "@chakra-ui/react"
 

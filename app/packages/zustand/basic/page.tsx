@@ -9,11 +9,13 @@ import { UseZustandObjectNamedShallow } from "@/components/features/react_packag
 import { UseZustandObjectNamedShallowNoState } from "@/components/features/react_package/zustand/basic/UseZustandObjectNamedShallowNoState"
 import { UseZustandObjectShallow } from "@/components/features/react_package/zustand/basic/UseZustandObjectShallow"
 import { UseZustandOneCompo } from "@/components/features/react_package/zustand/basic/UseZustandOneCompo"
+import { UseZustandUseShallow } from "@/components/features/react_package/zustand/basic/UseZustandUseShallow"
 
 const codes: (() => UseReturnType)[] = [
   UseZustandOneCompo,
   UseZustandCascaded,
   UseZustandObject,
+  UseZustandUseShallow,
   UseZustandObjectShallow,
   UseZustandObjectNamedShallow,
   UseZustandObjectNamedShallowNoState,

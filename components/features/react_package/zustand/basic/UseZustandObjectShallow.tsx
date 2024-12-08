@@ -6,9 +6,13 @@ import { UseReturnType } from "@/components/type/type"
 import { usePerson1 } from "@/store/zustand/storeBasic"
 
 export function UseZustandObjectShallow(): UseReturnType {
-  const title = `Object(分割代入)による取り出しでShallow比較 [★★]`
-  const subTitle = `const { name, setName } = usePerson(
+  const title = `Object(分割代入)による取り出しでShallow比較`
+  const subTitle = `⛔deprecated: const { name, setName } = usePerson(
   (state) => ({ name: state.name, setName: state.setName }), shallow
+)
+  
+⭕ const { name, setName } = usePerson(
+  useShallow((state) => ({ name: state.name, setName: state.setName }))
 )`
 
   const jsx = <ZustandObject />
@@ -37,6 +41,11 @@ const Name = () => {
     (state) => ({ name: state.name, setName: state.setName }),
     shallow
   )
+
+  // v5以降は以下のように
+  // const { name, setName } = usePerson1(
+  //   useShallow((state) => ({ name: state.name, setName: state.setName }))
+  // )
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value)
@@ -91,14 +100,14 @@ const Name = () => {
   //Object(分割代入)による取り出し
   const { name, setName } = usePerson(
     (state) => ({ name: state.name, setName: state.setName }),
-    shallow // Shallowによる比較で再描画抑制
+    shallow // Shallowによる比較で再描画抑制(⛔deprecated)
   )
- 
+  
   return (
-    <Flex flexFlow="row" >
-      <Flex flexFlow="row" > Name: </Flex>
+    <Flex>
+      <Flex> Name: </Flex>
       <Input onChange={() => setName(...)} value={name}/>
-      <Flex flexFlow="row" > {name} </Flex>
+      <Flex> {name} </Flex>
     </Flex>
   )
 }
@@ -109,10 +118,10 @@ const Address = () => {
   const setAddress = usePerson((state) => state.setAddress)
  
   return (
-    <Flex flexFlow="row" >
-      <Flex flexFlow="row" > Address: </Flex>
+    <Flex>
+      <Flex> Address: </Flex>
       <Input onChange={() => setAddress(...)} value={address} />
-      <Flex flexFlow="row" > {address} </Flex>
+      <Flex> {address} </Flex>
     </Flex>
   )
 }`

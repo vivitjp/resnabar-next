@@ -1,19 +1,12 @@
-import { shallow } from "zustand/shallow"
-
 import { Flex } from "@chakra-ui/react"
 import { Input } from "@/components/common/styleInputChakra"
 import { UseReturnType } from "@/components/type/type"
-import { usePerson2 } from "@/store/zustand/storeBasic"
+import { usePerson1 } from "@/store/zustand/storeBasic"
+import { useShallow } from "zustand/react/shallow"
 
-export function UseZustandObjectNamedShallow(): UseReturnType {
-  const title = `Object(名前付)による取り出しでShallow比較`
-  const subTitle = `⛔ deprecated: const Person = usePerson(
-  (state) => ({ name: state.name, setName: state.setName }), shallow
-)
- 
-⭕ const Person = usePerson2(
-  useShallow((state) => ({ name: state.name, setName: state.setName }))
-)`
+export function UseZustandUseShallow(): UseReturnType {
+  const title = `⭕ useShallow 使用(shallowはdeprecated)`
+  const subTitle = `deprecated になった shallow の代わりに同機能を持つ useShallow フックを使用`
 
   const jsx = <ZustandObject />
   return {
@@ -37,13 +30,12 @@ const ZustandObject = () => {
 }
 
 const Name = () => {
-  const Person = usePerson2(
-    (state) => ({ name: state.name, setName: state.setName }),
-    shallow
+  const { name, setName } = usePerson1(
+    useShallow((state) => ({ name: state.name, setName: state.setName }))
   )
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    Person.setName(e.currentTarget.value)
+    setName(e.currentTarget.value)
   }
 
   return (
@@ -51,17 +43,17 @@ const Name = () => {
       <Flex flexFlow="row" fontSize="16px" padding="5px" width={"100px"}>
         Name:
       </Flex>
-      <Input onChange={handleName} value={Person.name} width={"160px"} />
+      <Input onChange={handleName} value={name} width={"160px"} />
       <Flex flexFlow="row" fontSize="16px" padding="5px" width={"300px"}>
-        {Person.name}
+        {name}
       </Flex>
     </Flex>
   )
 }
 
 const Address = () => {
-  const address = usePerson2((state) => state.address)
-  const setAddress = usePerson2((state) => state.setAddress)
+  const address = usePerson1(useShallow((state) => state.address))
+  const setAddress = usePerson1(useShallow((state) => state.setAddress))
 
   const handleAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAddress(e.currentTarget.value)
@@ -80,7 +72,7 @@ const Address = () => {
   )
 }
 
-const code = `import { shallow } from "zustand/shallow"
+const code = `import { useShallow } from "zustand/react/shallow"
  
 const ZustandObject = () => {
   return (
@@ -92,31 +84,36 @@ const ZustandObject = () => {
 }
  
 const Name = () => {
-  //Object(名前付)による取り出し
-  const Person = usePerson(
-    (state) => ({ name: state.name, setName: state.setName }),
-    shallow // Shallowによる比較で再描画抑制
+  const { name, setName } = usePerson1(
+    useShallow((state) => ({ name: state.name, setName: state.setName }))
   )
-
+ 
+  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.currentTarget.value)
+  }
+ 
   return (
-    <Flex flexFlow="row" >
-      <Flex flexFlow="row" > Name: </Flex>
-      <Input onChange={() => Person.setName(...)} value={name}/>
-      <Flex flexFlow="row" > {Person.name} </Flex>
+    <Flex>
+      <Flex> Name: </Flex>
+      <Input onChange={handleName} value={name} />
+      <Flex> {name} </Flex>
     </Flex>
   )
 }
  
 const Address = () => {
-  //個別取り出し
-  const address = usePerson((state) => state.address)
-  const setAddress = usePerson((state) => state.setAddress)
- 
+  const address = usePerson1(useShallow((state) => state.address))
+  const setAddress = usePerson1(useShallow((state) => state.setAddress))
+
+  const handleAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAddress(e.currentTarget.value)
+  }
+
   return (
-    <Flex flexFlow="row" >
-      <Flex flexFlow="row" > Address: </Flex>
+    <Flex>
+      <Flex> Address: </Flex>
       <Input onChange={() => setAddress(...)} value={address} />
-      <Flex flexFlow="row" > {address} </Flex>
+      <Flex> {address} </Flex>
     </Flex>
   )
 }`

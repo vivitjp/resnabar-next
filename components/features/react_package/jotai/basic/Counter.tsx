@@ -5,11 +5,14 @@ import { Counter } from "./components/Counter"
 import { Box, Flex } from "@chakra-ui/react"
 
 export function JotaiCounter(): UseReturnType {
-  const title = `Jotai 基礎: Counter`
+  const title = `Atom(値パターン: useStateに近似)`
+  const subTitle = `const countAtom = atom(0)
+const [count, setCount] = useAtom(countAtom)`
 
   const jsx = <Component />
   return {
     title,
+    subTitle,
     code,
     codeFold: true,
     options: [],
@@ -40,6 +43,7 @@ const Component = () => {
 const code = `■ Atoms
 import { atom } from "jotai"
  
+//値パターン: useStateに近似
 export const countAtom = atom(0)
 export const countDerivedAtom = atom(0)
  

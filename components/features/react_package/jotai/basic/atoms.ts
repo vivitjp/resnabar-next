@@ -1,16 +1,17 @@
 import { atom } from "jotai"
 
-export const countAtom = atom(0)
-export const countDerivedAtom = atom(0)
-
 export const citiesAtom = atom(["東京", "京都", "大阪"])
 export const citySelectedAtom = atom("")
 
 // 派生 Atom(他のAtomの値を加工)
+
 export const doubledOrigAtom = atom(0)
 export const doubledCountAtom = atom((get) => get(doubledOrigAtom) * 2)
 
 // Get & Set
+export const countAtom = atom(0)
+export const countDerivedAtom = atom(0)
+
 export const addingCountDerivedAtom = atom(
   //Get(null にすれば WriteOnly)
   (get) => get(countDerivedAtom),
@@ -20,19 +21,22 @@ export const addingCountDerivedAtom = atom(
   }
 )
 
-//非同期fetch: 即時コール
-export const urlAtom = atom("https://vivit-mock-company.vercel.app/2")
-export const fetchUrlAtom = atom(async (get) => {
-  const response = await fetch(get(urlAtom))
-  return await response.json()
-})
+/*
+// primitive atom
+function atom<Value>(initialValue: Value): PrimitiveAtom<Value>
 
-//非同期fetch: Lazyコール
-export const fetchDataAtom = atom("")
-export const fetchUrlLazyAtom = atom(
-  (get) => get(fetchDataAtom),
-  async (get, set) => {
-    const response = await fetch(get(urlAtom))
-    set(fetchDataAtom, await response.json())
-  }
-)
+// 読み取り専用
+function atom<Value>(read: (get: Getter) => Value): Atom<Value>
+
+// writable derived atom
+function atom<Value, Args extends unknown[], Result>(
+  read: (get: Getter) => Value,
+  write: (get: Getter, set: Setter, ...args: Args) => Result,
+): WritableAtom<Value, Args, Result>
+
+// write-only derived atom
+function atom<Value, Args extends unknown[], Result>(
+  read: Value,
+  write: (get: Getter, set: Setter, ...args: Args) => Result,
+): WritableAtom<Value, Args, Result>`
+*/
