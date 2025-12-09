@@ -54,5 +54,8 @@
   "resolutions": {
     "styled-components": "^5",
     "@types/react": "18.2.0"
+  },
+  "volta": {
+    "node": "24.11.1"
   }
 }

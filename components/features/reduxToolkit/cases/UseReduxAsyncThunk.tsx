@@ -25,31 +25,42 @@ export function UseReduxAsyncThunk(): UseReturnType {
     codeKeyType: "Redux",
   }
 }
-const code = `const dispatch = useAppDispatch()
-const counter = useAppSelector(selectCounter)
-const [amount, setAmount] = useState<number>(2)
- 
-return (
-  <Flex flexFlow="column" >
-    <Flex flexFlow="row" >
-      {counter}
-      <Button onClick={() => dispatch(resetCounter())}>リセット</Button>
+const code = `
+import { useAppDispatch, useAppSelector } from "@/store/reduxToolkit/hooks"
+import {
+  selectCounter,
+  resetCounter,
+  setCounter,
+  incrementAsync,
+} from "@/store/reduxToolkit/slices/counterSlice"
+
+const ParentCompo = () => {
+  const dispatch = useAppDispatch()
+  const counter = useAppSelector(selectCounter)
+  const [amount, setAmount] = useState<number>(2)
+  
+  return (
+    <Flex flexFlow="column" >
+      <Flex flexFlow="row" >
+        {counter}
+        <Button onClick={() => dispatch(resetCounter())}>リセット</Button>
+      </Flex>
+      <Flex flexFlow="row" >
+        <Button onClick={() => dispatch(setCounter(counter + 1))}>
+          同期加算
+        </Button>
+      </Flex>
+      <Flex flexFlow="row" >
+        <Input value={amount}
+          onChange={(e) => setAmount(parseInt(e.target.value))}
+        />
+        <Button onClick={() => dispatch(incrementAsync(amount))}>
+          非同期加算
+        </Button>
+      </Flex>
     </Flex>
-    <Flex flexFlow="row" >
-      <Button onClick={() => dispatch(setCounter(counter + 1))}>
-        同期加算
-      </Button>
-    </Flex>
-    <Flex flexFlow="row" >
-      <Input value={amount}
-        onChange={(e) => setAmount(parseInt(e.target.value))}
-      />
-      <Button onClick={() => dispatch(incrementAsync(amount))}>
-        非同期加算
-      </Button>
-    </Flex>
-  </Flex>
-)`
+  )
+}`
 
 const ParentCompo = () => {
   const dispatch = useAppDispatch()
